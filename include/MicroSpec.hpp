@@ -20,7 +20,7 @@ namespace microspec
 		~Input();
 
 		// @brief Provide @filename to access the target inputs  
-		static Input* ReadFromFile(char* filename);	
+		static Input* ReadFromFile(const char* filename);	
 		
 		int* getPointer() const;
 		long getLength() const;
@@ -38,7 +38,7 @@ namespace microspec
 		Table(int* List, int nState, int nSymbol, int start);
 		~Table();
 
-		static Table* ReadFromFile(char* filename);
+		static Table* ReadFromFile(const char* filename);
 
 		int* getTable() const;
 		int getNumState() const;
@@ -57,7 +57,7 @@ namespace microspec
 	public:
 		DFA();
 		~DFA();
-		
+
 		void run(const Table* table, const Input* input);
 
 	private:
