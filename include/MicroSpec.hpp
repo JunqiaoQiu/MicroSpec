@@ -17,18 +17,17 @@ namespace microspec
 	class DFA
 	{
 	public:
-		DFA();
-		~DFA();
-		virtual void run(const Table* table, const Input* input);
-
+		DFA() {}
+		virtual ~DFA() {}
+		virtual void run(const Table* table, const Input* input) = 0;
 	};
 
 	class Seq_DFA:public DFA
 	{
 	public:
-		Seq_DFA();
-		~Seq_DFA();
-		void run(const Table* table, const Input* input);
+		Seq_DFA() {}
+		virtual ~Seq_DFA() {}
+		virtual void run(const Table* table, const Input* input);
 	};
 
 }	// end of namespace microspec

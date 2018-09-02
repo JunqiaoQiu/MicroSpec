@@ -1,0 +1,3 @@
+/mnt/f/GithubWindows/MicroSpecRepo/build/CMakeFiles/edit_cache.dir
+/mnt/f/GithubWindows/MicroSpecRepo/build/CMakeFiles/rebuild_cache.dir
+/mnt/f/GithubWindows/MicroSpecRepo/build/CMakeFiles/test.dir

@@ -9,8 +9,10 @@ endif(CMAKE_COMPILER_IS_GNUCXX)
 
 include_directories (../include)
 
-aux_source_directory (./ PROJECT_ROOT)
+# It will find all files with specific extension names
+file(GLOB SRC
+	${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/../src/*.cpp
+)
 
-aux_source_directory (../src SRC)
-
-add_executable (${PROJECT_NAME} ${PROJECT_ROOT} ${SRC})
+add_executable (${PROJECT_NAME} ${SRC})
