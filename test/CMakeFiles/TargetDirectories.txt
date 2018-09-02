@@ -1,0 +1,3 @@
+/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/test/CMakeFiles/rebuild_cache.dir
+/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/test/CMakeFiles/edit_cache.dir
+/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/test/CMakeFiles/test.dir
