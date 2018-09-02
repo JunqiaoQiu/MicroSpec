@@ -1,1 +1,0 @@
-/usr/bin/c++   -std=c++11 -O3 -pthread  -rdynamic CMakeFiles/test.dir/main.cpp.o CMakeFiles/test.dir/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/MicroSpec.cpp.o CMakeFiles/test.dir/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/Resources.cpp.o  -o test 
