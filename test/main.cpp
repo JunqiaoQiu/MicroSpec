@@ -23,13 +23,13 @@ int main(int argc, char* argv[])
 	Timer T1;
 	startTime(&T1);
 	DFA* obj_seq = new Seq_DFA();
-	obj_seq->run(table_, inputs_);
+	obj_seq->Run(table_, inputs_);
 	stopTime(&T1);
 	double SeqTime =  elapsedTime(T1);
 
 	startTime(&T1);
-	DFA* obj_unroll_single = new Spec_DFA_Pthread_Gather(100, 4);
-	obj_unroll_single->run(table_, inputs_);
+	DFA* obj_unroll_single = new Spec_DFA_Unroll_Single(100);
+	obj_unroll_single->Run(table_, inputs_);
 	stopTime(&T1);
 	double UnrollSingleTime = elapsedTime(T1);
 
@@ -37,3 +37,4 @@ int main(int argc, char* argv[])
 
 	return 0;
 }
+	
