@@ -2,8 +2,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "MicroSpec.hpp"
 #include "Resources.hpp"
+#include "MicroSpec.hpp"
+#include "MicroSpec_Pthread.hpp"
+#include "Timer.hpp"
 
 using namespace std;
 using namespace microspec;
@@ -18,8 +20,20 @@ int main(int argc, char* argv[])
 	Input* inputs_ = Input::ReadFromFile(InputFile);
 	Table* table_ = Table::ReadFromFile(TableFile, AcceptFile, start);
 
-	DFA* framework = new Seq_DFA();
-	framework->run(table_, inputs_);
+	Timer T1;
+	startTime(&T1);
+	DFA* obj_seq = new Seq_DFA();
+	obj_seq->run(table_, inputs_);
+	stopTime(&T1);
+	double SeqTime =  elapsedTime(T1);
+
+	startTime(&T1);
+	DFA* obj_unroll_single = new Spec_DFA_Pthread_Gather(100, 4);
+	obj_unroll_single->run(table_, inputs_);
+	stopTime(&T1);
+	double UnrollSingleTime = elapsedTime(T1);
+
+	cout << SeqTime / UnrollSingleTime << endl;	
 
 	return 0;
 }

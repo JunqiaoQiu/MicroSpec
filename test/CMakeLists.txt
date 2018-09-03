@@ -4,7 +4,7 @@ cmake_policy(VERSION 2.8)
 project(test)
 
 if(CMAKE_COMPILER_IS_GNUCXX)
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -O3 -pthread") 
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -O3 -pthread -mavx2 -msse4") 
 endif(CMAKE_COMPILER_IS_GNUCXX)
 
 include_directories (../include)

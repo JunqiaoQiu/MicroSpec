@@ -13,7 +13,6 @@
 namespace microspec 
 {
 	#define ASCII256 256
-
 	#define MAXSYMBOL ASCII256
 
 	class  Input
@@ -32,7 +31,7 @@ namespace microspec
 
 	private:
 
-		int* pointer;
+		int* pointer __attribute__ ((aligned (32)));
 		long size;
 	};
 
@@ -43,10 +42,15 @@ namespace microspec
 		Table(int* list, int nstate, int nsymbol, int s);
 		~Table();
 
+		// typedef void(*func)(void*, int) ;
+
 		// @brief Providing @filename to access the given two-dimension table, 
 		// with using @acceptFile to mark the accept state in the table, 
 		// and applying required start state @s, then return an @Table-type object  
 		static Table* ReadFromFile(const char* filename, const char* acceptFile, const int s);
+
+		// void setAction(func f_);
+		// func getAction() const;
 
 		int* getTable() const;
 		int getNumState() const;
@@ -55,10 +59,11 @@ namespace microspec
 		void printTable() const;
 
 	private:
-		int* tableList;
+		int* tableList __attribute__ ((aligned (32)));
 		int numState;
 		int numSymbol;
 		int start;
+		// func mFunc;
 	};
 }	// end of namespace microspec
 
