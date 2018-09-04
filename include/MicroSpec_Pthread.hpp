@@ -1,7 +1,6 @@
 /*
 * @Author: Junqiao Qiu
 * @Last Modified by:   Junqiao Qiu
-* @Last Modified time: 2018-08-31 
 */
 
 #ifndef MICROSPEC_PTHREAD_H
@@ -28,40 +27,63 @@ namespace microspec
 	{
 	public:
 		Spec_DFA_Pthread():Spec_DFA(){}
-		Spec_DFA_Pthread(int lb, int tds):Spec_DFA(lb), mthreads(tds), mchunks(tds){}	
+		Spec_DFA_Pthread(int look_back_length, int threads_used):Spec_DFA(look_back_length), mthreads(threads_used), mchunks(threads_used){}	
 		virtual ~Spec_DFA_Pthread() {}
-		virtual void run(const Table* table, const Input* input);
+
+		virtual void Run(const Table* table, const Input* input);
 
 	protected:
 		static void* caller(void* args);
 		virtual void parallel_run(int tid, Predictor* p);
+
+	protected:
 		int mthreads;
 		int mchunks;
 	};
 
-	class Spec_DFA_Pthread_Gather:public Spec_DFA_Pthread
+	class Spec_DFA_Gather_Pthread:public Spec_DFA_Pthread
 	{
 	public:
-		Spec_DFA_Pthread_Gather():Spec_DFA_Pthread(){}
-		Spec_DFA_Pthread_Gather(int lb, int tds):Spec_DFA_Pthread(lb, tds){mchunks = tds * AVX2FACTOR;}	
-		virtual ~Spec_DFA_Pthread_Gather() {}
-		//virtual void run(const Table* table, const Input* input);
+		Spec_DFA_Gather_Pthread():Spec_DFA_Pthread(){}
+		Spec_DFA_Gather_Pthread(int look_back_length, int threads_used):Spec_DFA_Pthread(look_back_length, threads_used){mchunks = threads_used * AVX2FACTOR;}	
+		virtual ~Spec_DFA_Gather_Pthread() {}
 		
 	protected:
 		virtual void parallel_run(int tid, Predictor* p);
 	};
 
-	class Spec_DFA_Pthread_Unroll:public Spec_DFA_Pthread
+	class Spec_DFA_Unroll_Pthread:public Spec_DFA_Pthread
 	{
 	public:
-		Spec_DFA_Pthread_Unroll():Spec_DFA_Pthread(){}
-		Spec_DFA_Pthread_Unroll(int lb, int tds, int cks):Spec_DFA_Pthread(lb, tds){mchunks = tds * UNROLLFACTOR;}	
-		virtual ~Spec_DFA_Pthread_Unroll() {}
-		//virtual void run(const Table* table, const Input* input);
+		Spec_DFA_Unroll_Pthread():Spec_DFA_Pthread(){}
+		Spec_DFA_Unroll_Pthread(int look_back_length, int threads_used):Spec_DFA_Pthread(look_back_length, threads_used){mchunks = threads_used * UNROLLFACTOR;}	
+		virtual ~Spec_DFA_Unroll_Pthread() {}
 		
 	protected:
 		virtual void parallel_run(int tid, Predictor* p);
 	};
+
+	class Spec_DFA_GatherUnroll_Pthread:public Spec_DFA_Pthread
+	{
+	public:
+		Spec_DFA_GatherUnroll_Pthread():Spec_DFA_Pthread(){}
+		Spec_DFA_GatherUnroll_Pthread(int look_back_length, int threads_used):Spec_DFA_Pthread(look_back_length, threads_used){mchunks = threads_used * AVX2FACTOR * UNROLLFACTORAVX;}	
+		virtual ~Spec_DFA_GatherUnroll_Pthread() {}
+		
+	protected:
+		virtual void parallel_run(int tid, Predictor* p);
+	};
+
+	class Spec_DFA_UnrollGather_Pthread:public Spec_DFA_Pthread
+	{
+	public:
+		Spec_DFA_UnrollGather_Pthread():Spec_DFA_Pthread(){}
+		Spec_DFA_UnrollGather_Pthread(int look_back_length, int threads_used):Spec_DFA_Pthread(look_back_length, threads_used){mchunks = threads_used * UNROLLFACTORAVX * AVX2FACTOR;}	
+		virtual ~Spec_DFA_UnrollGather_Pthread() {}
+		
+	protected:
+		virtual void parallel_run(int tid, Predictor* p);
+	};	
 
 }	// end of namespace microspec
 

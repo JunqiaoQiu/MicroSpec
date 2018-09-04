@@ -2,7 +2,6 @@
 * @Predictor.hpp
 * @Author: Junqiao Qiu
 * @Last Modified by:   Junqiao Qiu
-* @Last Modified time: 2018-08-31 
 */
 
 #ifndef PREDICTOR_H
@@ -49,9 +48,9 @@ namespace microspec
 		int* getPredictStatePointer() const;
 		int* getFinalStatePointer() const;
 
+	private:
 		int SeqPredict_one(long START_POINT);
 
-	private:
 		// @ Brief The two private functions are used for ParallelPrediction
 		static void* Caller1(void* args);
 	 	void ParPredict_one(int tid);

@@ -32,6 +32,8 @@ namespace microspec
 
 	Predictor::Predictor(const Table* tb, const Input* ints, int nT, int nC, long nLB)
 	{
+		srand (time(NULL));
+		
 		mThreads = nT;
 		mChunks = nC;
 		mLook_Back = nLB;
@@ -58,7 +60,6 @@ namespace microspec
 
 	void Predictor::SequentialPrediction()
 	{
-		srand (time(NULL));
 		long ChunkLength = mInputs_->getLength() / mChunks;
 
 		pthread_predict[0]= mTable_->getStartState();
@@ -122,8 +123,6 @@ namespace microspec
 
 	void Predictor::ParallelPrediction()
 	{
-		srand (time(NULL));
-
 		//PTHREAD--------------------------------
 		int errorCheck1, errorCheck2;
 		long t;

@@ -7,10 +7,16 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+#include <stdio.h>
+#include <stdlib.h>
 #include <fstream>
+#include <cstring>
 #include <string>
+#include <cctype>
 #include <sstream>
 #include <vector>
+#include <stdexcept>
+#include <map>
 #include <algorithm>  
 
 #include "Resources.hpp"
@@ -19,6 +25,129 @@ using namespace std;
 
 namespace microspec
 {
+	
+	MappingRule::MappingRule()
+	{
+		mrules = new int [ASCII256];
+		msize = ASCII256;		
+		for (int i = 0; i<ASCII256; i++)
+			mrules[i] = i;
+	}
+
+	MappingRule::MappingRule(int* rules, int size)
+	{
+		mrules = new int [ASCII256];
+		msize = size;
+		for (int i = 0; i<ASCII256; i++)
+			mrules[i] = rules[i];
+	}
+
+	MappingRule::~MappingRule()
+	{
+		delete []mrules;
+	}
+
+	MappingRule* MappingRule::DefineMappingRule()
+	{
+		MappingRule* obj = new MappingRule();
+		return obj;
+	}
+
+	MappingRule* MappingRule::DefineMappingRule(char* rs_key)
+	{
+		char* rs_key_low;
+		rs_key_low = new char [strlen(rs_key)];
+		for (int i = 0; i < strlen(rs_key); ++i)
+	    	rs_key_low[i] = tolower(rs_key[i]);
+
+		// Currently allow size of 256
+		int* temprules;
+		int tempsize;
+
+		temprules = new int [ASCII256];
+		for (int j=0; j<ASCII256; j++)
+			temprules[j] = 0;
+
+		if (rs_key_low == std::string("dna"))
+		{
+			tempsize = 4;
+			temprules['A'] = 0;
+			temprules['T'] = 1;
+			temprules['G'] = 2;
+			temprules['C'] = 3;
+		}
+		else if (rs_key_low == std::string("protn") )
+		{
+			tempsize = 20;
+			temprules['A'] = 0;
+			temprules['C'] = 1;
+			temprules['D'] = 2;
+			temprules['E'] = 3;
+			temprules['F'] = 4;
+			temprules['G'] = 5;
+			temprules['H'] = 6;
+			temprules['I'] = 7;
+			temprules['K'] = 8;
+			temprules['L'] = 9;
+			temprules['M'] = 10;
+			temprules['N'] = 11;
+			temprules['P'] = 12;
+			temprules['Q'] = 13;
+			temprules['R'] = 14;
+			temprules['S'] = 15;
+			temprules['T'] = 16;
+			temprules['V'] = 17;
+			temprules['W'] = 18;
+			temprules['Y'] = 19;
+		}
+		else if (rs_key_low == std::string("evenodd") )
+		{
+			tempsize = 4;
+			temprules['a'] = 0;
+			temprules['b'] = 1;
+			temprules['c'] = 2;
+			temprules['d'] = 3;			
+		}
+		else if (rs_key_low == std::string("div") )
+		{
+			tempsize = 2;
+			temprules['0'] = 0;
+			temprules['1'] = 1;			
+		}
+		else
+		{
+			tempsize = ASCII256;
+			for (int i = 0; i<tempsize; i++)
+				temprules[i] = i;
+		}
+
+		MappingRule* obj = new MappingRule(temprules, tempsize);
+		return obj;
+	}
+
+	int MappingRule::Char2Int(char character) const
+	{
+		int temp;
+		if (character < 0 || character >= ASCII256)
+			temp = 0;
+		else
+			temp = mrules[character];
+		return temp;
+	}
+
+	int MappingRule::RuleSize() const
+	{
+		return msize;
+	}
+
+	void MappingRule::PrintRules() const
+	{
+		int it;
+		for (it = 0; it < ASCII256; it++)
+			cout << (char)it << " : " << mrules[it] << endl;
+		cout << endl;
+	}
+
 	Input::Input()
 	{
 		pointer = NULL;
@@ -37,7 +166,7 @@ namespace microspec
 		size = 0;
 	}
 
-	Input* Input::ReadFromFile(const char* filename)
+	Input* Input::ReadFromFile(const char* filename, const MappingRule* ruleset)
 	{
 		long length_;
 		int* inputs_;
@@ -69,12 +198,7 @@ namespace microspec
 
 	    inputs_ = new int [length_];
 	    for (int l = 0; l < length_; l++)
-	    {
-	    	if ((int)inputs_Char[l] < 0 || (int)inputs_Char[l] > MAXSYMBOL)
-	    		inputs_[l] = 0;
-	    	else
-	    		inputs_[l] = inputs_Char[l];
-	    }
+	    	inputs_[l] = ruleset->Char2Int(inputs_Char[l]);
 
 	    // mmap and input file close
     	munmap((void *)inputs_Char, length_);
@@ -119,7 +243,8 @@ namespace microspec
 		start = 0;
 	}
 
-	Table* Table::ReadFromFile(const char* filename, const char* acceptFile, const int s)
+	Table* Table::ReadFromFile(const char* filename, const char* acceptFile, 
+			const int s, const MappingRule* ruleset)
 	{	
 		int* list_;
 		int nstate_;
@@ -144,6 +269,7 @@ namespace microspec
 			return NULL;
 		}
 
+		int MAXSYMBOL = ruleset->RuleSize();
 		vector<int> vecTable;
 		ifstream in_table;
 		in_table.open(filename);
@@ -155,7 +281,7 @@ namespace microspec
         		getline(in_table,line);
         		if(in_table.fail())
             		break;
-        		if (line.size() > 3)
+        		if (line.size() > 2)
         		{
         			int currentLineNum = 0;
         			stringstream stream(line);
@@ -215,11 +341,12 @@ namespace microspec
 
 	void Table::printTable() const
 	{
+		cout << "(" << this->getNumState() << " " << this->getNumSymbol() << ")" << endl;
 		for (int i = 0; i < numState * numSymbol; i++)
 		{
 			int realMember =  tableList[i] & 0X0FFFFFFF ;
 			cout << realMember << " ";
-			if (i % numSymbol == 0 && i != 0)
+			if ((i+1) % numSymbol == 0)
 				cout << endl;
 		}
 		cout << endl;

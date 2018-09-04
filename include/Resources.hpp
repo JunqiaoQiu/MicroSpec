@@ -1,7 +1,6 @@
 /*
 * @Author: Junqiao Qiu
 * @Last Modified by:   Junqiao Qiu
-* @Last Modified time: 2018-08-31 
 */
 
 #ifndef RESOURCES_H
@@ -12,8 +11,34 @@
 
 namespace microspec 
 {
+	// Current rule range
 	#define ASCII256 256
-	#define MAXSYMBOL ASCII256
+
+	// @Brief The class @MappingRule defines the mapping rule of 
+	// input characters in the following @Input class.   
+	class MappingRule
+	{
+	public:
+		MappingRule();
+		MappingRule(int* rules, int size);
+		~MappingRule();
+		
+		// Transform the char type character to int type
+		int Char2Int(char character) const;
+		void PrintRules() const;
+		int RuleSize() const;
+
+		// @brief Provide @rs_key to denote the rules aim to set. 
+		// Current support dna/div/protn/evenodd, and the others will 
+		// be consider as ASCII256. 
+		static MappingRule* DefineMappingRule();
+		static MappingRule* DefineMappingRule(char* rs_key);
+	private:
+		// character mapping rules
+		int* mrules;
+		// the number of real effective (i.e., possible appear) characters
+		int msize;
+	};
 
 	class  Input
 	{
@@ -23,14 +48,15 @@ namespace microspec
 		~Input();
 
 		// @brief Provide @filename to access the target inputs, 
-		// and then return an @Input type object  
-		static Input* ReadFromFile(const char* filename);	
+		// and @reuleset to denote the possible appear characters,  
+		// then return an @Input type object  
+		static Input* ReadFromFile(const char* filename, 
+			const MappingRule* ruleset);	
 		
 		int* getPointer() const;
 		long getLength() const;
 
 	private:
-
 		int* pointer __attribute__ ((aligned (32)));
 		long size;
 	};
@@ -42,12 +68,14 @@ namespace microspec
 		Table(int* list, int nstate, int nsymbol, int s);
 		~Table();
 
-		// typedef void(*func)(void*, int) ;
+		// typedef void(*func)(void*, int);
 
 		// @brief Providing @filename to access the given two-dimension table, 
 		// with using @acceptFile to mark the accept state in the table, 
-		// and applying required start state @s, then return an @Table-type object  
-		static Table* ReadFromFile(const char* filename, const char* acceptFile, const int s);
+		// and applying required start state @s while also define the mapping rule @ruleset, 
+		// then return an @Table-type object  
+		static Table* ReadFromFile(const char* filename, const char* acceptFile, 
+			const int s, const MappingRule* ruleset);
 
 		// void setAction(func f_);
 		// func getAction() const;
