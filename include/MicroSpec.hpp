@@ -1,0 +1,100 @@
+/*
+* @Author: Junqiao Qiu
+* @Last Modified by:   Junqiao Qiu
+*/
+
+#ifndef MICROSPEC_H
+#define MICROSPEC_H
+
+#include <stdlib.h>
+#include <stdio.h>
+
+#include "Resources.hpp"
+#include "Predictor.hpp"
+
+namespace microspec 
+{
+	// unroll factor in SpecUnroll
+	#define UNROLLFACTOR 8 
+	// unroll factor in SpecUnroll+ and SpecGather+
+	#define UNROLLFACTORAVX 2
+	#define AVX2FACTOR 8
+
+	class DFA
+	{
+	public:
+		DFA() {}
+		virtual ~DFA() {}
+		virtual void Run(const Table* table, const Input* input) = 0;
+	};
+
+	class Seq_DFA:public DFA
+	{
+	public:
+		Seq_DFA() {}
+		virtual ~Seq_DFA() {}
+		virtual void Run(const Table* table, const Input* input);
+	};
+
+	class Spec_DFA:public DFA
+	{
+	public:
+		// @Brief In speculative DFA parallelization, a light-weight predictor
+		// is used, and the look back length is the only parameter to control it 
+		Spec_DFA():mLookBack(0) {}
+		Spec_DFA(int look_back_length):mLookBack(look_back_length) {}
+		virtual ~Spec_DFA() {}
+	
+	protected:
+
+		// @Brief Provide reexecution. @p is the predicted state array,  
+		// while @f is the corresponding final (ending) state array.
+		// @size indicates the size of the above two arrays.   
+		virtual void re_execute(const Table* table, const Input* input, 
+		 	int* p, int* f, int size);		
+		int mLookBack;
+	};
+
+	class Spec_DFA_Gather_Single:public Spec_DFA
+	{
+	public:
+		Spec_DFA_Gather_Single():Spec_DFA(){}
+		Spec_DFA_Gather_Single(int look_back_length):Spec_DFA(look_back_length){}
+		virtual ~Spec_DFA_Gather_Single() {}
+
+		virtual void Run(const Table* table, const Input* input);	
+	};
+
+	class Spec_DFA_Unroll_Single:public Spec_DFA
+	{
+	public:
+		Spec_DFA_Unroll_Single():Spec_DFA(){}
+		Spec_DFA_Unroll_Single(int look_back_length):Spec_DFA(look_back_length){}
+		virtual ~Spec_DFA_Unroll_Single() {}
+
+		virtual void Run(const Table* table, const Input* input);		
+	};
+
+	class Spec_DFA_GatherUnroll_Single:public Spec_DFA
+	{
+	public:
+		Spec_DFA_GatherUnroll_Single():Spec_DFA(){}
+		Spec_DFA_GatherUnroll_Single(int look_back_length):Spec_DFA(look_back_length){}
+		virtual ~Spec_DFA_GatherUnroll_Single() {}
+
+		virtual void Run(const Table* table, const Input* input);	
+	};
+
+	class Spec_DFA_UnrollGather_Single:public Spec_DFA
+	{
+	public:
+		Spec_DFA_UnrollGather_Single():Spec_DFA(){}
+		Spec_DFA_UnrollGather_Single(int look_back_length):Spec_DFA(look_back_length){}
+		virtual ~Spec_DFA_UnrollGather_Single() {}
+
+		virtual void Run(const Table* table, const Input* input);		
+	};
+
+}	// end of namespace microspec
+
+#endif // MICROSPEC_H
