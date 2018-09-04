@@ -33,6 +33,8 @@ make
 
 ### Test
 
+There are several test cases under test/.
+
 
 ## Example Usage
 Here is an example use of seq-DFA execution, coarse-grained spec-DFA execution and specUnroll-DFA execution. 
