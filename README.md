@@ -6,9 +6,30 @@
 
 ## Getting Started
 
-### obtain source code
+### Obtain source code
+
+You can clone this repository by using git:
+
+```sh
+git clone https://github.com/JunqiaoQiu/MicroSpecRepo.git
+```
 
 ### Install and Build
+
+There are some requirements for building this library: `cmake2.8+`, `gcc4.9+`
+It will use SIMD instructions, so please check your CPU support:
+```sh
+cat /proc/cpuinfo | grep flags
+```
+
+Build it:
+
+```sh
+mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Release ..
+make 
+```
 
 ### Test
 
