@@ -12,7 +12,7 @@
 namespace microspec 
 {
 	// Current rule range
-	#define ASCII256 256
+	const int ASCII256 = 256;
 
 	// @Brief The class @MappingRule defines the mapping rule of 
 	// input characters in the following @Input class.   
