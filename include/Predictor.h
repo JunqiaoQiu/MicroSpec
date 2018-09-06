@@ -1,5 +1,5 @@
 /*
-* @Predictor.hpp
+* @Predictor.h
 * @Author: Junqiao Qiu
 * @Last Modified by:   Junqiao Qiu
 */
@@ -13,7 +13,7 @@
 #include <smmintrin.h> // sse4.2
 #include <immintrin.h>   // avx
 
-#include "Resources.hpp"
+#include "Resources.h"
 
 namespace microspec 
 {
@@ -31,7 +31,7 @@ namespace microspec
 		Predictor(const Table* tb, const Input* ints, int nT, int nC, long nLB);
 		~Predictor();
 
-		static Predictor* ConstructPredictor(const Table* table, const Input* input, 
+		static Predictor* constructPredictor(const Table* table, const Input* input, 
 			const int nthread, const int nchunk, const long nlookback);	
 
 		void SequentialPrediction();

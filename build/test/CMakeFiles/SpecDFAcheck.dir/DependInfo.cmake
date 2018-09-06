@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/test/SpecDFAcheck.cpp" "/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/test/CMakeFiles/SpecDFAcheck.dir/SpecDFAcheck.cpp.o"
+  "/Users/junqiaoqiu/Desktop/MicroSpecRepo/test/SpecDFAcheck.cpp" "/Users/junqiaoqiu/Desktop/MicroSpecRepo/build/test/CMakeFiles/SpecDFAcheck.dir/SpecDFAcheck.cpp.o"
   )
-set(CMAKE_CXX_COMPILER_ID "GNU")
+set(CMAKE_CXX_COMPILER_ID "Clang")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
@@ -15,7 +15,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/MicroSpec.dir/DependInfo.cmake"
+  "/Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles/MicroSpec.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

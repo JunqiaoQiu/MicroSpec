@@ -11,11 +11,11 @@
 
 namespace microspec 
 {
-	// Current rule range
+	// The current rule range
 	const int ASCII256 = 256;
 
-	// @Brief The class @MappingRule defines the mapping rule of 
-	// input characters in the following @Input class.   
+	// @Brief The class @MappingRule defines the mapping rule about transforming 
+	// the possible appear char-type input characters into an integer.   
 	class MappingRule
 	{
 	public:
@@ -24,22 +24,25 @@ namespace microspec
 		~MappingRule();
 		
 		// Transform the char type character to int type
-		int Char2Int(char character) const;
-		void PrintRules() const;
-		int RuleSize() const;
+		int char2Int(char character) const;
+		void printRules() const;
+		int ruleSize() const;
 
-		// @brief Provide @rs_key to denote the rules aim to set. 
-		// Current support dna/div/protn/evenodd, and the others will 
-		// be consider as ASCII256. 
-		static MappingRule* DefineMappingRule();
-		static MappingRule* DefineMappingRule(char* rs_key);
+		// @Brief Provide @rs_key to denote the rules aim to set, 
+		// which is current supported to be dna/div/protn/evenodd. And the 
+		// other cases will be consider as default one, i.e., ASCII256. 
+		static MappingRule* defineMappingRule();
+		static MappingRule* defineMappingRule(char* rs_key);
 	private:
-		// character mapping rules
+		// @Brief character mapping rules, i.e., rules about transforming 
+		// char-type character into int-type integer
 		int* mrules;
 		// the number of real effective (i.e., possible appear) characters
 		int msize;
 	};
 
+	// @Brief The class @Input is used to store the necessary input contents 
+	// where DFAs execute on
 	class  Input
 	{
 	public:
@@ -61,6 +64,8 @@ namespace microspec
 		long size;
 	};
 
+	// @Brief The class @Table is used to store the main information about  
+	// the target DFA, more specefically, the table information
 	class Table
 	{
 	public:

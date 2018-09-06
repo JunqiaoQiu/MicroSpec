@@ -43,10 +43,10 @@ RM = /usr/local/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo
+CMAKE_SOURCE_DIR = /Users/junqiaoqiu/Desktop/MicroSpecRepo
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build
+CMAKE_BINARY_DIR = /Users/junqiaoqiu/Desktop/MicroSpecRepo/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/MicroSpec.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/MicroSpec.dir/flags.make
 
 CMakeFiles/MicroSpec.dir/src/MicroSpec.cpp.o: CMakeFiles/MicroSpec.dir/flags.make
 CMakeFiles/MicroSpec.dir/src/MicroSpec.cpp.o: ../src/MicroSpec.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/MicroSpec.dir/src/MicroSpec.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MicroSpec.dir/src/MicroSpec.cpp.o -c /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/MicroSpec.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/MicroSpec.dir/src/MicroSpec.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MicroSpec.dir/src/MicroSpec.cpp.o -c /Users/junqiaoqiu/Desktop/MicroSpecRepo/src/MicroSpec.cpp
 
 CMakeFiles/MicroSpec.dir/src/MicroSpec.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MicroSpec.dir/src/MicroSpec.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/MicroSpec.cpp > CMakeFiles/MicroSpec.dir/src/MicroSpec.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/junqiaoqiu/Desktop/MicroSpecRepo/src/MicroSpec.cpp > CMakeFiles/MicroSpec.dir/src/MicroSpec.cpp.i
 
 CMakeFiles/MicroSpec.dir/src/MicroSpec.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MicroSpec.dir/src/MicroSpec.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/MicroSpec.cpp -o CMakeFiles/MicroSpec.dir/src/MicroSpec.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/junqiaoqiu/Desktop/MicroSpecRepo/src/MicroSpec.cpp -o CMakeFiles/MicroSpec.dir/src/MicroSpec.cpp.s
 
 CMakeFiles/MicroSpec.dir/src/MicroSpec.cpp.o.requires:
 
@@ -83,16 +83,16 @@ CMakeFiles/MicroSpec.dir/src/MicroSpec.cpp.o.provides.build: CMakeFiles/MicroSpe
 
 CMakeFiles/MicroSpec.dir/src/MicroSpec_Pthread.cpp.o: CMakeFiles/MicroSpec.dir/flags.make
 CMakeFiles/MicroSpec.dir/src/MicroSpec_Pthread.cpp.o: ../src/MicroSpec_Pthread.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/MicroSpec.dir/src/MicroSpec_Pthread.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MicroSpec.dir/src/MicroSpec_Pthread.cpp.o -c /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/MicroSpec_Pthread.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/MicroSpec.dir/src/MicroSpec_Pthread.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MicroSpec.dir/src/MicroSpec_Pthread.cpp.o -c /Users/junqiaoqiu/Desktop/MicroSpecRepo/src/MicroSpec_Pthread.cpp
 
 CMakeFiles/MicroSpec.dir/src/MicroSpec_Pthread.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MicroSpec.dir/src/MicroSpec_Pthread.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/MicroSpec_Pthread.cpp > CMakeFiles/MicroSpec.dir/src/MicroSpec_Pthread.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/junqiaoqiu/Desktop/MicroSpecRepo/src/MicroSpec_Pthread.cpp > CMakeFiles/MicroSpec.dir/src/MicroSpec_Pthread.cpp.i
 
 CMakeFiles/MicroSpec.dir/src/MicroSpec_Pthread.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MicroSpec.dir/src/MicroSpec_Pthread.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/MicroSpec_Pthread.cpp -o CMakeFiles/MicroSpec.dir/src/MicroSpec_Pthread.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/junqiaoqiu/Desktop/MicroSpecRepo/src/MicroSpec_Pthread.cpp -o CMakeFiles/MicroSpec.dir/src/MicroSpec_Pthread.cpp.s
 
 CMakeFiles/MicroSpec.dir/src/MicroSpec_Pthread.cpp.o.requires:
 
@@ -107,16 +107,16 @@ CMakeFiles/MicroSpec.dir/src/MicroSpec_Pthread.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/MicroSpec.dir/src/Predictor.cpp.o: CMakeFiles/MicroSpec.dir/flags.make
 CMakeFiles/MicroSpec.dir/src/Predictor.cpp.o: ../src/Predictor.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/MicroSpec.dir/src/Predictor.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MicroSpec.dir/src/Predictor.cpp.o -c /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/Predictor.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/MicroSpec.dir/src/Predictor.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MicroSpec.dir/src/Predictor.cpp.o -c /Users/junqiaoqiu/Desktop/MicroSpecRepo/src/Predictor.cpp
 
 CMakeFiles/MicroSpec.dir/src/Predictor.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MicroSpec.dir/src/Predictor.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/Predictor.cpp > CMakeFiles/MicroSpec.dir/src/Predictor.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/junqiaoqiu/Desktop/MicroSpecRepo/src/Predictor.cpp > CMakeFiles/MicroSpec.dir/src/Predictor.cpp.i
 
 CMakeFiles/MicroSpec.dir/src/Predictor.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MicroSpec.dir/src/Predictor.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/Predictor.cpp -o CMakeFiles/MicroSpec.dir/src/Predictor.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/junqiaoqiu/Desktop/MicroSpecRepo/src/Predictor.cpp -o CMakeFiles/MicroSpec.dir/src/Predictor.cpp.s
 
 CMakeFiles/MicroSpec.dir/src/Predictor.cpp.o.requires:
 
@@ -131,16 +131,16 @@ CMakeFiles/MicroSpec.dir/src/Predictor.cpp.o.provides.build: CMakeFiles/MicroSpe
 
 CMakeFiles/MicroSpec.dir/src/Resources.cpp.o: CMakeFiles/MicroSpec.dir/flags.make
 CMakeFiles/MicroSpec.dir/src/Resources.cpp.o: ../src/Resources.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/MicroSpec.dir/src/Resources.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MicroSpec.dir/src/Resources.cpp.o -c /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/Resources.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/MicroSpec.dir/src/Resources.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MicroSpec.dir/src/Resources.cpp.o -c /Users/junqiaoqiu/Desktop/MicroSpecRepo/src/Resources.cpp
 
 CMakeFiles/MicroSpec.dir/src/Resources.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MicroSpec.dir/src/Resources.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/Resources.cpp > CMakeFiles/MicroSpec.dir/src/Resources.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/junqiaoqiu/Desktop/MicroSpecRepo/src/Resources.cpp > CMakeFiles/MicroSpec.dir/src/Resources.cpp.i
 
 CMakeFiles/MicroSpec.dir/src/Resources.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MicroSpec.dir/src/Resources.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/Resources.cpp -o CMakeFiles/MicroSpec.dir/src/Resources.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/junqiaoqiu/Desktop/MicroSpecRepo/src/Resources.cpp -o CMakeFiles/MicroSpec.dir/src/Resources.cpp.s
 
 CMakeFiles/MicroSpec.dir/src/Resources.cpp.o.requires:
 
@@ -155,16 +155,16 @@ CMakeFiles/MicroSpec.dir/src/Resources.cpp.o.provides.build: CMakeFiles/MicroSpe
 
 CMakeFiles/MicroSpec.dir/src/Timer.cpp.o: CMakeFiles/MicroSpec.dir/flags.make
 CMakeFiles/MicroSpec.dir/src/Timer.cpp.o: ../src/Timer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/MicroSpec.dir/src/Timer.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MicroSpec.dir/src/Timer.cpp.o -c /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/Timer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/MicroSpec.dir/src/Timer.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MicroSpec.dir/src/Timer.cpp.o -c /Users/junqiaoqiu/Desktop/MicroSpecRepo/src/Timer.cpp
 
 CMakeFiles/MicroSpec.dir/src/Timer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MicroSpec.dir/src/Timer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/Timer.cpp > CMakeFiles/MicroSpec.dir/src/Timer.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/junqiaoqiu/Desktop/MicroSpecRepo/src/Timer.cpp > CMakeFiles/MicroSpec.dir/src/Timer.cpp.i
 
 CMakeFiles/MicroSpec.dir/src/Timer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MicroSpec.dir/src/Timer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/Timer.cpp -o CMakeFiles/MicroSpec.dir/src/Timer.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/junqiaoqiu/Desktop/MicroSpecRepo/src/Timer.cpp -o CMakeFiles/MicroSpec.dir/src/Timer.cpp.s
 
 CMakeFiles/MicroSpec.dir/src/Timer.cpp.o.requires:
 
@@ -195,7 +195,7 @@ libMicroSpec.a: CMakeFiles/MicroSpec.dir/src/Resources.cpp.o
 libMicroSpec.a: CMakeFiles/MicroSpec.dir/src/Timer.cpp.o
 libMicroSpec.a: CMakeFiles/MicroSpec.dir/build.make
 libMicroSpec.a: CMakeFiles/MicroSpec.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX static library libMicroSpec.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX static library libMicroSpec.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/MicroSpec.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/MicroSpec.dir/link.txt --verbose=$(VERBOSE)
 
@@ -217,6 +217,6 @@ CMakeFiles/MicroSpec.dir/clean:
 .PHONY : CMakeFiles/MicroSpec.dir/clean
 
 CMakeFiles/MicroSpec.dir/depend:
-	cd /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/MicroSpec.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/junqiaoqiu/Desktop/MicroSpecRepo/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/junqiaoqiu/Desktop/MicroSpecRepo /Users/junqiaoqiu/Desktop/MicroSpecRepo /Users/junqiaoqiu/Desktop/MicroSpecRepo/build /Users/junqiaoqiu/Desktop/MicroSpecRepo/build /Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles/MicroSpec.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/MicroSpec.dir/depend
 

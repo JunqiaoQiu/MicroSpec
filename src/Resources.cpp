@@ -19,7 +19,7 @@
 #include <map>
 #include <algorithm>  
 
-#include "Resources.hpp"
+#include "Resources.h"
 
 using namespace std;
 
@@ -47,13 +47,13 @@ namespace microspec
 		delete []mrules;
 	}
 
-	MappingRule* MappingRule::DefineMappingRule()
+	MappingRule* MappingRule::defineMappingRule()
 	{
 		MappingRule* obj = new MappingRule();
 		return obj;
 	}
 
-	MappingRule* MappingRule::DefineMappingRule(char* rs_key)
+	MappingRule* MappingRule::defineMappingRule(char* rs_key)
 	{
 		char* rs_key_low;
 		rs_key_low = new char [strlen(rs_key)];
@@ -125,7 +125,7 @@ namespace microspec
 		return obj;
 	}
 
-	int MappingRule::Char2Int(char character) const
+	int MappingRule::char2Int(char character) const
 	{
 		int temp;
 		if (character < 0 || character >= ASCII256)
@@ -135,12 +135,12 @@ namespace microspec
 		return temp;
 	}
 
-	int MappingRule::RuleSize() const
+	int MappingRule::ruleSize() const
 	{
 		return msize;
 	}
 
-	void MappingRule::PrintRules() const
+	void MappingRule::printRules() const
 	{
 		int it;
 		for (it = 0; it < ASCII256; it++)
@@ -198,7 +198,7 @@ namespace microspec
 
 	    inputs_ = new int [length_];
 	    for (int l = 0; l < length_; l++)
-	    	inputs_[l] = ruleset->Char2Int(inputs_Char[l]);
+	    	inputs_[l] = ruleset->char2Int(inputs_Char[l]);
 
 	    // mmap and input file close
     	munmap((void *)inputs_Char, length_);
@@ -269,7 +269,7 @@ namespace microspec
 			return NULL;
 		}
 
-		int MAXSYMBOL = ruleset->RuleSize();
+		int MAXSYMBOL = ruleset->ruleSize();
 		vector<int> vecTable;
 		ifstream in_table;
 		in_table.open(filename);

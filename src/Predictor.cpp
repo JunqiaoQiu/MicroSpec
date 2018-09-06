@@ -12,8 +12,8 @@
 #include <smmintrin.h> // sse4.2
 #include <immintrin.h>   // avx
 
-#include "Resources.hpp"
-#include "Predictor.hpp"
+#include "Resources.h"
+#include "Predictor.h"
 
 using namespace std;
 
@@ -51,7 +51,7 @@ namespace microspec
 		delete []pthread_final;
 	}
 
-	Predictor* Predictor::ConstructPredictor(const Table* table, const Input* input, 
+	Predictor* Predictor::constructPredictor(const Table* table, const Input* input, 
 			const int nthread, const int nchunk, const long nlookback)
 	{
 		Predictor* obj = new Predictor(table, input, nthread, nchunk, nlookback);

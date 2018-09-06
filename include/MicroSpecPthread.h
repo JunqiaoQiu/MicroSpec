@@ -9,9 +9,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "Resources.hpp"
-#include "Predictor.hpp"
-#include "MicroSpec.hpp"
+#include "Resources.h"
+#include "Predictor.h"
+#include "MicroSpec.h"
 
 namespace microspec 
 {

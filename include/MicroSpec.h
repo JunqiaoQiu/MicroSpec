@@ -9,8 +9,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "Resources.hpp"
-#include "Predictor.hpp"
+#include "Resources.h"
+#include "Predictor.h"
 
 namespace microspec 
 {

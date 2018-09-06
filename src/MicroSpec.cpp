@@ -2,9 +2,9 @@
 #include <smmintrin.h> // sse4.2
 #include <immintrin.h>   // avx
 
-#include "Resources.hpp"
-#include "MicroSpec.hpp"
-#include "Predictor.hpp"
+#include "Resources.h"
+#include "MicroSpec.h"
+#include "Predictor.h"
 
 using namespace std;
 
@@ -78,7 +78,7 @@ namespace microspec
 		int length_ = input->getLength();
 
 		// construct the predictor, and use sequential prediction
-		Predictor* objPredictor = Predictor::ConstructPredictor(table, input, 1, AVX2FACTOR, mLookBack);
+		Predictor* objPredictor = Predictor::constructPredictor(table, input, 1, AVX2FACTOR, mLookBack);
 		objPredictor->SequentialPrediction();
 
 		int i;
@@ -137,7 +137,7 @@ namespace microspec
 		int* scurrent;
 		scurrent = new int [UNROLLFACTOR];
 	
-		Predictor* objPredictor = Predictor::ConstructPredictor(table, input, 1, UNROLLFACTOR, mLookBack);
+		Predictor* objPredictor = Predictor::constructPredictor(table, input, 1, UNROLLFACTOR, mLookBack);
 		objPredictor->SequentialPrediction();
 
 		long i,j,gap;	
@@ -191,7 +191,7 @@ namespace microspec
 		int length_ = input->getLength();
 
 		// construct the predictor, and use sequential prediction
-		Predictor* objPredictor = Predictor::ConstructPredictor(table, input, 1, AVX2FACTOR*UNROLLFACTOR, mLookBack);
+		Predictor* objPredictor = Predictor::constructPredictor(table, input, 1, AVX2FACTOR*UNROLLFACTOR, mLookBack);
 		objPredictor->SequentialPrediction();
 
 		int i, j;
@@ -260,7 +260,7 @@ namespace microspec
 		int length_ = input->getLength();
 
 		// construct the predictor, and use sequential prediction
-		Predictor* objPredictor = Predictor::ConstructPredictor(table, input, 1, AVX2FACTOR*UNROLLFACTOR, mLookBack);
+		Predictor* objPredictor = Predictor::constructPredictor(table, input, 1, AVX2FACTOR*UNROLLFACTOR, mLookBack);
 		objPredictor->SequentialPrediction();
 
 		int i, j;

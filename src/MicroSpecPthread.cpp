@@ -8,8 +8,8 @@
 #include "Resources.hpp"
 #include "Predictor.hpp"
 
-#include "MicroSpec.hpp"
-#include "MicroSpec_Pthread.hpp"
+#include "MicroSpec.h"
+#include "MicroSpecPthread.h"
 
 using namespace std;
 
@@ -25,7 +25,7 @@ namespace microspec
 		int* Inputs_ = input->getPointer();
 		int length_ = input->getLength();
 
-		Predictor* objPredictor = Predictor::ConstructPredictor(table, input, mthreads, mchunks, mLookBack);
+		Predictor* objPredictor = Predictor::constructPredictor(table, input, mthreads, mchunks, mLookBack);
 		objPredictor->ParallelPrediction();
 
 		//PTHREAD--------------------------------

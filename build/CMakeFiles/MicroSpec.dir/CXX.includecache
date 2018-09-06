@@ -6,29 +6,29 @@
 
 #IncludeRegexTransform: 
 
-.././include/MicroSpec.hpp
+.././include/MicroSpec.h
 stdlib.h
 -
 stdio.h
 -
-Resources.hpp
-.././include/Resources.hpp
-Predictor.hpp
-.././include/Predictor.hpp
+Resources.h
+.././include/Resources.h
+Predictor.h
+.././include/Predictor.h
 
-.././include/MicroSpec_Pthread.hpp
+.././include/MicroSpec_Pthread.h
 stdlib.h
 -
 stdio.h
 -
-Resources.hpp
-.././include/Resources.hpp
-Predictor.hpp
-.././include/Predictor.hpp
-MicroSpec.hpp
-.././include/MicroSpec.hpp
+Resources.h
+.././include/Resources.h
+Predictor.h
+.././include/Predictor.h
+MicroSpec.h
+.././include/MicroSpec.h
 
-.././include/Predictor.hpp
+.././include/Predictor.h
 stdio.h
 -
 stdlib.h
@@ -37,34 +37,34 @@ smmintrin.h
 -
 immintrin.h
 -
-Resources.hpp
-.././include/Resources.hpp
+Resources.h
+.././include/Resources.h
 
-.././include/Resources.hpp
+.././include/Resources.h
 stdlib.h
 -
 stdio.h
 -
 
-.././include/Timer.hpp
+.././include/Timer.h
 sys/time.h
 -
 
-/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/MicroSpec.cpp
+/Users/junqiaoqiu/Desktop/MicroSpecRepo/src/MicroSpec.cpp
 iostream
 -
 smmintrin.h
 -
 immintrin.h
 -
-Resources.hpp
-/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/Resources.hpp
-MicroSpec.hpp
-/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/MicroSpec.hpp
-Predictor.hpp
-/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/Predictor.hpp
+Resources.h
+/Users/junqiaoqiu/Desktop/MicroSpecRepo/src/Resources.h
+MicroSpec.h
+/Users/junqiaoqiu/Desktop/MicroSpecRepo/src/MicroSpec.h
+Predictor.h
+/Users/junqiaoqiu/Desktop/MicroSpecRepo/src/Predictor.h
 
-/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/MicroSpec_Pthread.cpp
+/Users/junqiaoqiu/Desktop/MicroSpecRepo/src/MicroSpec_Pthread.cpp
 iostream
 -
 sys/sysinfo.h
@@ -76,15 +76,15 @@ immintrin.h
 pthread.h
 -
 Resources.hpp
-/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/Resources.hpp
+/Users/junqiaoqiu/Desktop/MicroSpecRepo/src/Resources.hpp
 Predictor.hpp
-/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/Predictor.hpp
-MicroSpec.hpp
-/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/MicroSpec.hpp
-MicroSpec_Pthread.hpp
-/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/MicroSpec_Pthread.hpp
+/Users/junqiaoqiu/Desktop/MicroSpecRepo/src/Predictor.hpp
+MicroSpec.h
+/Users/junqiaoqiu/Desktop/MicroSpecRepo/src/MicroSpec.h
+MicroSpec_Pthread.h
+/Users/junqiaoqiu/Desktop/MicroSpecRepo/src/MicroSpec_Pthread.h
 
-/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/Predictor.cpp
+/Users/junqiaoqiu/Desktop/MicroSpecRepo/src/Predictor.cpp
 iostream
 -
 fstream
@@ -109,12 +109,12 @@ smmintrin.h
 -
 immintrin.h
 -
-Resources.hpp
-/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/Resources.hpp
-Predictor.hpp
-/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/Predictor.hpp
+Resources.h
+/Users/junqiaoqiu/Desktop/MicroSpecRepo/src/Resources.h
+Predictor.h
+/Users/junqiaoqiu/Desktop/MicroSpecRepo/src/Predictor.h
 
-/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/Resources.cpp
+/Users/junqiaoqiu/Desktop/MicroSpecRepo/src/Resources.cpp
 iostream
 -
 sys/mman.h
@@ -149,16 +149,16 @@ map
 -
 algorithm
 -
-Resources.hpp
-/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/Resources.hpp
+Resources.h
+/Users/junqiaoqiu/Desktop/MicroSpecRepo/src/Resources.h
 
-/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/Timer.cpp
+/Users/junqiaoqiu/Desktop/MicroSpecRepo/src/Timer.cpp
 stdint.h
 -
 stdlib.h
 -
 stdio.h
 -
-Timer.hpp
-/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/Timer.hpp
+Timer.h
+/Users/junqiaoqiu/Desktop/MicroSpecRepo/src/Timer.h
 

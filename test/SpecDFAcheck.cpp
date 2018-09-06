@@ -3,10 +3,10 @@
 #include <stdio.h>
 #include <string>
 
-#include "Resources.hpp"
-#include "MicroSpec.hpp"
-#include "MicroSpec_Pthread.hpp"
-#include "Timer.hpp"
+#include "Resources.h"
+#include "MicroSpec.h"
+#include "MicroSpecPthread.h"
+#include "Timer.h"
 
 using namespace std;
 using namespace microspec;
@@ -19,17 +19,9 @@ int main(int argc, char* argv[])
 	int start = atoi(argv[4]);
 	MappingRule* rules_;
 
-	// if (argc > 5)
-	// {
-	// 	char* setrule_ = argv[5];
-	// 	rules_ = MappingRule::DefineMappingRule(setrule_);
-	// }
-	// else
-		rules_ = MappingRule::DefineMappingRule();
+	rules_ = MappingRule::DefineMappingRule();
 
-	//rules_->PrintRules();
-
-	cout << endl << "No User Actions!" << endl;
+	cout << endl << "No User Actions!" << endl << endl;
 	Timer T1;
 	startTime(&T1);
 	Input* inputs_ = Input::ReadFromFile(InputFile, rules_);
