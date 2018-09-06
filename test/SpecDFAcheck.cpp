@@ -29,13 +29,14 @@ int main(int argc, char* argv[])
 
 	//rules_->PrintRules();
 
+	cout << endl << "No User Actions!" << endl;
 	Timer T1;
 	startTime(&T1);
 	Input* inputs_ = Input::ReadFromFile(InputFile, rules_);
 	Table* table_ = Table::ReadFromFile(TableFile, AcceptFile, start, rules_);
 	stopTime(&T1);
 	double datatime =  elapsedTime(T1);	
-	cout << datatime << " s"<< endl;
+	cout << "Data construct time : "<< datatime << " s"<< endl;
 
 	startTime(&T1);
 	DFA* obj_unroll_single = new Spec_DFA_Pthread(100, 4);
@@ -49,7 +50,9 @@ int main(int argc, char* argv[])
 	stopTime(&T1);
 	double SeqTime =  elapsedTime(T1);
 
-	cout << SeqTime << " " << SpecTime << " " << SeqTime / SpecTime << endl;	
+	cout << "SeqDFA Execution "<< SeqTime << " s " << endl;
+	cout << "SpecDFA Execution "<< SpecTime << " s " << endl;
+	cout << "SpecDFA Speedup " <<  SeqTime / SpecTime << endl;	
 
 	return 0;
 }

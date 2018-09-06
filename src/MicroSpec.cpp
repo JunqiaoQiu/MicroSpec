@@ -11,8 +11,7 @@ using namespace std;
 namespace microspec
 {
 	void Seq_DFA::Run(const Table* table, const Input* input)
-	{
-		
+	{	
 		int* tableList_ = table->getTable();
 		int state_ = table->getStartState();
 		int nstate_ = table->getNumState();
