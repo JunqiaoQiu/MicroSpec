@@ -1,1 +1,0 @@
-/opt/rh/devtoolset-7/root/usr/bin/c++   -std=c++11 -pthread -mavx2 -msse4 -O3 -DNDEBUG  -rdynamic CMakeFiles/predictorCheck.dir/predictorCheck.cpp.o  -o predictorCheck ../libMicroSpec.a 
