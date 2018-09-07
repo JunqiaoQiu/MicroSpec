@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/MicroSpec.dir/src/MicroSpec.cpp.o"
-  "CMakeFiles/MicroSpec.dir/src/MicroSpec_Pthread.cpp.o"
+  "CMakeFiles/MicroSpec.dir/src/MicroSpecPthread.cpp.o"
   "CMakeFiles/MicroSpec.dir/src/Predictor.cpp.o"
   "CMakeFiles/MicroSpec.dir/src/Resources.cpp.o"
   "CMakeFiles/MicroSpec.dir/src/Timer.cpp.o"

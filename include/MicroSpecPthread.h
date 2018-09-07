@@ -30,7 +30,7 @@ namespace microspec
 		Spec_DFA_Pthread(int look_back_length, int threads_used):Spec_DFA(look_back_length), mthreads(threads_used), mchunks(threads_used){}	
 		virtual ~Spec_DFA_Pthread() {}
 
-		virtual void Run(const Table* table, const Input* input);
+		virtual void run(const Table* table, const Input* input);
 
 	protected:
 		static void* caller(void* args);
@@ -45,7 +45,7 @@ namespace microspec
 	{
 	public:
 		Spec_DFA_Gather_Pthread():Spec_DFA_Pthread(){}
-		Spec_DFA_Gather_Pthread(int look_back_length, int threads_used):Spec_DFA_Pthread(look_back_length, threads_used){mchunks = threads_used * AVX2FACTOR;}	
+		Spec_DFA_Gather_Pthread(int look_back_length, int threads_used):Spec_DFA_Pthread(look_back_length, threads_used){mchunks = threads_used * MICROSPEC_SIMDFACTOR;}	
 		virtual ~Spec_DFA_Gather_Pthread() {}
 		
 	protected:
@@ -56,7 +56,7 @@ namespace microspec
 	{
 	public:
 		Spec_DFA_Unroll_Pthread():Spec_DFA_Pthread(){}
-		Spec_DFA_Unroll_Pthread(int look_back_length, int threads_used):Spec_DFA_Pthread(look_back_length, threads_used){mchunks = threads_used * UNROLLFACTOR;}	
+		Spec_DFA_Unroll_Pthread(int look_back_length, int threads_used):Spec_DFA_Pthread(look_back_length, threads_used){mchunks = threads_used * MICROSPEC_UNROLLFACTOR;}	
 		virtual ~Spec_DFA_Unroll_Pthread() {}
 		
 	protected:
@@ -67,7 +67,7 @@ namespace microspec
 	{
 	public:
 		Spec_DFA_GatherUnroll_Pthread():Spec_DFA_Pthread(){}
-		Spec_DFA_GatherUnroll_Pthread(int look_back_length, int threads_used):Spec_DFA_Pthread(look_back_length, threads_used){mchunks = threads_used * AVX2FACTOR * UNROLLFACTORAVX;}	
+		Spec_DFA_GatherUnroll_Pthread(int look_back_length, int threads_used):Spec_DFA_Pthread(look_back_length, threads_used){mchunks = threads_used * MICROSPEC_SIMDFACTOR * MICROSPEC_SIMDUNROLLFACTOR;}	
 		virtual ~Spec_DFA_GatherUnroll_Pthread() {}
 		
 	protected:
@@ -78,7 +78,7 @@ namespace microspec
 	{
 	public:
 		Spec_DFA_UnrollGather_Pthread():Spec_DFA_Pthread(){}
-		Spec_DFA_UnrollGather_Pthread(int look_back_length, int threads_used):Spec_DFA_Pthread(look_back_length, threads_used){mchunks = threads_used * UNROLLFACTORAVX * AVX2FACTOR;}	
+		Spec_DFA_UnrollGather_Pthread(int look_back_length, int threads_used):Spec_DFA_Pthread(look_back_length, threads_used){mchunks = threads_used * MICROSPEC_SIMDUNROLLFACTOR * MICROSPEC_SIMDFACTOR;}	
 		virtual ~Spec_DFA_UnrollGather_Pthread() {}
 		
 	protected:

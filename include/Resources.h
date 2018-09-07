@@ -28,17 +28,18 @@ namespace microspec
 		void printRules() const;
 		int ruleSize() const;
 
-		// @Brief Provide @rs_key to denote the rules aim to set, 
+		// @Brief Provide @ruleKey to denote the rules aim to set, 
 		// which is current supported to be dna/div/protn/evenodd. And the 
 		// other cases will be consider as default one, i.e., ASCII256. 
 		static MappingRule* defineMappingRule();
-		static MappingRule* defineMappingRule(char* rs_key);
+		static MappingRule* defineMappingRule(char* ruleKey);
 	private:
 		// @Brief character mapping rules, i.e., rules about transforming 
-		// char-type character into int-type integer
-		int* mrules;
+		// char-type character into int-type integer.
+		int* mRules;
 		// the number of real effective (i.e., possible appear) characters
-		int msize;
+		int mSize;
+
 	};
 
 	// @Brief The class @Input is used to store the necessary input contents 
@@ -47,40 +48,40 @@ namespace microspec
 	{
 	public:
 		Input();	
-		Input(int* p, long s);	
+		Input(int* inputsPointer, long inputSize);	
 		~Input();
 
-		// @brief Provide @filename to access the target inputs, 
-		// and @reuleset to denote the possible appear characters,  
-		// then return an @Input type object  
-		static Input* ReadFromFile(const char* filename, 
-			const MappingRule* ruleset);	
+		// @brief Provide @inputFileName to access the target inputs, 
+		// and @ruleUsed to denote the possible appear characters and 
+		// their mapping rule, then return an @Input type object  
+		static Input* readFromFile(const char* inputFileName, 
+			const MappingRule* ruleUsed);	
 		
 		int* getPointer() const;
 		long getLength() const;
 
 	private:
-		int* pointer __attribute__ ((aligned (32)));
-		long size;
+		// the pointer to the executing inputs, it should follow aligned (32)
+		int* mPointer __attribute__ ((aligned (32)));
+		long mSize;
 	};
 
-	// @Brief The class @Table is used to store the main information about  
-	// the target DFA, more specefically, the table information
+	// @Brief The class @Table is used to describe the transition table in DFA
 	class Table
 	{
 	public:
 		Table();
-		Table(int* list, int nstate, int nsymbol, int s);
+		Table(int* transTable, int nState, int nSymbol, int startState);
 		~Table();
 
 		// typedef void(*func)(void*, int);
 
-		// @brief Providing @filename to access the given two-dimension table, 
-		// with using @acceptFile to mark the accept state in the table, 
-		// and applying required start state @s while also define the mapping rule @ruleset, 
+		// @brief Providing @tableFileName to access the given transition table, 
+		// with using @acceptFileName to mark the accept state in the table.
+		// And applying required start state @startState while also define the mapping rule @ruleUsed, 
 		// then return an @Table-type object  
-		static Table* ReadFromFile(const char* filename, const char* acceptFile, 
-			const int s, const MappingRule* ruleset);
+		static Table* readFromFile(const char* tableFileName, const char* acceptFileName, 
+			const int startState, const MappingRule* ruleUsed);
 
 		// void setAction(func f_);
 		// func getAction() const;
@@ -92,10 +93,10 @@ namespace microspec
 		void printTable() const;
 
 	private:
-		int* tableList __attribute__ ((aligned (32)));
-		int numState;
-		int numSymbol;
-		int start;
+		int* mTableList __attribute__ ((aligned (32)));
+		int mNumState;
+		int mNumSymbol;
+		int mStartState;
 		// func mFunc;
 	};
 }	// end of namespace microspec

@@ -54,10 +54,10 @@ RM = /usr/local/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/junqiaoqiu/Desktop/MicroSpecRepo
+CMAKE_SOURCE_DIR = /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/junqiaoqiu/Desktop/MicroSpecRepo/build
+CMAKE_BINARY_DIR = /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build
 
 #=============================================================================
 # Target rules for target CMakeFiles/MicroSpec.dir
@@ -66,7 +66,7 @@ CMAKE_BINARY_DIR = /Users/junqiaoqiu/Desktop/MicroSpecRepo/build
 CMakeFiles/MicroSpec.dir/all:
 	$(MAKE) -f CMakeFiles/MicroSpec.dir/build.make CMakeFiles/MicroSpec.dir/depend
 	$(MAKE) -f CMakeFiles/MicroSpec.dir/build.make CMakeFiles/MicroSpec.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target MicroSpec"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles --progress-num=3,4,5,6,7,8 "Built target MicroSpec"
 .PHONY : CMakeFiles/MicroSpec.dir/all
 
 # Include target in all.
@@ -76,9 +76,9 @@ all: CMakeFiles/MicroSpec.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/MicroSpec.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles 6
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/MicroSpec.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles 0
 .PHONY : CMakeFiles/MicroSpec.dir/rule
 
 # Convenience name for target.
@@ -100,12 +100,18 @@ clean: CMakeFiles/MicroSpec.dir/clean
 # Directory level rules for directory test
 
 # Convenience name for "all" pass in the directory.
-test/all: test/CMakeFiles/SpecDFAcheck.dir/all
+test/all: test/CMakeFiles/specDFAcheck.dir/all
+test/all: test/CMakeFiles/predictorCheck.dir/all
+test/all: test/CMakeFiles/InputAndTableCheck.dir/all
+test/all: test/CMakeFiles/mappingrulescheck.dir/all
 
 .PHONY : test/all
 
 # Convenience name for "clean" pass in the directory.
-test/clean: test/CMakeFiles/SpecDFAcheck.dir/clean
+test/clean: test/CMakeFiles/specDFAcheck.dir/clean
+test/clean: test/CMakeFiles/predictorCheck.dir/clean
+test/clean: test/CMakeFiles/InputAndTableCheck.dir/clean
+test/clean: test/CMakeFiles/mappingrulescheck.dir/clean
 
 .PHONY : test/clean
 
@@ -115,39 +121,150 @@ test/preinstall:
 .PHONY : test/preinstall
 
 #=============================================================================
-# Target rules for target test/CMakeFiles/SpecDFAcheck.dir
+# Target rules for target test/CMakeFiles/specDFAcheck.dir
 
 # All Build rule for target.
-test/CMakeFiles/SpecDFAcheck.dir/all: CMakeFiles/MicroSpec.dir/all
-	$(MAKE) -f test/CMakeFiles/SpecDFAcheck.dir/build.make test/CMakeFiles/SpecDFAcheck.dir/depend
-	$(MAKE) -f test/CMakeFiles/SpecDFAcheck.dir/build.make test/CMakeFiles/SpecDFAcheck.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles --progress-num=7,8 "Built target SpecDFAcheck"
-.PHONY : test/CMakeFiles/SpecDFAcheck.dir/all
+test/CMakeFiles/specDFAcheck.dir/all: CMakeFiles/MicroSpec.dir/all
+	$(MAKE) -f test/CMakeFiles/specDFAcheck.dir/build.make test/CMakeFiles/specDFAcheck.dir/depend
+	$(MAKE) -f test/CMakeFiles/specDFAcheck.dir/build.make test/CMakeFiles/specDFAcheck.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles --progress-num=13,14 "Built target specDFAcheck"
+.PHONY : test/CMakeFiles/specDFAcheck.dir/all
 
 # Include target in all.
-all: test/CMakeFiles/SpecDFAcheck.dir/all
+all: test/CMakeFiles/specDFAcheck.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-test/CMakeFiles/SpecDFAcheck.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles 8
-	$(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/SpecDFAcheck.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles 0
-.PHONY : test/CMakeFiles/SpecDFAcheck.dir/rule
+test/CMakeFiles/specDFAcheck.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles 8
+	$(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/specDFAcheck.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles 0
+.PHONY : test/CMakeFiles/specDFAcheck.dir/rule
 
 # Convenience name for target.
-SpecDFAcheck: test/CMakeFiles/SpecDFAcheck.dir/rule
+specDFAcheck: test/CMakeFiles/specDFAcheck.dir/rule
 
-.PHONY : SpecDFAcheck
-
-# clean rule for target.
-test/CMakeFiles/SpecDFAcheck.dir/clean:
-	$(MAKE) -f test/CMakeFiles/SpecDFAcheck.dir/build.make test/CMakeFiles/SpecDFAcheck.dir/clean
-.PHONY : test/CMakeFiles/SpecDFAcheck.dir/clean
+.PHONY : specDFAcheck
 
 # clean rule for target.
-clean: test/CMakeFiles/SpecDFAcheck.dir/clean
+test/CMakeFiles/specDFAcheck.dir/clean:
+	$(MAKE) -f test/CMakeFiles/specDFAcheck.dir/build.make test/CMakeFiles/specDFAcheck.dir/clean
+.PHONY : test/CMakeFiles/specDFAcheck.dir/clean
+
+# clean rule for target.
+clean: test/CMakeFiles/specDFAcheck.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target test/CMakeFiles/predictorCheck.dir
+
+# All Build rule for target.
+test/CMakeFiles/predictorCheck.dir/all: CMakeFiles/MicroSpec.dir/all
+	$(MAKE) -f test/CMakeFiles/predictorCheck.dir/build.make test/CMakeFiles/predictorCheck.dir/depend
+	$(MAKE) -f test/CMakeFiles/predictorCheck.dir/build.make test/CMakeFiles/predictorCheck.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles --progress-num=11,12 "Built target predictorCheck"
+.PHONY : test/CMakeFiles/predictorCheck.dir/all
+
+# Include target in all.
+all: test/CMakeFiles/predictorCheck.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+test/CMakeFiles/predictorCheck.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles 8
+	$(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/predictorCheck.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles 0
+.PHONY : test/CMakeFiles/predictorCheck.dir/rule
+
+# Convenience name for target.
+predictorCheck: test/CMakeFiles/predictorCheck.dir/rule
+
+.PHONY : predictorCheck
+
+# clean rule for target.
+test/CMakeFiles/predictorCheck.dir/clean:
+	$(MAKE) -f test/CMakeFiles/predictorCheck.dir/build.make test/CMakeFiles/predictorCheck.dir/clean
+.PHONY : test/CMakeFiles/predictorCheck.dir/clean
+
+# clean rule for target.
+clean: test/CMakeFiles/predictorCheck.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target test/CMakeFiles/InputAndTableCheck.dir
+
+# All Build rule for target.
+test/CMakeFiles/InputAndTableCheck.dir/all: CMakeFiles/MicroSpec.dir/all
+	$(MAKE) -f test/CMakeFiles/InputAndTableCheck.dir/build.make test/CMakeFiles/InputAndTableCheck.dir/depend
+	$(MAKE) -f test/CMakeFiles/InputAndTableCheck.dir/build.make test/CMakeFiles/InputAndTableCheck.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles --progress-num=1,2 "Built target InputAndTableCheck"
+.PHONY : test/CMakeFiles/InputAndTableCheck.dir/all
+
+# Include target in all.
+all: test/CMakeFiles/InputAndTableCheck.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+test/CMakeFiles/InputAndTableCheck.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles 8
+	$(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/InputAndTableCheck.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles 0
+.PHONY : test/CMakeFiles/InputAndTableCheck.dir/rule
+
+# Convenience name for target.
+InputAndTableCheck: test/CMakeFiles/InputAndTableCheck.dir/rule
+
+.PHONY : InputAndTableCheck
+
+# clean rule for target.
+test/CMakeFiles/InputAndTableCheck.dir/clean:
+	$(MAKE) -f test/CMakeFiles/InputAndTableCheck.dir/build.make test/CMakeFiles/InputAndTableCheck.dir/clean
+.PHONY : test/CMakeFiles/InputAndTableCheck.dir/clean
+
+# clean rule for target.
+clean: test/CMakeFiles/InputAndTableCheck.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target test/CMakeFiles/mappingrulescheck.dir
+
+# All Build rule for target.
+test/CMakeFiles/mappingrulescheck.dir/all: CMakeFiles/MicroSpec.dir/all
+	$(MAKE) -f test/CMakeFiles/mappingrulescheck.dir/build.make test/CMakeFiles/mappingrulescheck.dir/depend
+	$(MAKE) -f test/CMakeFiles/mappingrulescheck.dir/build.make test/CMakeFiles/mappingrulescheck.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles --progress-num=9,10 "Built target mappingrulescheck"
+.PHONY : test/CMakeFiles/mappingrulescheck.dir/all
+
+# Include target in all.
+all: test/CMakeFiles/mappingrulescheck.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+test/CMakeFiles/mappingrulescheck.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles 8
+	$(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/mappingrulescheck.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles 0
+.PHONY : test/CMakeFiles/mappingrulescheck.dir/rule
+
+# Convenience name for target.
+mappingrulescheck: test/CMakeFiles/mappingrulescheck.dir/rule
+
+.PHONY : mappingrulescheck
+
+# clean rule for target.
+test/CMakeFiles/mappingrulescheck.dir/clean:
+	$(MAKE) -f test/CMakeFiles/mappingrulescheck.dir/build.make test/CMakeFiles/mappingrulescheck.dir/clean
+.PHONY : test/CMakeFiles/mappingrulescheck.dir/clean
+
+# clean rule for target.
+clean: test/CMakeFiles/mappingrulescheck.dir/clean
 
 .PHONY : clean
 

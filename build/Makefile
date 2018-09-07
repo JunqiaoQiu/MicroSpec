@@ -48,10 +48,10 @@ RM = /usr/local/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/junqiaoqiu/Desktop/MicroSpecRepo
+CMAKE_SOURCE_DIR = /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/junqiaoqiu/Desktop/MicroSpecRepo/build
+CMAKE_BINARY_DIR = /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles /Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -124,17 +124,56 @@ MicroSpec/fast:
 .PHONY : MicroSpec/fast
 
 #=============================================================================
-# Target rules for targets named SpecDFAcheck
+# Target rules for targets named specDFAcheck
 
 # Build rule for target.
-SpecDFAcheck: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 SpecDFAcheck
-.PHONY : SpecDFAcheck
+specDFAcheck: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 specDFAcheck
+.PHONY : specDFAcheck
 
 # fast build rule for target.
-SpecDFAcheck/fast:
-	$(MAKE) -f test/CMakeFiles/SpecDFAcheck.dir/build.make test/CMakeFiles/SpecDFAcheck.dir/build
-.PHONY : SpecDFAcheck/fast
+specDFAcheck/fast:
+	$(MAKE) -f test/CMakeFiles/specDFAcheck.dir/build.make test/CMakeFiles/specDFAcheck.dir/build
+.PHONY : specDFAcheck/fast
+
+#=============================================================================
+# Target rules for targets named predictorCheck
+
+# Build rule for target.
+predictorCheck: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 predictorCheck
+.PHONY : predictorCheck
+
+# fast build rule for target.
+predictorCheck/fast:
+	$(MAKE) -f test/CMakeFiles/predictorCheck.dir/build.make test/CMakeFiles/predictorCheck.dir/build
+.PHONY : predictorCheck/fast
+
+#=============================================================================
+# Target rules for targets named InputAndTableCheck
+
+# Build rule for target.
+InputAndTableCheck: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 InputAndTableCheck
+.PHONY : InputAndTableCheck
+
+# fast build rule for target.
+InputAndTableCheck/fast:
+	$(MAKE) -f test/CMakeFiles/InputAndTableCheck.dir/build.make test/CMakeFiles/InputAndTableCheck.dir/build
+.PHONY : InputAndTableCheck/fast
+
+#=============================================================================
+# Target rules for targets named mappingrulescheck
+
+# Build rule for target.
+mappingrulescheck: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 mappingrulescheck
+.PHONY : mappingrulescheck
+
+# fast build rule for target.
+mappingrulescheck/fast:
+	$(MAKE) -f test/CMakeFiles/mappingrulescheck.dir/build.make test/CMakeFiles/mappingrulescheck.dir/build
+.PHONY : mappingrulescheck/fast
 
 src/MicroSpec.o: src/MicroSpec.cpp.o
 
@@ -163,32 +202,32 @@ src/MicroSpec.cpp.s:
 	$(MAKE) -f CMakeFiles/MicroSpec.dir/build.make CMakeFiles/MicroSpec.dir/src/MicroSpec.cpp.s
 .PHONY : src/MicroSpec.cpp.s
 
-src/MicroSpec_Pthread.o: src/MicroSpec_Pthread.cpp.o
+src/MicroSpecPthread.o: src/MicroSpecPthread.cpp.o
 
-.PHONY : src/MicroSpec_Pthread.o
+.PHONY : src/MicroSpecPthread.o
 
 # target to build an object file
-src/MicroSpec_Pthread.cpp.o:
-	$(MAKE) -f CMakeFiles/MicroSpec.dir/build.make CMakeFiles/MicroSpec.dir/src/MicroSpec_Pthread.cpp.o
-.PHONY : src/MicroSpec_Pthread.cpp.o
+src/MicroSpecPthread.cpp.o:
+	$(MAKE) -f CMakeFiles/MicroSpec.dir/build.make CMakeFiles/MicroSpec.dir/src/MicroSpecPthread.cpp.o
+.PHONY : src/MicroSpecPthread.cpp.o
 
-src/MicroSpec_Pthread.i: src/MicroSpec_Pthread.cpp.i
+src/MicroSpecPthread.i: src/MicroSpecPthread.cpp.i
 
-.PHONY : src/MicroSpec_Pthread.i
+.PHONY : src/MicroSpecPthread.i
 
 # target to preprocess a source file
-src/MicroSpec_Pthread.cpp.i:
-	$(MAKE) -f CMakeFiles/MicroSpec.dir/build.make CMakeFiles/MicroSpec.dir/src/MicroSpec_Pthread.cpp.i
-.PHONY : src/MicroSpec_Pthread.cpp.i
+src/MicroSpecPthread.cpp.i:
+	$(MAKE) -f CMakeFiles/MicroSpec.dir/build.make CMakeFiles/MicroSpec.dir/src/MicroSpecPthread.cpp.i
+.PHONY : src/MicroSpecPthread.cpp.i
 
-src/MicroSpec_Pthread.s: src/MicroSpec_Pthread.cpp.s
+src/MicroSpecPthread.s: src/MicroSpecPthread.cpp.s
 
-.PHONY : src/MicroSpec_Pthread.s
+.PHONY : src/MicroSpecPthread.s
 
 # target to generate assembly for a file
-src/MicroSpec_Pthread.cpp.s:
-	$(MAKE) -f CMakeFiles/MicroSpec.dir/build.make CMakeFiles/MicroSpec.dir/src/MicroSpec_Pthread.cpp.s
-.PHONY : src/MicroSpec_Pthread.cpp.s
+src/MicroSpecPthread.cpp.s:
+	$(MAKE) -f CMakeFiles/MicroSpec.dir/build.make CMakeFiles/MicroSpec.dir/src/MicroSpecPthread.cpp.s
+.PHONY : src/MicroSpecPthread.cpp.s
 
 src/Predictor.o: src/Predictor.cpp.o
 
@@ -280,13 +319,16 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... MicroSpec"
-	@echo "... SpecDFAcheck"
+	@echo "... specDFAcheck"
+	@echo "... predictorCheck"
+	@echo "... InputAndTableCheck"
+	@echo "... mappingrulescheck"
 	@echo "... src/MicroSpec.o"
 	@echo "... src/MicroSpec.i"
 	@echo "... src/MicroSpec.s"
-	@echo "... src/MicroSpec_Pthread.o"
-	@echo "... src/MicroSpec_Pthread.i"
-	@echo "... src/MicroSpec_Pthread.s"
+	@echo "... src/MicroSpecPthread.o"
+	@echo "... src/MicroSpecPthread.i"
+	@echo "... src/MicroSpecPthread.s"
 	@echo "... src/Predictor.o"
 	@echo "... src/Predictor.i"
 	@echo "... src/Predictor.s"

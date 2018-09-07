@@ -1,6 +1,6 @@
-The system is: Darwin - 17.7.0 - x86_64
+The system is: Linux - 3.10.0-862.11.6.el7.x86_64 - x86_64
 Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
-Compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc 
+Compiler: /opt/rh/devtoolset-7/root/usr/bin/cc 
 Build flags: 
 Id flags:  
 
@@ -10,10 +10,10 @@ The output was:
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
 
-The C compiler identification is AppleClang, found in "/Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles/3.10.2/CompilerIdC/a.out"
+The C compiler identification is GNU, found in "/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/3.10.1/CompilerIdC/a.out"
 
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
-Compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ 
+Compiler: /opt/rh/devtoolset-7/root/usr/bin/c++ 
 Build flags: 
 Id flags:  
 
@@ -23,101 +23,136 @@ The output was:
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
 
-The CXX compiler identification is AppleClang, found in "/Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles/3.10.2/CompilerIdCXX/a.out"
+The CXX compiler identification is GNU, found in "/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/3.10.1/CompilerIdCXX/a.out"
 
 Determining if the C compiler works passed with the following output:
-Change Dir: /Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles/CMakeTmp
+Change Dir: /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_f32b4/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_f32b4.dir/build.make CMakeFiles/cmTC_f32b4.dir/build
-Building C object CMakeFiles/cmTC_f32b4.dir/testCCompiler.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_f32b4.dir/testCCompiler.c.o   -c /Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTC_f32b4
-/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f32b4.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_f32b4.dir/testCCompiler.c.o  -o cmTC_f32b4 
+Run Build Command:"/usr/bin/gmake" "cmTC_2bba5/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_2bba5.dir/build.make CMakeFiles/cmTC_2bba5.dir/build
+gmake[1]: Entering directory `/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_2bba5.dir/testCCompiler.c.o
+/opt/rh/devtoolset-7/root/usr/bin/cc    -o CMakeFiles/cmTC_2bba5.dir/testCCompiler.c.o   -c /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_2bba5
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2bba5.dir/link.txt --verbose=1
+/opt/rh/devtoolset-7/root/usr/bin/cc      -rdynamic CMakeFiles/cmTC_2bba5.dir/testCCompiler.c.o  -o cmTC_2bba5 
+gmake[1]: Leaving directory `/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp'
 
 
 Detecting C compiler ABI info compiled with the following output:
-Change Dir: /Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles/CMakeTmp
+Change Dir: /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_18265/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_18265.dir/build.make CMakeFiles/cmTC_18265.dir/build
-Building C object CMakeFiles/cmTC_18265.dir/CMakeCCompilerABI.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_18265.dir/CMakeCCompilerABI.c.o   -c /usr/local/share/cmake-3.10/Modules/CMakeCCompilerABI.c
-Linking C executable cmTC_18265
-/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_18265.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_18265.dir/CMakeCCompilerABI.c.o  -o cmTC_18265 
-Apple LLVM version 9.1.0 (clang-902.0.39.2)
-Target: x86_64-apple-darwin17.7.0
+Run Build Command:"/usr/bin/gmake" "cmTC_5e3b0/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_5e3b0.dir/build.make CMakeFiles/cmTC_5e3b0.dir/build
+gmake[1]: Entering directory `/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5e3b0.dir/CMakeCCompilerABI.c.o
+/opt/rh/devtoolset-7/root/usr/bin/cc    -o CMakeFiles/cmTC_5e3b0.dir/CMakeCCompilerABI.c.o   -c /usr/local/share/cmake-3.10/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_5e3b0
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5e3b0.dir/link.txt --verbose=1
+/opt/rh/devtoolset-7/root/usr/bin/cc     -v -rdynamic CMakeFiles/cmTC_5e3b0.dir/CMakeCCompilerABI.c.o  -o cmTC_5e3b0 
+Using built-in specs.
+COLLECT_GCC=/opt/rh/devtoolset-7/root/usr/bin/cc
+COLLECT_LTO_WRAPPER=/opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/7/lto-wrapper
+Target: x86_64-redhat-linux
+Configured with: ../configure --enable-bootstrap --enable-languages=c,c++,fortran,lto --prefix=/opt/rh/devtoolset-7/root/usr --mandir=/opt/rh/devtoolset-7/root/usr/share/man --infodir=/opt/rh/devtoolset-7/root/usr/share/info --with-bugurl=http://bugzilla.redhat.com/bugzilla --enable-shared --enable-threads=posix --enable-checking=release --enable-multilib --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --with-gcc-major-version-only --enable-plugin --with-linker-hash-style=gnu --enable-initfini-array --with-default-libstdcxx-abi=gcc4-compatible --with-isl=/builddir/build/BUILD/gcc-7.3.1-20180303/obj-x86_64-redhat-linux/isl-install --enable-libmpx --enable-gnu-indirect-function --with-tune=generic --with-arch_32=i686 --build=x86_64-redhat-linux
 Thread model: posix
-InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch x86_64 -macosx_version_min 10.13.0 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -o cmTC_18265 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_18265.dir/CMakeCCompilerABI.c.o -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/lib/darwin/libclang_rt.osx.a
-@(#)PROGRAM:ld  PROJECT:ld64-351.8
-configured to support archs: armv6 armv7 armv7s arm64 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em (tvOS)
-Library search paths:
-	/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/lib
-Framework search paths:
-	/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/
+gcc version 7.3.1 20180303 (Red Hat 7.3.1-5) (GCC) 
+COMPILER_PATH=/opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/7/:/opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/7/:/opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/:/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/:/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/
+LIBRARY_PATH=/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/:/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_5e3b0' '-mtune=generic' '-march=x86-64'
+ /opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/7/collect2 -plugin /opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/7/liblto_plugin.so -plugin-opt=/opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/7/lto-wrapper -plugin-opt=-fresolution=/tmp/cc9bfzl6.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_5e3b0 /lib/../lib64/crt1.o /lib/../lib64/crti.o /opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/crtbegin.o -L/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7 -L/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/../../.. CMakeFiles/cmTC_5e3b0.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/crtend.o /lib/../lib64/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_5e3b0' '-mtune=generic' '-march=x86-64'
+gmake[1]: Leaving directory `/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp'
 
 
 Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_18265/fast"]
-  ignore line: [/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_18265.dir/build.make CMakeFiles/cmTC_18265.dir/build]
-  ignore line: [Building C object CMakeFiles/cmTC_18265.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_18265.dir/CMakeCCompilerABI.c.o   -c /usr/local/share/cmake-3.10/Modules/CMakeCCompilerABI.c]
-  ignore line: [Linking C executable cmTC_18265]
-  ignore line: [/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_18265.dir/link.txt --verbose=1]
-  ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_18265.dir/CMakeCCompilerABI.c.o  -o cmTC_18265 ]
-  ignore line: [Apple LLVM version 9.1.0 (clang-902.0.39.2)]
-  ignore line: [Target: x86_64-apple-darwin17.7.0]
+  ignore line: [Run Build Command:"/usr/bin/gmake" "cmTC_5e3b0/fast"]
+  ignore line: [/usr/bin/gmake -f CMakeFiles/cmTC_5e3b0.dir/build.make CMakeFiles/cmTC_5e3b0.dir/build]
+  ignore line: [gmake[1]: Entering directory `/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_5e3b0.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/opt/rh/devtoolset-7/root/usr/bin/cc    -o CMakeFiles/cmTC_5e3b0.dir/CMakeCCompilerABI.c.o   -c /usr/local/share/cmake-3.10/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_5e3b0]
+  ignore line: [/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5e3b0.dir/link.txt --verbose=1]
+  ignore line: [/opt/rh/devtoolset-7/root/usr/bin/cc     -v -rdynamic CMakeFiles/cmTC_5e3b0.dir/CMakeCCompilerABI.c.o  -o cmTC_5e3b0 ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/opt/rh/devtoolset-7/root/usr/bin/cc]
+  ignore line: [COLLECT_LTO_WRAPPER=/opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/7/lto-wrapper]
+  ignore line: [Target: x86_64-redhat-linux]
+  ignore line: [Configured with: ../configure --enable-bootstrap --enable-languages=c,c++,fortran,lto --prefix=/opt/rh/devtoolset-7/root/usr --mandir=/opt/rh/devtoolset-7/root/usr/share/man --infodir=/opt/rh/devtoolset-7/root/usr/share/info --with-bugurl=http://bugzilla.redhat.com/bugzilla --enable-shared --enable-threads=posix --enable-checking=release --enable-multilib --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --with-gcc-major-version-only --enable-plugin --with-linker-hash-style=gnu --enable-initfini-array --with-default-libstdcxx-abi=gcc4-compatible --with-isl=/builddir/build/BUILD/gcc-7.3.1-20180303/obj-x86_64-redhat-linux/isl-install --enable-libmpx --enable-gnu-indirect-function --with-tune=generic --with-arch_32=i686 --build=x86_64-redhat-linux]
   ignore line: [Thread model: posix]
-  ignore line: [InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin]
-  link line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch x86_64 -macosx_version_min 10.13.0 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -o cmTC_18265 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_18265.dir/CMakeCCompilerABI.c.o -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/lib/darwin/libclang_rt.osx.a]
-    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld] ==> ignore
-    arg [-demangle] ==> ignore
-    arg [-lto_library] ==> ignore, skip following value
-    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib] ==> skip value of -lto_library
-    arg [-dynamic] ==> ignore
-    arg [-arch] ==> ignore
-    arg [x86_64] ==> ignore
-    arg [-macosx_version_min] ==> ignore
-    arg [10.13.0] ==> ignore
-    arg [-syslibroot] ==> ignore
-    arg [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk] ==> ignore
+  ignore line: [gcc version 7.3.1 20180303 (Red Hat 7.3.1-5) (GCC) ]
+  ignore line: [COMPILER_PATH=/opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/7/:/opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/7/:/opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/:/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/:/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/]
+  ignore line: [LIBRARY_PATH=/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/:/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_5e3b0' '-mtune=generic' '-march=x86-64']
+  link line: [ /opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/7/collect2 -plugin /opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/7/liblto_plugin.so -plugin-opt=/opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/7/lto-wrapper -plugin-opt=-fresolution=/tmp/cc9bfzl6.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_5e3b0 /lib/../lib64/crt1.o /lib/../lib64/crti.o /opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/crtbegin.o -L/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7 -L/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/../../.. CMakeFiles/cmTC_5e3b0.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/crtend.o /lib/../lib64/crtn.o]
+    arg [/opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/7/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/7/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/7/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/cc9bfzl6.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--no-add-needed] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-export-dynamic] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_18265] ==> ignore
-    arg [-search_paths_first] ==> ignore
-    arg [-headerpad_max_install_names] ==> ignore
-    arg [-v] ==> ignore
-    arg [CMakeFiles/cmTC_18265.dir/CMakeCCompilerABI.c.o] ==> ignore
-    arg [-lSystem] ==> lib [System]
-    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/lib/darwin/libclang_rt.osx.a] ==> lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/lib/darwin/libclang_rt.osx.a]
-  Library search paths: [;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/lib]
-  Framework search paths: [;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/]
-  remove lib [System]
-  remove lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/lib/darwin/libclang_rt.osx.a]
-  collapse library dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/lib] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/lib]
-  collapse framework dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks]
-  implicit libs: []
-  implicit dirs: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/lib]
-  implicit fwks: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks]
+    arg [cmTC_5e3b0] ==> ignore
+    arg [/lib/../lib64/crt1.o] ==> ignore
+    arg [/lib/../lib64/crti.o] ==> ignore
+    arg [/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/crtbegin.o] ==> ignore
+    arg [-L/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7] ==> dir [/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7]
+    arg [-L/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/../../../../lib64] ==> dir [/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/../../../../lib64]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/../../..] ==> dir [/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/../../..]
+    arg [CMakeFiles/cmTC_5e3b0.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/crtend.o] ==> ignore
+    arg [/lib/../lib64/crtn.o] ==> ignore
+  collapse library dir [/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7] ==> [/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7]
+  collapse library dir [/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/../../../../lib64] ==> [/opt/rh/devtoolset-7/root/usr/lib64]
+  collapse library dir [/lib/../lib64] ==> [/lib64]
+  collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse library dir [/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/../../..] ==> [/opt/rh/devtoolset-7/root/usr/lib]
+  implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
+  implicit dirs: [/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7;/opt/rh/devtoolset-7/root/usr/lib64;/lib64;/usr/lib64;/opt/rh/devtoolset-7/root/usr/lib]
+  implicit fwks: []
 
 
 
 
 Detecting C [-std=c11] compiler features compiled with the following output:
-Change Dir: /Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles/CMakeTmp
+Change Dir: /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_90552/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_90552.dir/build.make CMakeFiles/cmTC_90552.dir/build
-Building C object CMakeFiles/cmTC_90552.dir/feature_tests.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -std=c11 -o CMakeFiles/cmTC_90552.dir/feature_tests.c.o   -c /Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_90552
-/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_90552.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_90552.dir/feature_tests.c.o  -o cmTC_90552 
+Run Build Command:"/usr/bin/gmake" "cmTC_efdd6/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_efdd6.dir/build.make CMakeFiles/cmTC_efdd6.dir/build
+gmake[1]: Entering directory `/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_efdd6.dir/feature_tests.c.o
+/opt/rh/devtoolset-7/root/usr/bin/cc   -std=c11 -o CMakeFiles/cmTC_efdd6.dir/feature_tests.c.o   -c /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_efdd6
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_efdd6.dir/link.txt --verbose=1
+/opt/rh/devtoolset-7/root/usr/bin/cc      -rdynamic CMakeFiles/cmTC_efdd6.dir/feature_tests.c.o  -o cmTC_efdd6 
+gmake[1]: Leaving directory `/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -127,15 +162,17 @@ Linking C executable cmTC_90552
 
 
 Detecting C [-std=c99] compiler features compiled with the following output:
-Change Dir: /Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles/CMakeTmp
+Change Dir: /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_ad4f7/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_ad4f7.dir/build.make CMakeFiles/cmTC_ad4f7.dir/build
-Building C object CMakeFiles/cmTC_ad4f7.dir/feature_tests.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -std=c99 -o CMakeFiles/cmTC_ad4f7.dir/feature_tests.c.o   -c /Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_ad4f7
-/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ad4f7.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_ad4f7.dir/feature_tests.c.o  -o cmTC_ad4f7 
+Run Build Command:"/usr/bin/gmake" "cmTC_d8681/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_d8681.dir/build.make CMakeFiles/cmTC_d8681.dir/build
+gmake[1]: Entering directory `/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d8681.dir/feature_tests.c.o
+/opt/rh/devtoolset-7/root/usr/bin/cc   -std=c99 -o CMakeFiles/cmTC_d8681.dir/feature_tests.c.o   -c /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_d8681
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d8681.dir/link.txt --verbose=1
+/opt/rh/devtoolset-7/root/usr/bin/cc      -rdynamic CMakeFiles/cmTC_d8681.dir/feature_tests.c.o  -o cmTC_d8681 
+gmake[1]: Leaving directory `/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -145,15 +182,17 @@ Linking C executable cmTC_ad4f7
 
 
 Detecting C [-std=c90] compiler features compiled with the following output:
-Change Dir: /Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles/CMakeTmp
+Change Dir: /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_cc0fc/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_cc0fc.dir/build.make CMakeFiles/cmTC_cc0fc.dir/build
-Building C object CMakeFiles/cmTC_cc0fc.dir/feature_tests.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -std=c90 -o CMakeFiles/cmTC_cc0fc.dir/feature_tests.c.o   -c /Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_cc0fc
-/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cc0fc.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_cc0fc.dir/feature_tests.c.o  -o cmTC_cc0fc 
+Run Build Command:"/usr/bin/gmake" "cmTC_d7ba9/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_d7ba9.dir/build.make CMakeFiles/cmTC_d7ba9.dir/build
+gmake[1]: Entering directory `/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d7ba9.dir/feature_tests.c.o
+/opt/rh/devtoolset-7/root/usr/bin/cc   -std=c90 -o CMakeFiles/cmTC_d7ba9.dir/feature_tests.c.o   -c /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_d7ba9
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d7ba9.dir/link.txt --verbose=1
+/opt/rh/devtoolset-7/root/usr/bin/cc      -rdynamic CMakeFiles/cmTC_d7ba9.dir/feature_tests.c.o  -o cmTC_d7ba9 
+gmake[1]: Leaving directory `/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -161,99 +200,131 @@ Linking C executable cmTC_cc0fc
     Feature record: C_FEATURE:0c_static_assert
     Feature record: C_FEATURE:0c_variadic_macros
 Determining if the CXX compiler works passed with the following output:
-Change Dir: /Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles/CMakeTmp
+Change Dir: /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_9a3ab/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_9a3ab.dir/build.make CMakeFiles/cmTC_9a3ab.dir/build
-Building CXX object CMakeFiles/cmTC_9a3ab.dir/testCXXCompiler.cxx.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_9a3ab.dir/testCXXCompiler.cxx.o -c /Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
-Linking CXX executable cmTC_9a3ab
-/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9a3ab.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_9a3ab.dir/testCXXCompiler.cxx.o  -o cmTC_9a3ab 
+Run Build Command:"/usr/bin/gmake" "cmTC_6c758/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_6c758.dir/build.make CMakeFiles/cmTC_6c758.dir/build
+gmake[1]: Entering directory `/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_6c758.dir/testCXXCompiler.cxx.o
+/opt/rh/devtoolset-7/root/usr/bin/c++     -o CMakeFiles/cmTC_6c758.dir/testCXXCompiler.cxx.o -c /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_6c758
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6c758.dir/link.txt --verbose=1
+/opt/rh/devtoolset-7/root/usr/bin/c++       -rdynamic CMakeFiles/cmTC_6c758.dir/testCXXCompiler.cxx.o  -o cmTC_6c758 
+gmake[1]: Leaving directory `/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp'
 
 
 Detecting CXX compiler ABI info compiled with the following output:
-Change Dir: /Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles/CMakeTmp
+Change Dir: /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_2a78d/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_2a78d.dir/build.make CMakeFiles/cmTC_2a78d.dir/build
-Building CXX object CMakeFiles/cmTC_2a78d.dir/CMakeCXXCompilerABI.cpp.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_2a78d.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTC_2a78d
-/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2a78d.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_2a78d.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_2a78d 
-Apple LLVM version 9.1.0 (clang-902.0.39.2)
-Target: x86_64-apple-darwin17.7.0
+Run Build Command:"/usr/bin/gmake" "cmTC_c8076/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_c8076.dir/build.make CMakeFiles/cmTC_c8076.dir/build
+gmake[1]: Entering directory `/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_c8076.dir/CMakeCXXCompilerABI.cpp.o
+/opt/rh/devtoolset-7/root/usr/bin/c++     -o CMakeFiles/cmTC_c8076.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTC_c8076
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c8076.dir/link.txt --verbose=1
+/opt/rh/devtoolset-7/root/usr/bin/c++      -v -rdynamic CMakeFiles/cmTC_c8076.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_c8076 
+Using built-in specs.
+COLLECT_GCC=/opt/rh/devtoolset-7/root/usr/bin/c++
+COLLECT_LTO_WRAPPER=/opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/7/lto-wrapper
+Target: x86_64-redhat-linux
+Configured with: ../configure --enable-bootstrap --enable-languages=c,c++,fortran,lto --prefix=/opt/rh/devtoolset-7/root/usr --mandir=/opt/rh/devtoolset-7/root/usr/share/man --infodir=/opt/rh/devtoolset-7/root/usr/share/info --with-bugurl=http://bugzilla.redhat.com/bugzilla --enable-shared --enable-threads=posix --enable-checking=release --enable-multilib --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --with-gcc-major-version-only --enable-plugin --with-linker-hash-style=gnu --enable-initfini-array --with-default-libstdcxx-abi=gcc4-compatible --with-isl=/builddir/build/BUILD/gcc-7.3.1-20180303/obj-x86_64-redhat-linux/isl-install --enable-libmpx --enable-gnu-indirect-function --with-tune=generic --with-arch_32=i686 --build=x86_64-redhat-linux
 Thread model: posix
-InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch x86_64 -macosx_version_min 10.13.0 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -o cmTC_2a78d -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_2a78d.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/lib/darwin/libclang_rt.osx.a
-@(#)PROGRAM:ld  PROJECT:ld64-351.8
-configured to support archs: armv6 armv7 armv7s arm64 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em (tvOS)
-Library search paths:
-	/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/lib
-Framework search paths:
-	/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/
+gcc version 7.3.1 20180303 (Red Hat 7.3.1-5) (GCC) 
+COMPILER_PATH=/opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/7/:/opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/7/:/opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/:/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/:/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/
+LIBRARY_PATH=/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/:/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_c8076' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/7/collect2 -plugin /opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/7/liblto_plugin.so -plugin-opt=/opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccDewcPE.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_c8076 /lib/../lib64/crt1.o /lib/../lib64/crti.o /opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/crtbegin.o -L/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7 -L/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/../../.. CMakeFiles/cmTC_c8076.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/crtend.o /lib/../lib64/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_c8076' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+gmake[1]: Leaving directory `/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp'
 
 
 Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_2a78d/fast"]
-  ignore line: [/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_2a78d.dir/build.make CMakeFiles/cmTC_2a78d.dir/build]
-  ignore line: [Building CXX object CMakeFiles/cmTC_2a78d.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_2a78d.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp]
-  ignore line: [Linking CXX executable cmTC_2a78d]
-  ignore line: [/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2a78d.dir/link.txt --verbose=1]
-  ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_2a78d.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_2a78d ]
-  ignore line: [Apple LLVM version 9.1.0 (clang-902.0.39.2)]
-  ignore line: [Target: x86_64-apple-darwin17.7.0]
+  ignore line: [Run Build Command:"/usr/bin/gmake" "cmTC_c8076/fast"]
+  ignore line: [/usr/bin/gmake -f CMakeFiles/cmTC_c8076.dir/build.make CMakeFiles/cmTC_c8076.dir/build]
+  ignore line: [gmake[1]: Entering directory `/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp']
+  ignore line: [Building CXX object CMakeFiles/cmTC_c8076.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/opt/rh/devtoolset-7/root/usr/bin/c++     -o CMakeFiles/cmTC_c8076.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTC_c8076]
+  ignore line: [/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c8076.dir/link.txt --verbose=1]
+  ignore line: [/opt/rh/devtoolset-7/root/usr/bin/c++      -v -rdynamic CMakeFiles/cmTC_c8076.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_c8076 ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/opt/rh/devtoolset-7/root/usr/bin/c++]
+  ignore line: [COLLECT_LTO_WRAPPER=/opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/7/lto-wrapper]
+  ignore line: [Target: x86_64-redhat-linux]
+  ignore line: [Configured with: ../configure --enable-bootstrap --enable-languages=c,c++,fortran,lto --prefix=/opt/rh/devtoolset-7/root/usr --mandir=/opt/rh/devtoolset-7/root/usr/share/man --infodir=/opt/rh/devtoolset-7/root/usr/share/info --with-bugurl=http://bugzilla.redhat.com/bugzilla --enable-shared --enable-threads=posix --enable-checking=release --enable-multilib --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --with-gcc-major-version-only --enable-plugin --with-linker-hash-style=gnu --enable-initfini-array --with-default-libstdcxx-abi=gcc4-compatible --with-isl=/builddir/build/BUILD/gcc-7.3.1-20180303/obj-x86_64-redhat-linux/isl-install --enable-libmpx --enable-gnu-indirect-function --with-tune=generic --with-arch_32=i686 --build=x86_64-redhat-linux]
   ignore line: [Thread model: posix]
-  ignore line: [InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin]
-  link line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch x86_64 -macosx_version_min 10.13.0 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -o cmTC_2a78d -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_2a78d.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/lib/darwin/libclang_rt.osx.a]
-    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld] ==> ignore
-    arg [-demangle] ==> ignore
-    arg [-lto_library] ==> ignore, skip following value
-    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib] ==> skip value of -lto_library
-    arg [-dynamic] ==> ignore
-    arg [-arch] ==> ignore
-    arg [x86_64] ==> ignore
-    arg [-macosx_version_min] ==> ignore
-    arg [10.13.0] ==> ignore
-    arg [-syslibroot] ==> ignore
-    arg [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk] ==> ignore
+  ignore line: [gcc version 7.3.1 20180303 (Red Hat 7.3.1-5) (GCC) ]
+  ignore line: [COMPILER_PATH=/opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/7/:/opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/7/:/opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/:/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/:/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/]
+  ignore line: [LIBRARY_PATH=/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/:/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_c8076' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/7/collect2 -plugin /opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/7/liblto_plugin.so -plugin-opt=/opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccDewcPE.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_c8076 /lib/../lib64/crt1.o /lib/../lib64/crti.o /opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/crtbegin.o -L/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7 -L/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/../../.. CMakeFiles/cmTC_c8076.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/crtend.o /lib/../lib64/crtn.o]
+    arg [/opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/7/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/7/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/opt/rh/devtoolset-7/root/usr/libexec/gcc/x86_64-redhat-linux/7/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccDewcPE.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--no-add-needed] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-export-dynamic] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_2a78d] ==> ignore
-    arg [-search_paths_first] ==> ignore
-    arg [-headerpad_max_install_names] ==> ignore
-    arg [-v] ==> ignore
-    arg [CMakeFiles/cmTC_2a78d.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
-    arg [-lc++] ==> lib [c++]
-    arg [-lSystem] ==> lib [System]
-    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/lib/darwin/libclang_rt.osx.a] ==> lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/lib/darwin/libclang_rt.osx.a]
-  Library search paths: [;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/lib]
-  Framework search paths: [;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/]
-  remove lib [System]
-  remove lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/lib/darwin/libclang_rt.osx.a]
-  collapse library dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/lib] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/lib]
-  collapse framework dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks]
-  implicit libs: [c++]
-  implicit dirs: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/lib]
-  implicit fwks: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks]
+    arg [cmTC_c8076] ==> ignore
+    arg [/lib/../lib64/crt1.o] ==> ignore
+    arg [/lib/../lib64/crti.o] ==> ignore
+    arg [/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/crtbegin.o] ==> ignore
+    arg [-L/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7] ==> dir [/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7]
+    arg [-L/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/../../../../lib64] ==> dir [/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/../../../../lib64]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/../../..] ==> dir [/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/../../..]
+    arg [CMakeFiles/cmTC_c8076.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/crtend.o] ==> ignore
+    arg [/lib/../lib64/crtn.o] ==> ignore
+  collapse library dir [/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7] ==> [/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7]
+  collapse library dir [/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/../../../../lib64] ==> [/opt/rh/devtoolset-7/root/usr/lib64]
+  collapse library dir [/lib/../lib64] ==> [/lib64]
+  collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse library dir [/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7/../../..] ==> [/opt/rh/devtoolset-7/root/usr/lib]
+  implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
+  implicit dirs: [/opt/rh/devtoolset-7/root/usr/lib/gcc/x86_64-redhat-linux/7;/opt/rh/devtoolset-7/root/usr/lib64;/lib64;/usr/lib64;/opt/rh/devtoolset-7/root/usr/lib]
+  implicit fwks: []
 
 
 
 
 Detecting CXX [-std=c++1z] compiler features compiled with the following output:
-Change Dir: /Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles/CMakeTmp
+Change Dir: /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_4477e/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_4477e.dir/build.make CMakeFiles/cmTC_4477e.dir/build
-Building CXX object CMakeFiles/cmTC_4477e.dir/feature_tests.cxx.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -std=c++1z -o CMakeFiles/cmTC_4477e.dir/feature_tests.cxx.o -c /Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_4477e
-/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4477e.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_4477e.dir/feature_tests.cxx.o  -o cmTC_4477e 
+Run Build Command:"/usr/bin/gmake" "cmTC_4d830/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_4d830.dir/build.make CMakeFiles/cmTC_4d830.dir/build
+gmake[1]: Entering directory `/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_4d830.dir/feature_tests.cxx.o
+/opt/rh/devtoolset-7/root/usr/bin/c++    -std=c++1z -o CMakeFiles/cmTC_4d830.dir/feature_tests.cxx.o -c /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_4d830
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4d830.dir/link.txt --verbose=1
+/opt/rh/devtoolset-7/root/usr/bin/c++       -rdynamic CMakeFiles/cmTC_4d830.dir/feature_tests.cxx.o  -o cmTC_4d830 
+gmake[1]: Leaving directory `/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
@@ -316,15 +387,17 @@ Linking CXX executable cmTC_4477e
 
 
 Detecting CXX [-std=c++14] compiler features compiled with the following output:
-Change Dir: /Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles/CMakeTmp
+Change Dir: /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_91f80/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_91f80.dir/build.make CMakeFiles/cmTC_91f80.dir/build
-Building CXX object CMakeFiles/cmTC_91f80.dir/feature_tests.cxx.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -std=c++14 -o CMakeFiles/cmTC_91f80.dir/feature_tests.cxx.o -c /Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_91f80
-/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_91f80.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_91f80.dir/feature_tests.cxx.o  -o cmTC_91f80 
+Run Build Command:"/usr/bin/gmake" "cmTC_14eb4/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_14eb4.dir/build.make CMakeFiles/cmTC_14eb4.dir/build
+gmake[1]: Entering directory `/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_14eb4.dir/feature_tests.cxx.o
+/opt/rh/devtoolset-7/root/usr/bin/c++    -std=c++14 -o CMakeFiles/cmTC_14eb4.dir/feature_tests.cxx.o -c /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_14eb4
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_14eb4.dir/link.txt --verbose=1
+/opt/rh/devtoolset-7/root/usr/bin/c++       -rdynamic CMakeFiles/cmTC_14eb4.dir/feature_tests.cxx.o  -o cmTC_14eb4 
+gmake[1]: Leaving directory `/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
@@ -387,15 +460,17 @@ Linking CXX executable cmTC_91f80
 
 
 Detecting CXX [-std=c++11] compiler features compiled with the following output:
-Change Dir: /Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles/CMakeTmp
+Change Dir: /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_47e1d/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_47e1d.dir/build.make CMakeFiles/cmTC_47e1d.dir/build
-Building CXX object CMakeFiles/cmTC_47e1d.dir/feature_tests.cxx.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -std=c++11 -o CMakeFiles/cmTC_47e1d.dir/feature_tests.cxx.o -c /Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_47e1d
-/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_47e1d.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_47e1d.dir/feature_tests.cxx.o  -o cmTC_47e1d 
+Run Build Command:"/usr/bin/gmake" "cmTC_293a9/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_293a9.dir/build.make CMakeFiles/cmTC_293a9.dir/build
+gmake[1]: Entering directory `/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_293a9.dir/feature_tests.cxx.o
+/opt/rh/devtoolset-7/root/usr/bin/c++    -std=c++11 -o CMakeFiles/cmTC_293a9.dir/feature_tests.cxx.o -c /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_293a9
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_293a9.dir/link.txt --verbose=1
+/opt/rh/devtoolset-7/root/usr/bin/c++       -rdynamic CMakeFiles/cmTC_293a9.dir/feature_tests.cxx.o  -o cmTC_293a9 
+gmake[1]: Leaving directory `/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -458,15 +533,17 @@ Linking CXX executable cmTC_47e1d
 
 
 Detecting CXX [-std=c++98] compiler features compiled with the following output:
-Change Dir: /Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles/CMakeTmp
+Change Dir: /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_1d3fd/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_1d3fd.dir/build.make CMakeFiles/cmTC_1d3fd.dir/build
-Building CXX object CMakeFiles/cmTC_1d3fd.dir/feature_tests.cxx.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -std=c++98 -o CMakeFiles/cmTC_1d3fd.dir/feature_tests.cxx.o -c /Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_1d3fd
-/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1d3fd.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_1d3fd.dir/feature_tests.cxx.o  -o cmTC_1d3fd 
+Run Build Command:"/usr/bin/gmake" "cmTC_41409/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_41409.dir/build.make CMakeFiles/cmTC_41409.dir/build
+gmake[1]: Entering directory `/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_41409.dir/feature_tests.cxx.o
+/opt/rh/devtoolset-7/root/usr/bin/c++    -std=c++98 -o CMakeFiles/cmTC_41409.dir/feature_tests.cxx.o -c /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_41409
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_41409.dir/link.txt --verbose=1
+/opt/rh/devtoolset-7/root/usr/bin/c++       -rdynamic CMakeFiles/cmTC_41409.dir/feature_tests.cxx.o  -o cmTC_41409 
+gmake[1]: Leaving directory `/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers

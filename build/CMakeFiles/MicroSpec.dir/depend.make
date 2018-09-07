@@ -6,11 +6,11 @@ CMakeFiles/MicroSpec.dir/src/MicroSpec.cpp.o: .././include/Predictor.h
 CMakeFiles/MicroSpec.dir/src/MicroSpec.cpp.o: .././include/Resources.h
 CMakeFiles/MicroSpec.dir/src/MicroSpec.cpp.o: ../src/MicroSpec.cpp
 
-CMakeFiles/MicroSpec.dir/src/MicroSpec_Pthread.cpp.o: .././include/MicroSpec.h
-CMakeFiles/MicroSpec.dir/src/MicroSpec_Pthread.cpp.o: .././include/MicroSpec_Pthread.h
-CMakeFiles/MicroSpec.dir/src/MicroSpec_Pthread.cpp.o: .././include/Predictor.h
-CMakeFiles/MicroSpec.dir/src/MicroSpec_Pthread.cpp.o: .././include/Resources.h
-CMakeFiles/MicroSpec.dir/src/MicroSpec_Pthread.cpp.o: ../src/MicroSpec_Pthread.cpp
+CMakeFiles/MicroSpec.dir/src/MicroSpecPthread.cpp.o: .././include/MicroSpec.h
+CMakeFiles/MicroSpec.dir/src/MicroSpecPthread.cpp.o: .././include/MicroSpecPthread.h
+CMakeFiles/MicroSpec.dir/src/MicroSpecPthread.cpp.o: .././include/Predictor.h
+CMakeFiles/MicroSpec.dir/src/MicroSpecPthread.cpp.o: .././include/Resources.h
+CMakeFiles/MicroSpec.dir/src/MicroSpecPthread.cpp.o: ../src/MicroSpecPthread.cpp
 
 CMakeFiles/MicroSpec.dir/src/Predictor.cpp.o: .././include/Predictor.h
 CMakeFiles/MicroSpec.dir/src/Predictor.cpp.o: .././include/Resources.h

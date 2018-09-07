@@ -4,13 +4,13 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/junqiaoqiu/Desktop/MicroSpecRepo/src/MicroSpec.cpp" "/Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles/MicroSpec.dir/src/MicroSpec.cpp.o"
-  "/Users/junqiaoqiu/Desktop/MicroSpecRepo/src/MicroSpec_Pthread.cpp" "/Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles/MicroSpec.dir/src/MicroSpec_Pthread.cpp.o"
-  "/Users/junqiaoqiu/Desktop/MicroSpecRepo/src/Predictor.cpp" "/Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles/MicroSpec.dir/src/Predictor.cpp.o"
-  "/Users/junqiaoqiu/Desktop/MicroSpecRepo/src/Resources.cpp" "/Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles/MicroSpec.dir/src/Resources.cpp.o"
-  "/Users/junqiaoqiu/Desktop/MicroSpecRepo/src/Timer.cpp" "/Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles/MicroSpec.dir/src/Timer.cpp.o"
+  "/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/MicroSpec.cpp" "/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/MicroSpec.dir/src/MicroSpec.cpp.o"
+  "/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/MicroSpecPthread.cpp" "/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/MicroSpec.dir/src/MicroSpecPthread.cpp.o"
+  "/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/Predictor.cpp" "/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/MicroSpec.dir/src/Predictor.cpp.o"
+  "/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/Resources.cpp" "/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/MicroSpec.dir/src/Resources.cpp.o"
+  "/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/src/Timer.cpp" "/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles/MicroSpec.dir/src/Timer.cpp.o"
   )
-set(CMAKE_CXX_COMPILER_ID "Clang")
+set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH

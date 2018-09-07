@@ -48,10 +48,10 @@ RM = /usr/local/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/junqiaoqiu/Desktop/MicroSpecRepo
+CMAKE_SOURCE_DIR = /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/junqiaoqiu/Desktop/MicroSpecRepo/build
+CMAKE_BINARY_DIR = /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/junqiaoqiu/Desktop/MicroSpecRepo/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles /Users/junqiaoqiu/Desktop/MicroSpecRepo/build/test/CMakeFiles/progress.marks
-	cd /Users/junqiaoqiu/Desktop/MicroSpecRepo/build && $(MAKE) -f CMakeFiles/Makefile2 test/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/junqiaoqiu/Desktop/MicroSpecRepo/build/CMakeFiles 0
+	cd /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/test/CMakeFiles/progress.marks
+	cd /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build && $(MAKE) -f CMakeFiles/Makefile2 test/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/junqiaoqiu/Desktop/MicroSpecRepo/build && $(MAKE) -f CMakeFiles/Makefile2 test/clean
+	cd /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build && $(MAKE) -f CMakeFiles/Makefile2 test/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,60 +97,186 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/junqiaoqiu/Desktop/MicroSpecRepo/build && $(MAKE) -f CMakeFiles/Makefile2 test/preinstall
+	cd /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build && $(MAKE) -f CMakeFiles/Makefile2 test/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/junqiaoqiu/Desktop/MicroSpecRepo/build && $(MAKE) -f CMakeFiles/Makefile2 test/preinstall
+	cd /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build && $(MAKE) -f CMakeFiles/Makefile2 test/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/junqiaoqiu/Desktop/MicroSpecRepo/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
-test/CMakeFiles/SpecDFAcheck.dir/rule:
-	cd /Users/junqiaoqiu/Desktop/MicroSpecRepo/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/SpecDFAcheck.dir/rule
-.PHONY : test/CMakeFiles/SpecDFAcheck.dir/rule
+test/CMakeFiles/specDFAcheck.dir/rule:
+	cd /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/specDFAcheck.dir/rule
+.PHONY : test/CMakeFiles/specDFAcheck.dir/rule
 
 # Convenience name for target.
-SpecDFAcheck: test/CMakeFiles/SpecDFAcheck.dir/rule
+specDFAcheck: test/CMakeFiles/specDFAcheck.dir/rule
 
-.PHONY : SpecDFAcheck
+.PHONY : specDFAcheck
 
 # fast build rule for target.
-SpecDFAcheck/fast:
-	cd /Users/junqiaoqiu/Desktop/MicroSpecRepo/build && $(MAKE) -f test/CMakeFiles/SpecDFAcheck.dir/build.make test/CMakeFiles/SpecDFAcheck.dir/build
-.PHONY : SpecDFAcheck/fast
+specDFAcheck/fast:
+	cd /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build && $(MAKE) -f test/CMakeFiles/specDFAcheck.dir/build.make test/CMakeFiles/specDFAcheck.dir/build
+.PHONY : specDFAcheck/fast
 
-SpecDFAcheck.o: SpecDFAcheck.cpp.o
+# Convenience name for target.
+test/CMakeFiles/predictorCheck.dir/rule:
+	cd /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/predictorCheck.dir/rule
+.PHONY : test/CMakeFiles/predictorCheck.dir/rule
 
-.PHONY : SpecDFAcheck.o
+# Convenience name for target.
+predictorCheck: test/CMakeFiles/predictorCheck.dir/rule
+
+.PHONY : predictorCheck
+
+# fast build rule for target.
+predictorCheck/fast:
+	cd /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build && $(MAKE) -f test/CMakeFiles/predictorCheck.dir/build.make test/CMakeFiles/predictorCheck.dir/build
+.PHONY : predictorCheck/fast
+
+# Convenience name for target.
+test/CMakeFiles/InputAndTableCheck.dir/rule:
+	cd /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/InputAndTableCheck.dir/rule
+.PHONY : test/CMakeFiles/InputAndTableCheck.dir/rule
+
+# Convenience name for target.
+InputAndTableCheck: test/CMakeFiles/InputAndTableCheck.dir/rule
+
+.PHONY : InputAndTableCheck
+
+# fast build rule for target.
+InputAndTableCheck/fast:
+	cd /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build && $(MAKE) -f test/CMakeFiles/InputAndTableCheck.dir/build.make test/CMakeFiles/InputAndTableCheck.dir/build
+.PHONY : InputAndTableCheck/fast
+
+# Convenience name for target.
+test/CMakeFiles/mappingrulescheck.dir/rule:
+	cd /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/mappingrulescheck.dir/rule
+.PHONY : test/CMakeFiles/mappingrulescheck.dir/rule
+
+# Convenience name for target.
+mappingrulescheck: test/CMakeFiles/mappingrulescheck.dir/rule
+
+.PHONY : mappingrulescheck
+
+# fast build rule for target.
+mappingrulescheck/fast:
+	cd /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build && $(MAKE) -f test/CMakeFiles/mappingrulescheck.dir/build.make test/CMakeFiles/mappingrulescheck.dir/build
+.PHONY : mappingrulescheck/fast
+
+InputAndTableCheck.o: InputAndTableCheck.cpp.o
+
+.PHONY : InputAndTableCheck.o
 
 # target to build an object file
-SpecDFAcheck.cpp.o:
-	cd /Users/junqiaoqiu/Desktop/MicroSpecRepo/build && $(MAKE) -f test/CMakeFiles/SpecDFAcheck.dir/build.make test/CMakeFiles/SpecDFAcheck.dir/SpecDFAcheck.cpp.o
-.PHONY : SpecDFAcheck.cpp.o
+InputAndTableCheck.cpp.o:
+	cd /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build && $(MAKE) -f test/CMakeFiles/InputAndTableCheck.dir/build.make test/CMakeFiles/InputAndTableCheck.dir/InputAndTableCheck.cpp.o
+.PHONY : InputAndTableCheck.cpp.o
 
-SpecDFAcheck.i: SpecDFAcheck.cpp.i
+InputAndTableCheck.i: InputAndTableCheck.cpp.i
 
-.PHONY : SpecDFAcheck.i
+.PHONY : InputAndTableCheck.i
 
 # target to preprocess a source file
-SpecDFAcheck.cpp.i:
-	cd /Users/junqiaoqiu/Desktop/MicroSpecRepo/build && $(MAKE) -f test/CMakeFiles/SpecDFAcheck.dir/build.make test/CMakeFiles/SpecDFAcheck.dir/SpecDFAcheck.cpp.i
-.PHONY : SpecDFAcheck.cpp.i
+InputAndTableCheck.cpp.i:
+	cd /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build && $(MAKE) -f test/CMakeFiles/InputAndTableCheck.dir/build.make test/CMakeFiles/InputAndTableCheck.dir/InputAndTableCheck.cpp.i
+.PHONY : InputAndTableCheck.cpp.i
 
-SpecDFAcheck.s: SpecDFAcheck.cpp.s
+InputAndTableCheck.s: InputAndTableCheck.cpp.s
 
-.PHONY : SpecDFAcheck.s
+.PHONY : InputAndTableCheck.s
 
 # target to generate assembly for a file
-SpecDFAcheck.cpp.s:
-	cd /Users/junqiaoqiu/Desktop/MicroSpecRepo/build && $(MAKE) -f test/CMakeFiles/SpecDFAcheck.dir/build.make test/CMakeFiles/SpecDFAcheck.dir/SpecDFAcheck.cpp.s
-.PHONY : SpecDFAcheck.cpp.s
+InputAndTableCheck.cpp.s:
+	cd /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build && $(MAKE) -f test/CMakeFiles/InputAndTableCheck.dir/build.make test/CMakeFiles/InputAndTableCheck.dir/InputAndTableCheck.cpp.s
+.PHONY : InputAndTableCheck.cpp.s
+
+mappingrulescheck.o: mappingrulescheck.cpp.o
+
+.PHONY : mappingrulescheck.o
+
+# target to build an object file
+mappingrulescheck.cpp.o:
+	cd /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build && $(MAKE) -f test/CMakeFiles/mappingrulescheck.dir/build.make test/CMakeFiles/mappingrulescheck.dir/mappingrulescheck.cpp.o
+.PHONY : mappingrulescheck.cpp.o
+
+mappingrulescheck.i: mappingrulescheck.cpp.i
+
+.PHONY : mappingrulescheck.i
+
+# target to preprocess a source file
+mappingrulescheck.cpp.i:
+	cd /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build && $(MAKE) -f test/CMakeFiles/mappingrulescheck.dir/build.make test/CMakeFiles/mappingrulescheck.dir/mappingrulescheck.cpp.i
+.PHONY : mappingrulescheck.cpp.i
+
+mappingrulescheck.s: mappingrulescheck.cpp.s
+
+.PHONY : mappingrulescheck.s
+
+# target to generate assembly for a file
+mappingrulescheck.cpp.s:
+	cd /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build && $(MAKE) -f test/CMakeFiles/mappingrulescheck.dir/build.make test/CMakeFiles/mappingrulescheck.dir/mappingrulescheck.cpp.s
+.PHONY : mappingrulescheck.cpp.s
+
+predictorCheck.o: predictorCheck.cpp.o
+
+.PHONY : predictorCheck.o
+
+# target to build an object file
+predictorCheck.cpp.o:
+	cd /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build && $(MAKE) -f test/CMakeFiles/predictorCheck.dir/build.make test/CMakeFiles/predictorCheck.dir/predictorCheck.cpp.o
+.PHONY : predictorCheck.cpp.o
+
+predictorCheck.i: predictorCheck.cpp.i
+
+.PHONY : predictorCheck.i
+
+# target to preprocess a source file
+predictorCheck.cpp.i:
+	cd /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build && $(MAKE) -f test/CMakeFiles/predictorCheck.dir/build.make test/CMakeFiles/predictorCheck.dir/predictorCheck.cpp.i
+.PHONY : predictorCheck.cpp.i
+
+predictorCheck.s: predictorCheck.cpp.s
+
+.PHONY : predictorCheck.s
+
+# target to generate assembly for a file
+predictorCheck.cpp.s:
+	cd /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build && $(MAKE) -f test/CMakeFiles/predictorCheck.dir/build.make test/CMakeFiles/predictorCheck.dir/predictorCheck.cpp.s
+.PHONY : predictorCheck.cpp.s
+
+specDFAcheck.o: specDFAcheck.cpp.o
+
+.PHONY : specDFAcheck.o
+
+# target to build an object file
+specDFAcheck.cpp.o:
+	cd /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build && $(MAKE) -f test/CMakeFiles/specDFAcheck.dir/build.make test/CMakeFiles/specDFAcheck.dir/specDFAcheck.cpp.o
+.PHONY : specDFAcheck.cpp.o
+
+specDFAcheck.i: specDFAcheck.cpp.i
+
+.PHONY : specDFAcheck.i
+
+# target to preprocess a source file
+specDFAcheck.cpp.i:
+	cd /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build && $(MAKE) -f test/CMakeFiles/specDFAcheck.dir/build.make test/CMakeFiles/specDFAcheck.dir/specDFAcheck.cpp.i
+.PHONY : specDFAcheck.cpp.i
+
+specDFAcheck.s: specDFAcheck.cpp.s
+
+.PHONY : specDFAcheck.s
+
+# target to generate assembly for a file
+specDFAcheck.cpp.s:
+	cd /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build && $(MAKE) -f test/CMakeFiles/specDFAcheck.dir/build.make test/CMakeFiles/specDFAcheck.dir/specDFAcheck.cpp.s
+.PHONY : specDFAcheck.cpp.s
 
 # Help Target
 help:
@@ -160,10 +286,22 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... SpecDFAcheck"
-	@echo "... SpecDFAcheck.o"
-	@echo "... SpecDFAcheck.i"
-	@echo "... SpecDFAcheck.s"
+	@echo "... specDFAcheck"
+	@echo "... predictorCheck"
+	@echo "... InputAndTableCheck"
+	@echo "... mappingrulescheck"
+	@echo "... InputAndTableCheck.o"
+	@echo "... InputAndTableCheck.i"
+	@echo "... InputAndTableCheck.s"
+	@echo "... mappingrulescheck.o"
+	@echo "... mappingrulescheck.i"
+	@echo "... mappingrulescheck.s"
+	@echo "... predictorCheck.o"
+	@echo "... predictorCheck.i"
+	@echo "... predictorCheck.s"
+	@echo "... specDFAcheck.o"
+	@echo "... specDFAcheck.i"
+	@echo "... specDFAcheck.s"
 .PHONY : help
 
 
@@ -175,6 +313,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/junqiaoqiu/Desktop/MicroSpecRepo/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

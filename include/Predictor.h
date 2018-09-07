@@ -18,55 +18,62 @@
 namespace microspec 
 {
 	class Predictor;
-	struct PassItem
+
+	// @Brief The structure stores the pointer of a predictor object 
+	// and ID of the thread which uses this object 
+	struct PredictorPointerAndThread
 	{
 		Predictor* pointer;
-		int tid;
+		int threadID;
 	};
 
 	class Predictor
 	{
 	public:
 		Predictor();
-		Predictor(const Table* tb, const Input* ints, int nT, int nC, long nLB);
+		Predictor(const Table* transTable, const Input* inputStream, 
+			int numThreads, int numChunks, long lookBackLength);
 		~Predictor();
 
-		static Predictor* constructPredictor(const Table* table, const Input* input, 
-			const int nthread, const int nchunk, const long nlookback);	
+		static Predictor* constructPredictor(const Table* transTable, const Input* inputStream, 
+			const int numThreads, const int numChunks, const long lookBackLength);	
 
-		void SequentialPrediction();
-		void ParallelPrediction();
+		// @Brief function @sequentialPrediction provides single core prediction, while 
+		// @parallelPrediction provides parallel prediction based on mThreads. 
+		// Will construct array @mPredictStates and @mEndingStates.
+		void sequentialPrediction();
+		void parallelPrediction();
 
-		int getPredictState(int i) const;
-		int getFinalState(int i) const;
-		void setPredictState(int i, int state);
-		void setFinalState(int i, int state);
+		int getPredictState(int index) const;
+		int getEndingState(int index) const;
+		void setPredictState(int index, int state);
+		void setEndingState(int index, int state);
 
-		const Table* getUsedTable() const;
-		const Input* getUsedInput() const;
+		const Table* getTableUsed() const;
+		const Input* getInputUsed() const;
 
 		int* getPredictStatePointer() const;
-		int* getFinalStatePointer() const;
+		int* getEndingStatePointer() const;
 
 	private:
-		int SeqPredict_one(long START_POINT);
-
+		int seqPredict(long predictStartIndex);
+		
 		// @ Brief The two private functions are used for ParallelPrediction
-		static void* Caller1(void* args);
-	 	void ParPredict_one(int tid);
+		static void* callFunc_parPredict(void* args_predictorPointerAndThread);
+	 	void parPredict(int threadID);
 
 	private:
 		// Predictor Settings
 		int mThreads;
 		int mChunks;
-		long mLook_Back;
+		long mLookBack;
 
-		const Table* mTable_;
-		const Input* mInputs_;
+		const Table* mTransTable;
+		const Input* mInputs;
 
 		// Prediction Results
-		int* pthread_predict __attribute__ ((aligned (32)));
-		int* pthread_final 	 __attribute__ ((aligned (32)));
+		int* mPredictStates __attribute__ ((aligned (32)));
+		int* mEndingStates 	 __attribute__ ((aligned (32)));
 	};
 
 }	// end of namespace microspec

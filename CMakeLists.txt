@@ -5,7 +5,7 @@ project(MicroSpec)
 
 SET(VERSION_MAJOR "0")
 SET(VERSION_MINOR "1")
-SET(VERSION_PATCH "2")
+SET(VERSION_PATCH "4")
 
 if(CMAKE_COMPILER_IS_GNUCXX)
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread -mavx2 -msse4") 

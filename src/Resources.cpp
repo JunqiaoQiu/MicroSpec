@@ -25,26 +25,28 @@ using namespace std;
 
 namespace microspec
 {
-	
+
+/* ---------class MappingRule------------ */
+
 	MappingRule::MappingRule()
 	{
-		mrules = new int [ASCII256];
-		msize = ASCII256;		
+		mRules = new int [ASCII256];
+		mSize = ASCII256;		
 		for (int i = 0; i<ASCII256; i++)
-			mrules[i] = i;
+			mRules[i] = i;
 	}
 
 	MappingRule::MappingRule(int* rules, int size)
 	{
-		mrules = new int [ASCII256];
-		msize = size;
+		mRules = new int [ASCII256];
+		mSize = size;
 		for (int i = 0; i<ASCII256; i++)
-			mrules[i] = rules[i];
+			mRules[i] = rules[i];
 	}
 
 	MappingRule::~MappingRule()
 	{
-		delete []mrules;
+		delete []mRules;
 	}
 
 	MappingRule* MappingRule::defineMappingRule()
@@ -53,75 +55,77 @@ namespace microspec
 		return obj;
 	}
 
-	MappingRule* MappingRule::defineMappingRule(char* rs_key)
+	MappingRule* MappingRule::defineMappingRule(char* ruleKey)
 	{
-		char* rs_key_low;
-		rs_key_low = new char [strlen(rs_key)];
-		for (int i = 0; i < strlen(rs_key); ++i)
-	    	rs_key_low[i] = tolower(rs_key[i]);
+		char* ruleKeyLow;
+		ruleKeyLow = new char [strlen(ruleKey)];
+		for (int i = 0; i < strlen(ruleKey); ++i)
+	    	ruleKeyLow[i] = tolower(ruleKey[i]);
 
 		// Currently allow size of 256
-		int* temprules;
-		int tempsize;
+		int* tempRules;
+		int tempSize;
 
-		temprules = new int [ASCII256];
+		tempRules = new int [ASCII256];
 		for (int j=0; j<ASCII256; j++)
-			temprules[j] = 0;
+			tempRules[j] = 0;
 
-		if (rs_key_low == std::string("dna"))
+		if (ruleKeyLow == std::string("dna"))
 		{
-			tempsize = 4;
-			temprules['A'] = 0;
-			temprules['T'] = 1;
-			temprules['G'] = 2;
-			temprules['C'] = 3;
+			tempSize = 4;
+			tempRules['A'] = 0;
+			tempRules['T'] = 1;
+			tempRules['G'] = 2;
+			tempRules['C'] = 3;
 		}
-		else if (rs_key_low == std::string("protn") )
+		else if (ruleKeyLow == std::string("protn") )
 		{
-			tempsize = 20;
-			temprules['A'] = 0;
-			temprules['C'] = 1;
-			temprules['D'] = 2;
-			temprules['E'] = 3;
-			temprules['F'] = 4;
-			temprules['G'] = 5;
-			temprules['H'] = 6;
-			temprules['I'] = 7;
-			temprules['K'] = 8;
-			temprules['L'] = 9;
-			temprules['M'] = 10;
-			temprules['N'] = 11;
-			temprules['P'] = 12;
-			temprules['Q'] = 13;
-			temprules['R'] = 14;
-			temprules['S'] = 15;
-			temprules['T'] = 16;
-			temprules['V'] = 17;
-			temprules['W'] = 18;
-			temprules['Y'] = 19;
+			tempSize = 20;
+			tempRules['A'] = 0;
+			tempRules['C'] = 1;
+			tempRules['D'] = 2;
+			tempRules['E'] = 3;
+			tempRules['F'] = 4;
+			tempRules['G'] = 5;
+			tempRules['H'] = 6;
+			tempRules['I'] = 7;
+			tempRules['K'] = 8;
+			tempRules['L'] = 9;
+			tempRules['M'] = 10;
+			tempRules['N'] = 11;
+			tempRules['P'] = 12;
+			tempRules['Q'] = 13;
+			tempRules['R'] = 14;
+			tempRules['S'] = 15;
+			tempRules['T'] = 16;
+			tempRules['V'] = 17;
+			tempRules['W'] = 18;
+			tempRules['Y'] = 19;
 		}
-		else if (rs_key_low == std::string("evenodd") )
+		else if (ruleKeyLow == std::string("evenodd") )
 		{
-			tempsize = 4;
-			temprules['a'] = 0;
-			temprules['b'] = 1;
-			temprules['c'] = 2;
-			temprules['d'] = 3;			
+			tempSize = 4;
+			tempRules['a'] = 0;
+			tempRules['b'] = 1;
+			tempRules['c'] = 2;
+			tempRules['d'] = 3;			
 		}
-		else if (rs_key_low == std::string("div") )
+		else if (ruleKeyLow == std::string("div") )
 		{
-			tempsize = 2;
-			temprules['0'] = 0;
-			temprules['1'] = 1;			
+			tempSize = 2;
+			tempRules['0'] = 0;
+			tempRules['1'] = 1;			
 		}
 		else
 		{
-			tempsize = ASCII256;
-			for (int i = 0; i<tempsize; i++)
-				temprules[i] = i;
+			tempSize = ASCII256;
+			for (int i = 0; i<tempSize; i++)
+			{
+				tempRules[i] = i;
+			}
 		}
 
-		MappingRule* obj = new MappingRule(temprules, tempsize);
+		MappingRule* obj = new MappingRule(tempRules, tempSize);
 		return obj;
 	}
 
@@ -131,52 +135,54 @@ namespace microspec
 		if (character < 0 || character >= ASCII256)
 			temp = 0;
 		else
-			temp = mrules[character];
+			temp = mRules[character];
 		return temp;
 	}
 
 	int MappingRule::ruleSize() const
 	{
-		return msize;
+		return mSize;
 	}
 
 	void MappingRule::printRules() const
 	{
 		int it;
 		for (it = 0; it < ASCII256; it++)
-			cout << (char)it << " : " << mrules[it] << endl;
+			cout << (char)it << " : " << mRules[it] << endl;
 		cout << endl;
 	}
 
+/* ---------class Input------------ */
+
 	Input::Input()
 	{
-		pointer = NULL;
-		size = 0;
+		mPointer = NULL;
+		mSize = 0;
 	}
 
-	Input::Input(int* p, long s)
+	Input::Input(int* inputsPointer, long inputSize)
 	{
-		pointer = p;
-		size = s;
+		mPointer = inputsPointer;
+		mSize = inputSize;
 	}
 
 	Input::~Input()
 	{
-		delete []pointer;
-		size = 0;
+		delete []mPointer;
+		mSize = 0;
 	}
 
-	Input* Input::ReadFromFile(const char* filename, const MappingRule* ruleset)
+	Input* Input::readFromFile(const char* inputFileName, const MappingRule* ruleUsed)
 	{
+		int* inputs_ __attribute__ ((aligned (32)));
 		long length_;
-		int* inputs_;
 		char* inputs_Char;
 
 		struct stat infile_sb;
-		int fdSrc = open(filename, O_RDONLY);
+		int fdSrc = open(inputFileName, O_RDONLY);
 	    if (fdSrc == -1 || fstat(fdSrc, &infile_sb) == -1 )
 	    {
-	        cout << "Error: cannot open " << filename << " for processing. Skipped." << endl;
+	        cout << "Error: cannot open " << inputFileName << " for processing. Skipped." << endl;
 	        return NULL;
 	    }	
 	    length_ = infile_sb.st_size;
@@ -189,16 +195,16 @@ namespace microspec
 	        if (inputs_Char == MAP_FAILED)
 	        {
 	            if (errno ==  ENOMEM)
-	                cout << "Error:  mmap of " << filename << " failed: out of memory\n";
+	                cout << "Error:  mmap of " << inputFileName << " failed: out of memory\n";
 	            else
-	                cout << "Error: mmap of " << filename << " failed with errno " << errno << ". Skipped.\n";
+	                cout << "Error: mmap of " << inputFileName << " failed with errno " << errno << ". Skipped.\n";
 	            return NULL;
 	        }	    	
 	    }
 
 	    inputs_ = new int [length_];
 	    for (int l = 0; l < length_; l++)
-	    	inputs_[l] = ruleset->char2Int(inputs_Char[l]);
+	    	inputs_[l] = ruleUsed->char2Int(inputs_Char[l]);
 
 	    // mmap and input file close
     	munmap((void *)inputs_Char, length_);
@@ -210,46 +216,48 @@ namespace microspec
 
 	int* Input::getPointer() const
 	{
-		return pointer;
+		return mPointer;
 	}
 
 	long Input::getLength() const
 	{
-		return size;
+		return mSize;
 	}
 	 
+/* ---------class Table------------ */
 
 	Table::Table()
 	{
-		tableList = NULL;
-		numState = 0;
-		numSymbol = 0;
-		start = 0;
+		mTableList = NULL;
+		mNumState = 0;
+		mNumSymbol = 0;
+		mStartState = 0;
 	} 
 
 	Table::Table(int* list, int nstate, int nsymbol, int s)
 	{
-		tableList = list;
-		numState = nstate;
-		numSymbol = nsymbol;
-		start = s;
+		mTableList = list;
+		mNumState = nstate;
+		mNumSymbol = nsymbol;
+		mStartState = s;
 	}
 
 	Table::~Table()
 	{
-		delete []tableList;
-		numState = 0;
-		numSymbol = 0;
-		start = 0;
+		delete []mTableList;
+		mNumState = 0;
+		mNumSymbol = 0;
+		mStartState = 0;
 	}
 
-	Table* Table::ReadFromFile(const char* filename, const char* acceptFile, 
+	Table* Table::readFromFile(const char* filename, const char* acceptFile, 
 			const int s, const MappingRule* ruleset)
 	{	
-		int* list_;
+		int* list_  __attribute__ ((aligned (32)));
 		int nstate_;
 		int nsymbol_;
 
+		// Loading the accept states from the acceptFile
 		vector<int> acceptVec;
 		ifstream in_ac;
 		in_ac.open(acceptFile);
@@ -289,11 +297,11 @@ namespace microspec
         			{
         				int temp_n;
         				stream >> temp_n;
-        				currentLineNum ++;
+        				currentLineNum++;
         				if (find (acceptVec.begin(), acceptVec.end(), temp_n) != acceptVec.end())
         					temp_n = temp_n | 0XF0000000;
         				else
-        					temp_n = temp_n | 0X00000000;
+        					temp_n = temp_n & 0X0FFFFFFF;
         				vecTable.push_back(temp_n);
     				}
     				if (currentLineNum != MAXSYMBOL)
@@ -309,6 +317,7 @@ namespace microspec
 			cout << "Fail to open Table file " << filename << endl;
 			return NULL;
 		}
+
 		list_ = new int [(int)vecTable.size()];
 		nsymbol_ = MAXSYMBOL;
 		nstate_ = ((int)vecTable.size()) / nsymbol_;
@@ -322,33 +331,44 @@ namespace microspec
 
 	int* Table::getTable() const
 	{
-		return tableList;
+		return mTableList;
 	}
 
 	int Table::getNumState() const
 	{
-		return numState;
+		return mNumState;
 	}
 	int Table::getNumSymbol() const
 	{
-		return numSymbol;
+		return mNumSymbol;
 	}
 
 	int Table::getStartState() const
 	{
-		return start;
+		return mStartState;
 	}
 
 	void Table::printTable() const
 	{
-		cout << "(" << this->getNumState() << " " << this->getNumSymbol() << ")" << endl;
-		for (int i = 0; i < numState * numSymbol; i++)
+		vector<int> acceptStateVec;
+		for (int i = 0; i < mNumState * mNumSymbol; i++)
 		{
-			int realMember =  tableList[i] & 0X0FFFFFFF ;
+			int realMember =  mTableList[i] & 0X0FFFFFFF;
+			if( (mTableList[i] & 0XF0000000) == 0XF0000000 )
+			{
+				if (find(acceptStateVec.begin(), acceptStateVec.end(), realMember) == acceptStateVec.end())
+					acceptStateVec.push_back(realMember);
+			}
+
 			cout << realMember << " ";
-			if ((i+1) % numSymbol == 0)
+			if ((i+1) % mNumSymbol == 0)
 				cout << endl;
 		}
+		cout << endl;
+		cout << "#State " << this->getNumState() << ", #Symbol " << this->getNumSymbol() << endl;
+		cout << "Accept States include: " << endl;
+		for (int j = 0; j < acceptStateVec.size(); j++)
+			cout << acceptStateVec[j] << " ";
 		cout << endl;
 	}
 
