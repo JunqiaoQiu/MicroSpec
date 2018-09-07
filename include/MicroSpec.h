@@ -20,6 +20,7 @@ namespace microspec
 	// unroll factor in SpecUnroll+ and SpecGather+
 	#define MICROSPEC_SIMDUNROLLFACTOR 2
 
+	// SIMD factor
 	#define MICROSPEC_SIMDFACTOR 8
 
 	class DFA
@@ -28,12 +29,20 @@ namespace microspec
 		DFA() {}
 		virtual ~DFA() {}
 		virtual void run(const Table* table, const Input* input) = 0;
+
+		virtual void setAction(char* actionType);
+		virtual void printResults();
+
+	protected:
+		DFAResults* mEndingResults;
+		// @mAction is what will execute in each step during DFA execution
+		action mAction;
 	};
 
 	class Seq_DFA:public DFA
 	{
 	public:
-		Seq_DFA() {}
+		Seq_DFA():DFA(){}
 		virtual ~Seq_DFA() {}
 		virtual void run(const Table* table, const Input* input);
 	};
@@ -43,8 +52,8 @@ namespace microspec
 	public:
 		// @Brief In speculative DFA parallelization, a light-weight predictor
 		// is used, and the look back length is the only parameter to control it 
-		Spec_DFA():mLookBack(0) {}
-		Spec_DFA(int lookBackLength):mLookBack(lookBackLength) {}
+		Spec_DFA():DFA(), mLookBack(0) {}
+		Spec_DFA(int lookBackLength):DFA(), mLookBack(lookBackLength) {}
 		virtual ~Spec_DFA() {}
 	
 	protected:

@@ -3,8 +3,8 @@
 * @Last Modified by:   Junqiao Qiu
 */
 
-#ifndef MICROSPEC_PTHREAD_H
-#define MICROSPEC_PTHREAD_H
+#ifndef MICROSPECPTHREAD_H
+#define MICROSPECPTHREAD_H
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -87,4 +87,4 @@ namespace microspec
 
 }	// end of namespace microspec
 
-#endif // MICROSPEC_PTHREAD_H
+#endif // MICROSPECPTHREAD_H

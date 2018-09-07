@@ -1,15 +1,45 @@
 #include <iostream>
 #include <smmintrin.h> // sse4.2
 #include <immintrin.h>   // avx
+#include <cstring>
+#include <string>
 
 #include "Resources.h"
 #include "MicroSpec.h"
 #include "Predictor.h"
+#include "Action.h"
 
 using namespace std;
 
 namespace microspec
 {
+	DFA::DFA()
+	{
+		mEndingResults = new DFAResults();
+		mAction = doNothing;
+	}
+
+	DFA::~DFA()
+	{
+		delete mEndingResults;
+	}
+
+	void DFA::setAction(char* actionType)
+	{
+		char* actionTypeLow;
+		actionTypeLow = new char [strlen(actionType)];
+		for (int i = 0; i < strlen(actionType); ++i)
+	    	actionTypeLow[i] = tolower(actionType[i]);	
+
+	    if (actionTypeLow == std::string("accumulate"))	
+	    	mAction = accumulateAction;
+	}
+
+	void DFA::printResults()
+	{
+		cout << "DFA final Results are " << mEndingResults->mResutls << endl;
+	}
+
 	void Seq_DFA::run(const Table* table, const Input* input)
 	{	
 		int* tableList_ = table->getTable();
@@ -26,10 +56,11 @@ namespace microspec
 			state_ = temp & 0X0FFFFFFF;
 
 			// Action Function (state_)
-			//  table->getAction()(...., state_);
+			mAction(state_, mEndingResults);
 		}
 
 		printf("The final state is  %d\n", state_);
+		this->printResults();
 	}
 
 	void Spec_DFA::re_execute(const Table* table, const Input* input, 

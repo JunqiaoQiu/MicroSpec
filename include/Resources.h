@@ -74,17 +74,12 @@ namespace microspec
 		Table(int* transTable, int nState, int nSymbol, int startState);
 		~Table();
 
-		// typedef void(*func)(void*, int);
-
 		// @brief Providing @tableFileName to access the given transition table, 
 		// with using @acceptFileName to mark the accept state in the table.
 		// And applying required start state @startState while also define the mapping rule @ruleUsed, 
 		// then return an @Table-type object  
 		static Table* readFromFile(const char* tableFileName, const char* acceptFileName, 
 			const int startState, const MappingRule* ruleUsed);
-
-		// void setAction(func f_);
-		// func getAction() const;
 
 		int* getTable() const;
 		int getNumState() const;
@@ -97,7 +92,6 @@ namespace microspec
 		int mNumState;
 		int mNumSymbol;
 		int mStartState;
-		// func mFunc;
 	};
 }	// end of namespace microspec
 
