@@ -7,3 +7,6 @@ build/
 # ignore binaries
 *.out
 
+# ignore files generated under Mac
+.DS_Store
+*/.DS_Store

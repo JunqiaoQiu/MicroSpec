@@ -11,6 +11,7 @@
 
 #include "Resources.h"
 #include "Predictor.h"
+#include "Action.h"
 
 namespace microspec 
 {
@@ -26,8 +27,8 @@ namespace microspec
 	class DFA
 	{
 	public:
-		DFA() {}
-		virtual ~DFA() {}
+		DFA();
+		virtual ~DFA();
 		virtual void run(const Table* table, const Input* input) = 0;
 
 		virtual void setAction(char* actionType);

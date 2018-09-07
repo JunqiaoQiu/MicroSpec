@@ -31,5 +31,3 @@ namespace microspec
 
 
 }
-
-#endif // ACTION_H
