@@ -15,7 +15,7 @@ using namespace std;
 
 namespace microspec
 {
-	void Spec_DFA_Pthread::run(const Table* table, const Input* input)
+	void SpecDFA_Pthread::run(const Table* table, const Input* input)
 	{
 		int* tableList_ = table->getTable();
 		int state_ = table->getStartState();
@@ -53,7 +53,7 @@ namespace microspec
 			var->tid = t;
 			var->p_predictor = objPredictor;
 
-			errorCheck1 = pthread_create(&threads[t], NULL, caller, (void*)var);
+			errorCheck1 = pthread_create(&threads[t], NULL, callFunc_parallelRun, (void*)var);
 			if (errorCheck1)
 			{
 				printf("ERROR; return code from pthread_create() is %d\n", errorCheck1);
@@ -74,14 +74,14 @@ namespace microspec
 		printf("The final state is  %d\n", currentfinal[mchunks-1]);
 	}
 
-	void* Spec_DFA_Pthread::caller(void* args)
+	void* SpecDFA_Pthread::callFunc_parallelRun(void* args)
 	{
 		DFAPassPointer* Arg = (DFAPassPointer*)args;
 		Arg->pointer->parallel_run(Arg->tid, Arg->p_predictor);
 		pthread_exit((void*)args);
 	}
 
-	void Spec_DFA_Pthread::parallel_run(int tid, Predictor* p)
+	void SpecDFA_Pthread::parallelRun(int tid, Predictor* p)
 	{
 		const Table* table = p->getTableUsed();
 		const Input* input = p->getInputUsed();
@@ -107,7 +107,7 @@ namespace microspec
 		p->setEndingState(tid, state_);
 	}
 
-	void Spec_DFA_Gather_Pthread::parallel_run(int tid, Predictor* p)
+	void SpecDFA_Gather_Pthread::parallelRun(int tid, Predictor* p)
 	{
 		const Table* table = p->getTableUsed();
 		const Input* input = p->getInputUsed();
@@ -161,7 +161,7 @@ namespace microspec
 			p->setEndingState(tid*MICROSPEC_SIMDFACTOR+i, scurrent[i]);
 	}
 
-	void Spec_DFA_Unroll_Pthread::parallel_run(int tid, Predictor* p)
+	void SpecDFA_Unroll_Pthread::parallelRun(int tid, Predictor* p)
 	{
 		const Table* table = p->getTableUsed();
 		const Input* input = p->getInputUsed();
@@ -216,7 +216,7 @@ namespace microspec
 			p->setEndingState(tid*MICROSPEC_UNROLLFACTOR+i, scurrent[i]);	
 	}
 
-	void Spec_DFA_GatherUnroll_Pthread::parallel_run(int tid, Predictor* p)
+	void SpecDFA_GatherUnroll_Pthread::parallelRun(int tid, Predictor* p)
 	{
 		const Table* table = p->getTableUsed();
 		const Input* input = p->getInputUsed();
@@ -278,7 +278,7 @@ namespace microspec
 	    }	    			
 	}
 
-	void Spec_DFA_UnrollGather_Pthread::parallel_run(int tid, Predictor* p)
+	void SpecDFA_UnrollGather_Pthread::parallelRun(int tid, Predictor* p)
 	{
 		const Table* table = p->getTableUsed();
 		const Input* input = p->getInputUsed();

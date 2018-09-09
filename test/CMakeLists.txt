@@ -11,5 +11,5 @@ add_executable (predictorCheck predictorCheck.cpp)
 target_link_libraries(predictorCheck ${PROJECT_NAME})
 
 # Test 4
-add_executable (specDFAcheck specDFAcheck.cpp)
-target_link_libraries(specDFAcheck ${PROJECT_NAME})
+add_executable (allDFAcheck allDFAcheck.cpp)
+target_link_libraries(allDFAcheck ${PROJECT_NAME})

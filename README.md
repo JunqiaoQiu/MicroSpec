@@ -41,21 +41,17 @@ Here is an example use of seq-DFA execution, coarse-grained spec-DFA execution a
 ```cpp
 ...
 
-DFA* obj_seq = new Seq_DFA();
+DFA* obj_seq = new SeqDFA();
 obj_seq->Run(table_, inputs_);
 
-DFA* obj_spec = new Spec_DFA_Pthread();
+DFA* obj_spec = new SpecDFA_Pthread();
 obj_spec->Run(table_, inputs_);
 
-DFA* obj_specunroll = new Spec_DFA_Unroll_Pthread();
+DFA* obj_specunroll = new SpecDFA_Unroll_Pthread();
 obj_specunroll->Run(table_, inputs_);
 
 ...
 
 ```
-
-## TODO
-* Complete README and TestCases;
-* Provide user-define actions;
 
 

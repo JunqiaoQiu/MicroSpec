@@ -40,68 +40,77 @@ namespace microspec
 		action mAction;
 	};
 
-	class Seq_DFA:public DFA
+	class SeqDFA:public DFA
 	{
 	public:
-		Seq_DFA():DFA(){}
-		virtual ~Seq_DFA() {}
+		SeqDFA():DFA(){}
+		virtual ~SeqDFA() {}
 		virtual void run(const Table* table, const Input* input);
 	};
 
-	class Spec_DFA:public DFA
+	class SpecDFA:public DFA
 	{
 	public:
 		// @Brief In speculative DFA parallelization, a light-weight predictor
 		// is used, and the look back length is the only parameter to control it 
-		Spec_DFA():DFA(), mLookBack(0) {}
-		Spec_DFA(int lookBackLength):DFA(), mLookBack(lookBackLength) {}
-		virtual ~Spec_DFA() {}
-	
-	protected:
+		SpecDFA();
+		SpecDFA(int lookBackLength);
+		virtual ~SpecDFA() {}
 
+		virtual void setAction(char* reExecuteActionType);
+
+	protected:
 		// @Brief Provide reexecution. By comparing @predictStates and @endingStates,  
 		// which both have size of @mChunks, If find dis-match, start re-execution. 
 		virtual void re_execute(const Table* table, const Input* input, 
-		 	int* predictStates, int* endingStates, int nChunks);		
+		 	int* predictStates, int* endingStates, int nChunks);
+
+	protected:
+		DFAResults* mEndingResultsPerChunk;
+		actionReExecute mReExecuteAction;
 		int mLookBack;
 	};
 
-	class Spec_DFA_Gather_Single:public Spec_DFA
+	class SpecDFA_Gather_Single:public SpecDFA
 	{
 	public:
-		Spec_DFA_Gather_Single():Spec_DFA(){}
-		Spec_DFA_Gather_Single(int lookBackLength):Spec_DFA(lookBackLength){}
-		virtual ~Spec_DFA_Gather_Single() {}
+		SpecDFA_Gather_Single();
+		SpecDFA_Gather_Single(int lookBackLength);
+		virtual ~SpecDFA_Gather_Single() {}
 
+		virtual void setAction(char* reExecuteActionType);
 		virtual void run(const Table* table, const Input* input);	
+		
+	protected:
+		actionSIMD mActionSIMD;
 	};
 
-	class Spec_DFA_Unroll_Single:public Spec_DFA
+	class SpecDFA_Unroll_Single:public SpecDFA
 	{
 	public:
-		Spec_DFA_Unroll_Single():Spec_DFA(){}
-		Spec_DFA_Unroll_Single(int lookBackLength):Spec_DFA(lookBackLength){}
-		virtual ~Spec_DFA_Unroll_Single() {}
+		SpecDFA_Unroll_Single():SpecDFA(){}
+		SpecDFA_Unroll_Single(int lookBackLength):SpecDFA(lookBackLength){}
+		virtual ~SpecDFA_Unroll_Single() {}
 
 		virtual void run(const Table* table, const Input* input);		
 	};
 
-	class Spec_DFA_GatherUnroll_Single:public Spec_DFA
+	class SpecDFA_GatherUnroll_Single:public SpecDFA
 	{
 	public:
-		Spec_DFA_GatherUnroll_Single():Spec_DFA(){}
-		Spec_DFA_GatherUnroll_Single(int lookBackLength):Spec_DFA(lookBackLength){}
-		virtual ~Spec_DFA_GatherUnroll_Single() {}
+		SpecDFA_GatherUnroll_Single():SpecDFA(){}
+		SpecDFA_GatherUnroll_Single(int lookBackLength):SpecDFA(lookBackLength){}
+		virtual ~SpecDFA_GatherUnroll_Single() {}
 
 		virtual void run(const Table* table, const Input* input);	
 	};
 
-	class Spec_DFA_UnrollGather_Single:public Spec_DFA
+	class SpecDFA_UnrollGather_Single:public SpecDFA
 	{
 	public:
-		Spec_DFA_UnrollGather_Single():Spec_DFA(){}
-		Spec_DFA_UnrollGather_Single(int lookBackLength):Spec_DFA(lookBackLength){}
-		virtual ~Spec_DFA_UnrollGather_Single() {}
+		SpecDFA_UnrollGather_Single():SpecDFA(){}
+		SpecDFA_UnrollGather_Single(int lookBackLength):SpecDFA(lookBackLength){}
+		virtual ~SpecDFA_UnrollGather_Single() {}
 
 		virtual void run(const Table* table, const Input* input);		
 	};

@@ -13,9 +13,11 @@ using namespace std;
 
 namespace microspec
 {
+/* Implementation of class DFA */ 
 	DFA::DFA()
 	{
 		mEndingResults = new DFAResults();
+		mEndingResults->mResutls = 0;
 		mAction = doNothing;
 	}
 
@@ -40,7 +42,9 @@ namespace microspec
 		cout << "DFA final Results are " << mEndingResults->mResutls << endl;
 	}
 
-	void Seq_DFA::run(const Table* table, const Input* input)
+/* Implementation of class SeqDFA */ 
+
+	void SeqDFA::run(const Table* table, const Input* input)
 	{	
 		int* tableList_ = table->getTable();
 		int state_ = table->getStartState();
@@ -63,7 +67,33 @@ namespace microspec
 		this->printResults();
 	}
 
-	void Spec_DFA::re_execute(const Table* table, const Input* input, 
+/* Implementation of class SpecDFA */
+
+	SpecDFA::SpecDFA():DFA(), mLookBack(0) 
+	{
+		mReExecuteAction = doNothingReExecute;
+	}
+
+	SpecDFA::SpecDFA():DFA(), mLookBack(lookBackLength) 
+	{
+		mReExecuteAction = doNothingReExecute;
+	}
+
+	void SpecDFA::setAction(char* actionType)
+	{
+		char* actionTypeLow;
+		actionTypeLow = new char [strlen(actionType)];
+		for (int i = 0; i < strlen(actionType); ++i)
+	    	actionTypeLow[i] = tolower(actionType[i]);	
+
+	    if (actionTypeLow == std::string("accumulate"))	
+	    {
+	    	mAction = accumulateAction;
+	    	mReExecuteAction = accumulateActionReExecute;
+	    }
+	}
+
+	void SpecDFA::re_execute(const Table* table, const Input* input, 
 		int* p, int* f, int size)
 	{
 		int* tableList_ = table->getTable();
@@ -90,6 +120,7 @@ namespace microspec
 					predictState = temp_predict & 0X0FFFFFFF;
 				
 					// insert Action Function (temp_correct, temp_predict)
+					mReExecuteAction(temp_correct, temp_predict, mEndingResults);
 
 					if (correctState == predictState)
 						break;
@@ -100,7 +131,34 @@ namespace microspec
 		}
 	}
 
-	void Spec_DFA_Gather_Single::run(const Table* table, const Input* input)
+/* Implementation of class SpecDFA_Gather_Single */
+
+	SpecDFA_Gather_Single::SpecDFA_Gather_Single():SpecDFA()
+	{
+		mActionSIMD = doNothingSIMD;
+	}
+
+	SpecDFA_Gather_Single::SpecDFA_Gather_Single(int lookBackLength):SpecDFA(lookBackLength)
+	{
+		mActionSIMD = doNothingSIMD;
+	}
+
+	void SpecDFA_Gather_Single::setAction(char* actionType)
+	{
+		char* actionTypeLow;
+		actionTypeLow = new char [strlen(actionType)];
+		for (int i = 0; i < strlen(actionType); ++i)
+	    	actionTypeLow[i] = tolower(actionType[i]);	
+
+	    if (actionTypeLow == std::string("accumulate"))	
+	    {
+	    	mAction = accumulateAction;
+	    	mReExecuteAction = accumulateActionReExecute;
+	    	mActionSIMD = accumulateActionSIMD;
+	    }
+	}
+
+	void SpecDFA_Gather_Single::run(const Table* table, const Input* input)
 	{		
 		int* tableList_ = table->getTable();
 		int nstate_ = table->getNumState();
@@ -110,20 +168,27 @@ namespace microspec
 
 		// construct the predictor, and use sequential prediction
 		Predictor* objPredictor = Predictor::constructPredictor(table, input, 1, MICROSPEC_SIMDFACTOR, mLookBack);
-		objPredictor->sequentialPrediction();
+		objPredictor->sequentialPrediction(); 
 
 		int i;
 		__m256i scurrent_v;
 		__m256i avxsymbol_v;
 		__m256i avxmask_v;
 
-		int* scurrent __attribute__ ((aligned (32)));
-		scurrent= new int [MICROSPEC_SIMDFACTOR];
+		__m256i tempStore_v[1];
+		tempStore_v[0] = _mm256_set1_epi32(0);
+
+		int scurrent[MICROSPEC_SIMDFACTOR] __attribute__ ((aligned (32)));
+		//scurrent= new int [MICROSPEC_SIMDFACTOR];
+		int resultsPerChunk[MICROSPEC_SIMDFACTOR] __attribute__ ((aligned (32)));
 
 		// set up the predicted starting states in avx2 format
 		avxmask_v = _mm256_set1_epi32(0XFFFFFFFF);
 		for(i=0; i<MICROSPEC_SIMDFACTOR; i++)
+		{
 			scurrent[i] = objPredictor->getPredictState(i);
+			mEndingResultsPerChunk[i].mResutls = 0;
+		}
 		scurrent_v = _mm256_maskload_epi32 ((int*)scurrent, avxmask_v);
 		avxmask_v  = _mm256_set1_epi32(0X0FFFFFFF);
 
@@ -143,20 +208,26 @@ namespace microspec
 
 	        // access the table to update the states
 			scurrent_v = _mm256_i32gather_epi32 (tableList_, addr_v, 4);
+			mActionSIMD(scurrent_v, tempStore_v[0]);
 			scurrent_v = _mm256_and_si256(scurrent_v, avxmask_v);
-
 	    }
 	    
 	    _mm256_store_si256((__m256i*)scurrent, scurrent_v);
+	    _mm256_store_si256(resultsPerChunk, tempStore_v[0]);
+
+	    for(i=0; i<MICROSPEC_SIMDFACTOR; i++)
+	    	mEndingResults->mResutls += resultsPerChunk[i];
 
 		this->re_execute(table, input, objPredictor->getPredictStatePointer(), scurrent, MICROSPEC_SIMDFACTOR);
 
-		
 		printf("The final state is  %d\n", scurrent[MICROSPEC_SIMDFACTOR-1]);
-		delete []scurrent;
+		this->printResults();
+		//delete []scurrent;
 	}
 
-	void Spec_DFA_Unroll_Single::run(const Table* table, const Input* input)
+/* Implementation of class SpecDFA_Unroll_Single */
+
+	void SpecDFA_Unroll_Single::run(const Table* table, const Input* input)
 	{	
 		int* tableList_ = table->getTable();
 		int nstate_ = table->getNumState();
@@ -170,50 +241,77 @@ namespace microspec
 	
 		Predictor* objPredictor = Predictor::constructPredictor(table, input, 1, MICROSPEC_UNROLLFACTOR, mLookBack);
 		objPredictor->sequentialPrediction();
+		mEndingResultsPerChunk = new DFAResults [MICROSPEC_UNROLLFACTOR];
 
 		long i,j,gap;	
 
 		for(i=0; i<MICROSPEC_UNROLLFACTOR; i++)
+		{
 			scurrent[i]=objPredictor->getPredictState(i);
+			mEndingResultsPerChunk[i].mResutls = 0;
+		}
 		long bound = length_/MICROSPEC_UNROLLFACTOR;
 
 		for(i=0; i<bound; i++)
 		{
 			// manually Unroll 
 			gap = 0;
-			scurrent[0] = (tableList_[scurrent[0]* nsymbol_ + Inputs_[i+gap]] & 0X0FFFFFFF );
+			int temp0 = tableList_[scurrent[0]* nsymbol_ + Inputs_[i+gap]];
+			scurrent[0] = ( temp0 & 0X0FFFFFFF );
+			mAction(temp0, &mEndingResultsPerChunk[0]);
 
 			gap = gap + bound;
-			scurrent[1] = (tableList_[scurrent[1]* nsymbol_ + Inputs_[i+gap]] & 0X0FFFFFFF );
+			int temp1 = tableList_[scurrent[1]* nsymbol_ + Inputs_[i+gap]];
+			scurrent[1] = ( temp1 & 0X0FFFFFFF );
+			mAction(temp1, &mEndingResultsPerChunk[1]);
 			
 			gap = gap + bound;
-			scurrent[2] = (tableList_[scurrent[2]* nsymbol_ + Inputs_[i+gap]] & 0X0FFFFFFF );
+			int temp2 = tableList_[scurrent[2]* nsymbol_ + Inputs_[i+gap]];
+			scurrent[2] = ( temp2 & 0X0FFFFFFF );
+			mAction(temp2, &mEndingResultsPerChunk[2]);
 			
 			gap = gap + bound;
-			scurrent[3] = (tableList_[scurrent[3]* nsymbol_ + Inputs_[i+gap]] & 0X0FFFFFFF );
+			int temp3 = tableList_[scurrent[3]* nsymbol_ + Inputs_[i+gap]] ;
+			scurrent[3] = ( temp3 & 0X0FFFFFFF );
+			mAction(temp3, &mEndingResultsPerChunk[3]);
 			
 			gap = gap + bound;
-			scurrent[4] = (tableList_[scurrent[4]* nsymbol_ + Inputs_[i+gap]] & 0X0FFFFFFF );
+			int temp4 = tableList_[scurrent[4]* nsymbol_ + Inputs_[i+gap]];
+			scurrent[4] = ( temp4 & 0X0FFFFFFF );
+			mAction(temp4, &mEndingResultsPerChunk[4]);
 			
 			gap = gap + bound;
-			scurrent[5] = (tableList_[scurrent[5]* nsymbol_ + Inputs_[i+gap]] & 0X0FFFFFFF );
+			int temp5 = tableList_[scurrent[5]* nsymbol_ + Inputs_[i+gap]];
+			scurrent[5] = ( temp5 & 0X0FFFFFFF );
+			mAction(temp5, &mEndingResultsPerChunk[5]);
 			
 			gap = gap + bound;
-			scurrent[6] = (tableList_[scurrent[6]* nsymbol_ + Inputs_[i+gap]] & 0X0FFFFFFF );
+			int temp6 = tableList_[scurrent[6]* nsymbol_ + Inputs_[i+gap]];
+			scurrent[6] = ( temp6 & 0X0FFFFFFF );
+			mAction(temp6, &mEndingResultsPerChunk[6]);
 			
 			gap = gap + bound;
-			scurrent[7] = (tableList_[scurrent[7]* nsymbol_ + Inputs_[i+gap]] & 0X0FFFFFFF );
+			int temp7 = tableList_[scurrent[7]* nsymbol_ + Inputs_[i+gap]];
+			scurrent[7] = ( & 0X0FFFFFFF );
+			mAction(temp7, &mEndingResultsPerChunk[7]);
 		}
 		for(i=0; i<MICROSPEC_UNROLLFACTOR; i++)
+		{
 			objPredictor->setEndingState(i, scurrent[i]);
+			mEndingResults->mResutls += mEndingResultsPerChunk[i].mResutls;
+		}
 
 		this->re_execute(table, input, objPredictor->getPredictStatePointer(), scurrent, MICROSPEC_UNROLLFACTOR);
 
 		printf("The final state is  %d\n", scurrent[MICROSPEC_UNROLLFACTOR-1]);
+		this->printResults();
+
 		delete []scurrent;		
 	}	
 
-	void Spec_DFA_GatherUnroll_Single::run(const Table* table, const Input* input)
+/* Implementation of class SpecDFA_GatherUnroll_Single */
+
+	void SpecDFA_GatherUnroll_Single::run(const Table* table, const Input* input)
 	{		
 		int* tableList_ = table->getTable();
 		int nstate_ = table->getNumState();
@@ -282,7 +380,9 @@ namespace microspec
 		printf("The final state is  %d\n", finalStateVec[MICROSPEC_SIMDFACTOR*MICROSPEC_SIMDUNROLLFACTOR-1]);
 	}
 
-	void Spec_DFA_UnrollGather_Single::run(const Table* table, const Input* input)
+/* Implementation of class SpecDFA_UnrollGather_Single */
+
+	void SpecDFA_UnrollGather_Single::run(const Table* table, const Input* input)
 	{		
 		int* tableList_ = table->getTable();
 		int nstate_ = table->getNumState();
