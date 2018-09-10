@@ -57,7 +57,7 @@ namespace microspec
 		SpecDFA(int lookBackLength);
 		virtual ~SpecDFA() {}
 
-		virtual void setAction(char* reExecuteActionType);
+		virtual void setAction(char* actionType);
 
 	protected:
 		// @Brief Provide reexecution. By comparing @predictStates and @endingStates,  

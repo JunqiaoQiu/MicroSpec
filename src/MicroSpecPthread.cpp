@@ -15,6 +15,9 @@ using namespace std;
 
 namespace microspec
 {
+
+/* Implementation of class SpecDFA_Pthread */	
+
 	void SpecDFA_Pthread::run(const Table* table, const Input* input)
 	{
 		int* tableList_ = table->getTable();
@@ -27,9 +30,10 @@ namespace microspec
 
 		Predictor* objPredictor = Predictor::constructPredictor(table, input, mthreads, mchunks, mLookBack);
 		objPredictor->parallelPrediction();
+		mEndingResultsPerChunk = new DFAResults [mchunks];
 
 		//PTHREAD--------------------------------
-		int errorCheck1, errorCheck2;
+		int pthreadErrorCode1, pthreadErrorCode2;
 		long t;
 		pthread_t* threads;			
 		threads=(pthread_t*)malloc(sizeof(pthread_t)* mthreads);
@@ -52,14 +56,15 @@ namespace microspec
 			var->pointer = this;
 			var->tid = t;
 			var->p_predictor = objPredictor;
+			mEndingResultsPerChunk[t].mResults = 0;
 
-			errorCheck1 = pthread_create(&threads[t], NULL, callFunc_parallelRun, (void*)var);
-			if (errorCheck1)
+			pthreadErrorCode1 = pthread_create(&threads[t], NULL, callFunc_parallelRun, (void*)var);
+			if (pthreadErrorCode1)
 			{
-				printf("ERROR; return code from pthread_create() is %d\n", errorCheck1);
+				printf("ERROR; return code from pthread_create() is %d\n", pthreadErrorCode1);
 				exit(-1);
 			}
-			errorCheck2 = pthread_setaffinity_np(threads[t], sizeof(cpu_set_t), &cpu[t%MAXCPU]);
+			pthreadErrorCode2 = pthread_setaffinity_np(threads[t], sizeof(cpu_set_t), &cpu[t%MAXCPU]);
 		}
 		for(t=0; t< mthreads; t++)
 	    	pthread_join(threads[t], NULL);
@@ -67,17 +72,22 @@ namespace microspec
 	    int* currentfinal;
 	    currentfinal = new int [mchunks];
 	    for (t = 0; t < mchunks; t++)
+	    {
 	    	currentfinal[t] = objPredictor->getEndingState(t);
+	    	mEndingResults->mResults += mEndingResultsPerChunk[t].mResults;
+	    }
 
 		this->re_execute(table, input, objPredictor->getPredictStatePointer(), currentfinal, mchunks);
 
 		printf("The final state is  %d\n", currentfinal[mchunks-1]);
+		this->printResults();
+		cout << endl;
 	}
 
 	void* SpecDFA_Pthread::callFunc_parallelRun(void* args)
 	{
 		DFAPassPointer* Arg = (DFAPassPointer*)args;
-		Arg->pointer->parallel_run(Arg->tid, Arg->p_predictor);
+		Arg->pointer->parallelRun(Arg->tid, Arg->p_predictor);
 		pthread_exit((void*)args);
 	}
 
@@ -102,10 +112,12 @@ namespace microspec
 			state_ = temp & 0X0FFFFFFF;
 
 			// Action Function (state_)
-			//  table->getAction()(...., state_);
+			mAction(temp, &mEndingResultsPerChunk[tid]);
 		}
 		p->setEndingState(tid, state_);
 	}
+
+/* Implementation of 4 fine-grained SpecDFA_Pthread */	
 
 	void SpecDFA_Gather_Pthread::parallelRun(int tid, Predictor* p)
 	{

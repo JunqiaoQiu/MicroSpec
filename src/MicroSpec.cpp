@@ -17,7 +17,7 @@ namespace microspec
 	DFA::DFA()
 	{
 		mEndingResults = new DFAResults();
-		mEndingResults->mResutls = 0;
+		mEndingResults->mResults = 0;
 		mAction = doNothing;
 	}
 
@@ -39,7 +39,7 @@ namespace microspec
 
 	void DFA::printResults()
 	{
-		cout << "DFA final Results are " << mEndingResults->mResutls << endl;
+		cout << "DFA final Results are " << mEndingResults->mResults << endl;
 	}
 
 /* Implementation of class SeqDFA */ 
@@ -60,11 +60,12 @@ namespace microspec
 			state_ = temp & 0X0FFFFFFF;
 
 			// Action Function (state_)
-			mAction(state_, mEndingResults);
+			mAction(temp, mEndingResults);
 		}
 
 		printf("The final state is  %d\n", state_);
 		this->printResults();
+		cout << endl;
 	}
 
 /* Implementation of class SpecDFA */
@@ -74,7 +75,7 @@ namespace microspec
 		mReExecuteAction = doNothingReExecute;
 	}
 
-	SpecDFA::SpecDFA():DFA(), mLookBack(lookBackLength) 
+	SpecDFA::SpecDFA(int lookBackLength):DFA(), mLookBack(lookBackLength) 
 	{
 		mReExecuteAction = doNothingReExecute;
 	}
@@ -129,6 +130,20 @@ namespace microspec
 					f[i] = correctState;
 			}
 		}
+
+		if (input->getLength() > (chunkLength*size) )
+		{
+			int restStartState = f[size-1];
+			int restStartIndex = chunkLength*size;
+			for (i = restStartIndex; i < input->getLength(); i++)
+			{
+				int temp_rest = tableList_[restStartState * nsymbol_ + Inputs_[i]];
+				restStartState = temp_rest & 0X0FFFFFFF;
+
+				mAction(temp_rest, mEndingResults);
+			}
+			f[size-1] = restStartState;
+		}
 	}
 
 /* Implementation of class SpecDFA_Gather_Single */
@@ -148,13 +163,13 @@ namespace microspec
 		char* actionTypeLow;
 		actionTypeLow = new char [strlen(actionType)];
 		for (int i = 0; i < strlen(actionType); ++i)
-	    	actionTypeLow[i] = tolower(actionType[i]);	
+			actionTypeLow[i] = tolower(actionType[i]);	
 
 	    if (actionTypeLow == std::string("accumulate"))	
 	    {
-	    	mAction = accumulateAction;
-	    	mReExecuteAction = accumulateActionReExecute;
-	    	mActionSIMD = accumulateActionSIMD;
+			mAction = accumulateAction;
+			mReExecuteAction = accumulateActionReExecute;
+			mActionSIMD = accumulateActionSIMD;
 	    }
 	}
 
@@ -169,6 +184,7 @@ namespace microspec
 		// construct the predictor, and use sequential prediction
 		Predictor* objPredictor = Predictor::constructPredictor(table, input, 1, MICROSPEC_SIMDFACTOR, mLookBack);
 		objPredictor->sequentialPrediction(); 
+		mEndingResultsPerChunk = new DFAResults [MICROSPEC_SIMDFACTOR];
 
 		int i;
 		__m256i scurrent_v;
@@ -187,7 +203,7 @@ namespace microspec
 		for(i=0; i<MICROSPEC_SIMDFACTOR; i++)
 		{
 			scurrent[i] = objPredictor->getPredictState(i);
-			mEndingResultsPerChunk[i].mResutls = 0;
+			mEndingResultsPerChunk[i].mResults = 0;
 		}
 		scurrent_v = _mm256_maskload_epi32 ((int*)scurrent, avxmask_v);
 		avxmask_v  = _mm256_set1_epi32(0X0FFFFFFF);
@@ -202,26 +218,27 @@ namespace microspec
 		{
 			// get the address of next state in the table 
 			// 1, set the input symbols as avx2 format; 2, calculate the table address  
-	        avxsymbol_v=_mm256_set_epi32(Inputs_[i+cal[7]],Inputs_[i+cal[6]],Inputs_[i+cal[5]],Inputs_[i+cal[4]],
+			avxsymbol_v=_mm256_set_epi32(Inputs_[i+cal[7]],Inputs_[i+cal[6]],Inputs_[i+cal[5]],Inputs_[i+cal[4]],
 	        	Inputs_[i+cal[3]],Inputs_[i+cal[2]],Inputs_[i+cal[1]],Inputs_[i]);
 	        __m256i addr_v = _mm256_add_epi32(_mm256_mullo_epi32(scurrent_v, _mm256_set1_epi32(nsymbol_)), avxsymbol_v);
 
 	        // access the table to update the states
 			scurrent_v = _mm256_i32gather_epi32 (tableList_, addr_v, 4);
-			mActionSIMD(scurrent_v, tempStore_v[0]);
+			mActionSIMD(scurrent_v, &tempStore_v[0]);
 			scurrent_v = _mm256_and_si256(scurrent_v, avxmask_v);
 	    }
-	    
+
 	    _mm256_store_si256((__m256i*)scurrent, scurrent_v);
-	    _mm256_store_si256(resultsPerChunk, tempStore_v[0]);
+	    _mm256_store_si256((__m256i*)resultsPerChunk, tempStore_v[0]);
 
 	    for(i=0; i<MICROSPEC_SIMDFACTOR; i++)
-	    	mEndingResults->mResutls += resultsPerChunk[i];
+	    	mEndingResults->mResults += resultsPerChunk[i];
 
 		this->re_execute(table, input, objPredictor->getPredictStatePointer(), scurrent, MICROSPEC_SIMDFACTOR);
 
 		printf("The final state is  %d\n", scurrent[MICROSPEC_SIMDFACTOR-1]);
 		this->printResults();
+		cout << endl;
 		//delete []scurrent;
 	}
 
@@ -248,7 +265,7 @@ namespace microspec
 		for(i=0; i<MICROSPEC_UNROLLFACTOR; i++)
 		{
 			scurrent[i]=objPredictor->getPredictState(i);
-			mEndingResultsPerChunk[i].mResutls = 0;
+			mEndingResultsPerChunk[i].mResults = 0;
 		}
 		long bound = length_/MICROSPEC_UNROLLFACTOR;
 
@@ -292,19 +309,20 @@ namespace microspec
 			
 			gap = gap + bound;
 			int temp7 = tableList_[scurrent[7]* nsymbol_ + Inputs_[i+gap]];
-			scurrent[7] = ( & 0X0FFFFFFF );
+			scurrent[7] = ( temp7 & 0X0FFFFFFF );
 			mAction(temp7, &mEndingResultsPerChunk[7]);
 		}
 		for(i=0; i<MICROSPEC_UNROLLFACTOR; i++)
 		{
 			objPredictor->setEndingState(i, scurrent[i]);
-			mEndingResults->mResutls += mEndingResultsPerChunk[i].mResutls;
+			mEndingResults->mResults += mEndingResultsPerChunk[i].mResults;
 		}
 
 		this->re_execute(table, input, objPredictor->getPredictStatePointer(), scurrent, MICROSPEC_UNROLLFACTOR);
 
 		printf("The final state is  %d\n", scurrent[MICROSPEC_UNROLLFACTOR-1]);
 		this->printResults();
+		cout << endl;
 
 		delete []scurrent;		
 	}	
@@ -329,8 +347,7 @@ namespace microspec
     	__m256i addr_v[MICROSPEC_SIMDUNROLLFACTOR];
 		__m256i avxmask_v;
 
-		int* scurrent __attribute__ ((aligned (32)));
-		scurrent= new int [MICROSPEC_SIMDFACTOR];
+		int scurrent[MICROSPEC_SIMDFACTOR] __attribute__ ((aligned (32)));
 
 		// set up the predicted starting states in avx2 format
 		avxmask_v = _mm256_set1_epi32(0XFFFFFFFF);
@@ -378,6 +395,8 @@ namespace microspec
 		this->re_execute(table, input, objPredictor->getPredictStatePointer(), finalStateVec, MICROSPEC_SIMDFACTOR*MICROSPEC_SIMDUNROLLFACTOR);
 
 		printf("The final state is  %d\n", finalStateVec[MICROSPEC_SIMDFACTOR*MICROSPEC_SIMDUNROLLFACTOR-1]);
+		this->printResults();
+		cout << endl;	
 	}
 
 /* Implementation of class SpecDFA_UnrollGather_Single */
@@ -400,8 +419,7 @@ namespace microspec
     	__m256i addr_v[MICROSPEC_SIMDUNROLLFACTOR];
 		__m256i avxmask_v;
 
-		int* scurrent __attribute__ ((aligned (32)));
-		scurrent= new int [MICROSPEC_SIMDFACTOR];
+		int scurrent[MICROSPEC_SIMDFACTOR]__attribute__ ((aligned (32)));
 
 		// set up the predicted starting states in avx2 format
 		avxmask_v = _mm256_set1_epi32(0XFFFFFFFF);
@@ -450,6 +468,8 @@ namespace microspec
 		this->re_execute(table, input, objPredictor->getPredictStatePointer(), finalStateVec, MICROSPEC_SIMDFACTOR*MICROSPEC_SIMDUNROLLFACTOR);
 
 		printf("The final state is  %d\n", finalStateVec[MICROSPEC_SIMDFACTOR*MICROSPEC_SIMDUNROLLFACTOR-1]);
+		this->printResults();
+		cout << endl;
 	}
 
 }

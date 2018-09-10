@@ -42,6 +42,8 @@ namespace microspec
 		if ( (wrongState & 0XF0000000) == 0XF0000000 )
 			dfaResultsPointer->mResults--;
 	}
+
+	// Need to be completed later ... 
 	void accumulateActionSIMD(__m256i stateVector, __m256i* dfaResultsPointer)
 	{
 		;

@@ -18,7 +18,7 @@ namespace microspec
 	// The struct which stores the target results of DFA execution
 	struct DFAResults
 	{
-		int mResutls;
+		int mResults;
 	};
 
 	//	The User defined Actions during DFA transition
