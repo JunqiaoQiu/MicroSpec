@@ -18,7 +18,7 @@ git clone https://github.com/JunqiaoQiu/MicroSpecRepo.git
 
 There are some requirements for building this library: `cmake2.8+` and `gcc4.9+`. 
 
-Since some of the fine-grained speculative FSM parallelization use SIMD instructions, so please check whether your CPU support AVX2 if you want to use all of them:
+Since some of the fine-grained speculative FSM parallelization use SIMD instructions, so please check whether your CPU support AVX2 if you want to use all of the provided techniques:
 ```sh
 cat /proc/cpuinfo | grep flags
 ```
@@ -29,22 +29,22 @@ Build it:
 mkdir build
 cd build
 cmake -DCMAKE_BUILD_TYPE=Release .. 
- # If not use SIMD concerned techniques, try: cmake -DCMAKE_BUILD_TYPE=Release -DAVX2_SUPPORT:BOOL=OFF  ..
+ # If not AVX2 supported, use: cmake -DCMAKE_BUILD_TYPE=Release -DAVX2_SUPPORT:BOOL=OFF  ..
 make 
 ```
 ### Test
 
 There are several test cases under test/, which are used to test the following class / functions.
 
-- MappingRule: The class which defines how to transform the char-type character to an int (e.g., extended ASCII codes)
+- **MappingRule**: The class which defines how to transform the char-type character to an int (e.g., extended ASCII codes)
 
-- Predictor: The class which provides a light weight look back prediction (support both sequential and parallel predictions)
+- **Predictor**: The class which provides a light weight look back prediction (support both sequential and parallel predictions)
 
-- Input: The class which represents the given input streams
+- **Input**: The class which represents the given input streams
 
-- Table: The class which represents basic information of the give DFA, i.e., the transition table and start state.
+- **Table**: The class which represents basic information of the give DFA, i.e., the transition table and start state.
 
-- DFA: The class which provides DFA executions/computations, and most important function is run(Table\*, Input\*). 
+- **DFA**: The class which provides DFA executions/computations, and most important function is *run*(*Table*\*, *Input*\*). 
 
 ## Example Usage
 Here is an example use of different kinds of techniques in **MicroSpec**. 
