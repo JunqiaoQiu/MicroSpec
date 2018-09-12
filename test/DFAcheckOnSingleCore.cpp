@@ -44,48 +44,40 @@ int main(int argc, char* argv[])
 	double SeqTime =  elapsedTime(T1);
 
 	startTime(&T1);
-	DFA* obj_unroll_single = new SpecDFA_Unroll_Single(100);
+	DFA* obj_unroll_single = new SpecDFA_Unroll_Single();
 	obj_unroll_single->run(table_, inputs_);
 	stopTime(&T1);
 	double SpecUnrollSingleTime = elapsedTime(T1);
 
 	startTime(&T1);
-	DFA* obj_gather_single = new SpecDFA_Gather_Single(100);
+	DFA* obj_gather_single = new SpecDFA_Gather_Single();
 	obj_gather_single->run(table_, inputs_);
 	stopTime(&T1);
 	double SpecGatherSingleTime = elapsedTime(T1);
 
 	startTime(&T1);
-	DFA* obj_gatherunroll_single = new SpecDFA_GatherUnroll_Single(100);
+	DFA* obj_gatherunroll_single = new SpecDFA_GatherUnroll_Single();
 	obj_gatherunroll_single->run(table_, inputs_);
 	stopTime(&T1);
 	double SpecGatherUnrollSingleTime = elapsedTime(T1);
 
 	startTime(&T1);
-	DFA* obj_unrollgather_single = new SpecDFA_UnrollGather_Single(100);
+	DFA* obj_unrollgather_single = new SpecDFA_UnrollGather_Single();
 	obj_unrollgather_single->run(table_, inputs_);
 	stopTime(&T1);
 	double SpecUnrollGatherSingleTime = elapsedTime(T1);	
-
-	startTime(&T1);
-	DFA* obj_specPthread = new SpecDFA_Pthread(1000, 4);
-	obj_specPthread->run(table_, inputs_);
-	stopTime(&T1);
-	double SpecPthreadTime = elapsedTime(T1);
 
 	cout << "SeqDFA Execution "<< SeqTime << " s " << endl;
 	cout << "SpecDFA Gather Single Execution "<< SpecGatherSingleTime << " s " << endl;
 	cout << "SpecDFA Unroll Single Execution "<< SpecUnrollSingleTime << " s " << endl;
 	cout << "SpecDFA GatherUnroll Single Execution "<< SpecGatherUnrollSingleTime << " s " << endl;
 	cout << "SpecDFA UnrollGather Single Execution "<< SpecUnrollGatherSingleTime << " s " << endl;
-	cout << "SpecDFA Pthread Execution "<< SpecPthreadTime << " s " << endl;
 
 	cout << endl;
 	cout << "SpecDFA Gather Single Speedup " <<  SeqTime / SpecGatherSingleTime << endl;	
 	cout << "SpecDFA Unroll Single Speedup " <<  SeqTime / SpecUnrollSingleTime << endl;	
 	cout << "SpecDFA GatherUnroll Single Speedup " <<  SeqTime / SpecGatherUnrollSingleTime << endl;	
 	cout << "SpecDFA UnrollGather Single Speedup " <<  SeqTime / SpecUnrollGatherSingleTime << endl;		
-	cout << "SpecDFA Pthread Speedup " <<  SeqTime / SpecPthreadTime << endl;	
 
 	return 0;
 }

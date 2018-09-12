@@ -1,7 +1,10 @@
 #include <iostream>
 #include <sys/sysinfo.h>
+
+#ifdef AVX2_SUPPORT
 #include <smmintrin.h> // sse4.2
 #include <immintrin.h>   // avx
+#endif
 
 #include <pthread.h>
 
@@ -49,6 +52,9 @@ namespace microspec
 			CPU_SET(t, &cpu[t]);
 		}	
 
+		for (t = 0; t < mchunks; t++)
+			mEndingResultsPerChunk[t].mResults = 0;
+
 		for(t=0; t < mthreads; t++)
 		{
 			DFAPassPointer* var;
@@ -56,7 +62,6 @@ namespace microspec
 			var->pointer = this;
 			var->tid = t;
 			var->p_predictor = objPredictor;
-			mEndingResultsPerChunk[t].mResults = 0;
 
 			pthreadErrorCode1 = pthread_create(&threads[t], NULL, callFunc_parallelRun, (void*)var);
 			if (pthreadErrorCode1)
@@ -112,13 +117,91 @@ namespace microspec
 			state_ = temp & 0X0FFFFFFF;
 
 			// Action Function (state_)
+		#ifdef ALLOW_ACTION
 			mAction(temp, &mEndingResultsPerChunk[tid]);
+		#endif
 		}
 		p->setEndingState(tid, state_);
 	}
 
 /* Implementation of 4 fine-grained SpecDFA_Pthread */	
 
+	void SpecDFA_Unroll_Pthread::parallelRun(int tid, Predictor* p)
+	{
+		//cout << "Run on " << sched_getcpu() << endl;
+		const Table* table = p->getTableUsed();
+		const Input* input = p->getInputUsed();
+
+		int* tableList_ = table->getTable();
+		int nsymbol_ = table->getNumSymbol();
+		
+		int* Inputs_ = input->getPointer();
+		long length_ = input->getLength();
+
+		long i,gap;
+		int* scurrent;
+		int* avxsymbol;
+		
+		scurrent = new int [MICROSPEC_UNROLLFACTOR];
+		avxsymbol = new int [MICROSPEC_UNROLLFACTOR];
+	
+		for(i=0; i<MICROSPEC_UNROLLFACTOR; i++)
+			scurrent[i] = p->getPredictState(tid * MICROSPEC_UNROLLFACTOR + i);
+		
+		long bound = length_ / mchunks;
+		long ChunkLength_ = bound * MICROSPEC_UNROLLFACTOR;
+
+		for(i=tid*ChunkLength_; i<bound+tid*ChunkLength_; i++)
+		{
+			gap = 0;
+			int temp0 = tableList_[scurrent[0]*nsymbol_+Inputs_[i+gap]];
+			scurrent[0]=( temp0 & 0X0FFFFFFF );
+
+			gap = gap + bound;
+			int temp1 = tableList_[scurrent[1]*nsymbol_+Inputs_[i+gap]];
+			scurrent[1]=( temp1 & 0X0FFFFFFF );
+
+			gap = gap + bound;
+			int temp2 = tableList_[scurrent[2]*nsymbol_+Inputs_[i+gap]];
+			scurrent[2]=( temp2 & 0X0FFFFFFF );
+
+			gap = gap + bound;
+			int temp3 = tableList_[scurrent[3]*nsymbol_+Inputs_[i+gap]];
+			scurrent[3]=( temp3 & 0X0FFFFFFF );
+
+			gap = gap + bound;
+			int temp4 = tableList_[scurrent[4]*nsymbol_+Inputs_[i+gap]];
+			scurrent[4]=( temp4 & 0X0FFFFFFF );
+
+			gap = gap + bound;
+			int temp5 = tableList_[scurrent[5]*nsymbol_+Inputs_[i+gap]];
+			scurrent[5]=( temp5 & 0X0FFFFFFF );
+
+			gap = gap + bound;
+			int temp6 = tableList_[scurrent[6]*nsymbol_+Inputs_[i+gap]];
+			scurrent[6]=( temp6 & 0X0FFFFFFF );
+
+			gap = gap + bound;
+			int temp7 = tableList_[scurrent[7]*nsymbol_+Inputs_[i+gap]];
+			scurrent[7]=( temp7 & 0X0FFFFFFF );
+
+		#ifdef ALLOW_ACTION
+			mAction(temp0, &mEndingResultsPerChunk[0+tid*MICROSPEC_UNROLLFACTOR]);
+			mAction(temp1, &mEndingResultsPerChunk[1+tid*MICROSPEC_UNROLLFACTOR]);
+			mAction(temp2, &mEndingResultsPerChunk[2+tid*MICROSPEC_UNROLLFACTOR]);
+			mAction(temp3, &mEndingResultsPerChunk[3+tid*MICROSPEC_UNROLLFACTOR]);
+			mAction(temp4, &mEndingResultsPerChunk[4+tid*MICROSPEC_UNROLLFACTOR]);
+			mAction(temp5, &mEndingResultsPerChunk[5+tid*MICROSPEC_UNROLLFACTOR]);
+			mAction(temp6, &mEndingResultsPerChunk[6+tid*MICROSPEC_UNROLLFACTOR]);
+			mAction(temp7, &mEndingResultsPerChunk[6+tid*MICROSPEC_UNROLLFACTOR]);
+		#endif
+		}
+
+		for(i=0; i<MICROSPEC_UNROLLFACTOR; i++)
+			p->setEndingState(tid*MICROSPEC_UNROLLFACTOR+i, scurrent[i]);			
+	}	
+
+#ifdef AVX2_SUPPORT
 	void SpecDFA_Gather_Pthread::parallelRun(int tid, Predictor* p)
 	{
 		const Table* table = p->getTableUsed();
@@ -136,8 +219,7 @@ namespace microspec
 		__m256i avxsymbol_v;
 
 		__m256i avxmask_v;
-		int* scurrent __attribute__ ((aligned (32)));
-		scurrent= new int [MICROSPEC_SIMDFACTOR];
+		int scurrent [MICROSPEC_SIMDFACTOR]__attribute__ ((aligned (32)));
 
 		avxmask_v = _mm256_set1_epi32(0XFFFFFFFF);
 		for(i=0; i<MICROSPEC_SIMDFACTOR; i++)
@@ -165,67 +247,12 @@ namespace microspec
 			scurrent_v = _mm256_and_si256(scurrent_v, avxmask_v);
     	}    
 
-    	printf("Current Cores is %d \n", sched_getcpu());
+    	//printf("Current Cores is %d \n", sched_getcpu());
     	
     	_mm256_store_si256((__m256i*)scurrent, scurrent_v);
 
     	for(i = 0; i < MICROSPEC_SIMDFACTOR; i++)
 			p->setEndingState(tid*MICROSPEC_SIMDFACTOR+i, scurrent[i]);
-	}
-
-	void SpecDFA_Unroll_Pthread::parallelRun(int tid, Predictor* p)
-	{
-		const Table* table = p->getTableUsed();
-		const Input* input = p->getInputUsed();
-
-		int* tableList_ = table->getTable();
-		int nsymbol_ = table->getNumSymbol();
-		
-		int* Inputs_ = input->getPointer();
-		long length_ = input->getLength();
-
-		long i,gap;
-		int* scurrent;
-		int* avxsymbol;
-		
-		scurrent = new int [MICROSPEC_UNROLLFACTOR];
-		avxsymbol = new int [MICROSPEC_UNROLLFACTOR];
-	
-		for(i=0; i<MICROSPEC_UNROLLFACTOR; i++)
-			scurrent[i] = p->getPredictState(tid * MICROSPEC_UNROLLFACTOR + i);
-		
-		long ChunkLength_ = length_ / mthreads;
-		long bound = ChunkLength_ / MICROSPEC_UNROLLFACTOR;
-
-		for(i=tid*ChunkLength_; i<bound+tid*ChunkLength_; i++)
-		{
-			gap = 0;
-			scurrent[0]=(tableList_[scurrent[0]*nsymbol_+Inputs_[i+gap]] & 0X0FFFFFFF );
-
-			gap = gap + bound;
-			scurrent[1]=(tableList_[scurrent[1]*nsymbol_+Inputs_[i+gap]] & 0X0FFFFFFF );
-
-			gap = gap + bound;
-			scurrent[2]=(tableList_[scurrent[2]*nsymbol_+Inputs_[i+gap]] & 0X0FFFFFFF );
-
-			gap = gap + bound;
-			scurrent[3]=(tableList_[scurrent[3]*nsymbol_+Inputs_[i+gap]] & 0X0FFFFFFF );
-
-			gap = gap + bound;
-			scurrent[4]=(tableList_[scurrent[4]*nsymbol_+Inputs_[i+gap]] & 0X0FFFFFFF );
-
-			gap = gap + bound;
-			scurrent[5]=(tableList_[scurrent[5]*nsymbol_+Inputs_[i+gap]] & 0X0FFFFFFF );
-
-			gap = gap + bound;
-			scurrent[6]=(tableList_[scurrent[6]*nsymbol_+Inputs_[i+gap]] & 0X0FFFFFFF );
-
-			gap = gap + bound;
-			scurrent[7]=(tableList_[scurrent[7]*nsymbol_+Inputs_[i+gap]] & 0X0FFFFFFF );
-		}
-
-		for(i=0; i<MICROSPEC_UNROLLFACTOR; i++)
-			p->setEndingState(tid*MICROSPEC_UNROLLFACTOR+i, scurrent[i]);	
 	}
 
 	void SpecDFA_GatherUnroll_Pthread::parallelRun(int tid, Predictor* p)
@@ -245,8 +272,7 @@ namespace microspec
     	__m256i addr_v[MICROSPEC_SIMDUNROLLFACTOR];
 		__m256i avxmask_v;
 
-		int* scurrent __attribute__ ((aligned (32)));
-		scurrent= new int [MICROSPEC_SIMDFACTOR];
+		int scurrent[MICROSPEC_SIMDFACTOR] __attribute__ ((aligned (32)));
 
 		// set up the predicted starting states in avx2 format
 		avxmask_v = _mm256_set1_epi32(0XFFFFFFFF);
@@ -307,8 +333,7 @@ namespace microspec
     	__m256i addr_v[MICROSPEC_SIMDUNROLLFACTOR];
 		__m256i avxmask_v;
 
-		int* scurrent __attribute__ ((aligned (32)));
-		scurrent= new int [MICROSPEC_SIMDFACTOR];
+		int scurrent[MICROSPEC_SIMDFACTOR] __attribute__ ((aligned (32)));
 
 		// set up the predicted starting states in avx2 format
 		avxmask_v = _mm256_set1_epi32(0XFFFFFFFF);
@@ -351,5 +376,5 @@ namespace microspec
 	        	p->setEndingState(tid*MICROSPEC_SIMDUNROLLFACTOR*MICROSPEC_SIMDFACTOR + i*MICROSPEC_SIMDFACTOR+j , scurrent[j]);	
 	    }	    			
 	}
-
+#endif
 }

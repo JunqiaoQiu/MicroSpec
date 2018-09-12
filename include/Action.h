@@ -9,8 +9,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#ifdef AVX2_SUPPORT
 #include <smmintrin.h> // sse4.2
-#include <immintrin.h>   // avx
+#include <immintrin.h>   // avx.
+#endif
 
 namespace microspec
 {
@@ -33,13 +35,17 @@ namespace microspec
 	void doNothing(int state, DFAResults* dfaResultsPointer);
 	void doNothingReExecute(int correctState, int wrongState, 
 		DFAResults* dfaResultsPointer);
+#ifdef AVX2_SUPPORT
 	void doNothingSIMD(__m256i stateVector, __m256i* dfaResultsPointer);
+#endif
 
 	// Accumulate action, which adds 1 to results when meeting accept
 	void accumulateAction(int state, DFAResults* dfaResultsPointer);
 	void accumulateActionReExecute(int correctState, int wrongState, 
 		DFAResults* dfaResultsPointer);
+#ifdef AVX2_SUPPORT	
 	void accumulateActionSIMD(__m256i stateVector, __m256i* dfaResultsPointer);	
+#endif
 
 }
 

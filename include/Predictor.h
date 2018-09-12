@@ -10,13 +10,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <smmintrin.h> // sse4.2
-#include <immintrin.h>   // avx
-
 #include "Resources.h"
 
 namespace microspec 
 {
+	const int DefaultLookBackLength = 100;
+
 	class Predictor;
 
 	// @Brief The structure stores the pointer of a predictor object 
@@ -32,9 +31,13 @@ namespace microspec
 	public:
 		Predictor();
 		Predictor(const Table* transTable, const Input* inputStream, 
+			int numThreads, int numChunks);		
+		Predictor(const Table* transTable, const Input* inputStream, 
 			int numThreads, int numChunks, long lookBackLength);
 		~Predictor();
 
+		static Predictor* constructPredictor(const Table* transTable, const Input* inputStream, 
+			const int numThreads, const int numChunks);	
 		static Predictor* constructPredictor(const Table* transTable, const Input* inputStream, 
 			const int numThreads, const int numChunks, const long lookBackLength);	
 
@@ -55,9 +58,11 @@ namespace microspec
 		int* getPredictStatePointer() const;
 		int* getEndingStatePointer() const;
 
-	private:
+		// @Brief Provide the look back start location @predictStartIndex 
+		// in the input stream, and then return the predicted state
 		int seqPredict(long predictStartIndex);
-		
+
+	private:	
 		// @ Brief The two private functions are used for ParallelPrediction
 		static void* callFunc_parPredict(void* args_predictorPointerAndThread);
 	 	void parPredict(int threadID);

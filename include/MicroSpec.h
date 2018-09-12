@@ -17,10 +17,8 @@ namespace microspec
 {
 	// unroll factor in SpecUnroll
 	#define MICROSPEC_UNROLLFACTOR 8 
-
 	// unroll factor in SpecUnroll+ and SpecGather+
 	#define MICROSPEC_SIMDUNROLLFACTOR 2
-
 	// SIMD factor
 	#define MICROSPEC_SIMDFACTOR 8
 
@@ -71,6 +69,17 @@ namespace microspec
 		int mLookBack;
 	};
 
+	class SpecDFA_Unroll_Single:public SpecDFA
+	{
+	public:
+		SpecDFA_Unroll_Single():SpecDFA(){}
+		SpecDFA_Unroll_Single(int lookBackLength):SpecDFA(lookBackLength){}
+		virtual ~SpecDFA_Unroll_Single() {}
+
+		virtual void run(const Table* table, const Input* input);		
+	};	
+
+#ifdef AVX2_SUPPORT
 	class SpecDFA_Gather_Single:public SpecDFA
 	{
 	public:
@@ -85,35 +94,34 @@ namespace microspec
 		actionSIMD mActionSIMD;
 	};
 
-	class SpecDFA_Unroll_Single:public SpecDFA
-	{
-	public:
-		SpecDFA_Unroll_Single():SpecDFA(){}
-		SpecDFA_Unroll_Single(int lookBackLength):SpecDFA(lookBackLength){}
-		virtual ~SpecDFA_Unroll_Single() {}
-
-		virtual void run(const Table* table, const Input* input);		
-	};
-
 	class SpecDFA_GatherUnroll_Single:public SpecDFA
 	{
 	public:
-		SpecDFA_GatherUnroll_Single():SpecDFA(){}
-		SpecDFA_GatherUnroll_Single(int lookBackLength):SpecDFA(lookBackLength){}
+		SpecDFA_GatherUnroll_Single();
+		SpecDFA_GatherUnroll_Single(int lookBackLength);
 		virtual ~SpecDFA_GatherUnroll_Single() {}
 
+		virtual void setAction(char* reExecuteActionType);
 		virtual void run(const Table* table, const Input* input);	
+		
+	protected:
+		actionSIMD mActionSIMD;	
 	};
 
 	class SpecDFA_UnrollGather_Single:public SpecDFA
 	{
 	public:
-		SpecDFA_UnrollGather_Single():SpecDFA(){}
-		SpecDFA_UnrollGather_Single(int lookBackLength):SpecDFA(lookBackLength){}
+		SpecDFA_UnrollGather_Single();
+		SpecDFA_UnrollGather_Single(int lookBackLength);
 		virtual ~SpecDFA_UnrollGather_Single() {}
 
-		virtual void run(const Table* table, const Input* input);		
+		virtual void setAction(char* reExecuteActionType);
+		virtual void run(const Table* table, const Input* input);	
+		
+	protected:
+		actionSIMD mActionSIMD;	
 	};
+#endif
 
 }	// end of namespace microspec
 

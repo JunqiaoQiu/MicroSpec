@@ -11,5 +11,9 @@ add_executable (predictorCheck predictorCheck.cpp)
 target_link_libraries(predictorCheck ${PROJECT_NAME})
 
 # Test 4
-add_executable (allDFAcheck allDFAcheck.cpp)
-target_link_libraries(allDFAcheck ${PROJECT_NAME})
+add_executable (DFAcheckOnSingleCore DFAcheckOnSingleCore.cpp)
+target_link_libraries(DFAcheckOnSingleCore ${PROJECT_NAME})
+
+# Test 5
+add_executable (DFAcheckOnMultipleCores DFAcheckOnMultipleCores.cpp)
+target_link_libraries(DFAcheckOnMultipleCores ${PROJECT_NAME})

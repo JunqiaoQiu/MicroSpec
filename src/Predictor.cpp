@@ -9,9 +9,6 @@
 #include <vector>
 #include <sys/sysinfo.h>
 
-#include <smmintrin.h> // sse4.2
-#include <immintrin.h>   // avx
-
 #include "Resources.h"
 #include "Predictor.h"
 
@@ -29,6 +26,20 @@ namespace microspec
 		mPredictStates = NULL;
 		mEndingStates = NULL;
 	}
+
+	Predictor::Predictor(const Table* tb, const Input* ints, int nT, int nC)
+	{
+		srand (time(NULL));
+		mThreads = nT;
+		mChunks = nC;
+		mLookBack = DefaultLookBackLength;
+
+		mTransTable = tb;
+		mInputs = ints;
+
+		mPredictStates = new int [mChunks];
+		mEndingStates = new int [mChunks];	
+	}	
 
 	Predictor::Predictor(const Table* tb, const Input* ints, int nT, int nC, long nLB)
 	{
@@ -48,6 +59,13 @@ namespace microspec
 	{
 		delete []mPredictStates;
 		delete []mEndingStates;
+	}
+
+	Predictor* Predictor::constructPredictor(const Table* table, const Input* input, 
+			const int nthread, const int nchunk)
+	{
+		Predictor* obj = new Predictor(table, input, nthread, nchunk);
+		return obj;
 	}
 
 	Predictor* Predictor::constructPredictor(const Table* table, const Input* input, 

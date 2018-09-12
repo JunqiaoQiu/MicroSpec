@@ -26,9 +26,6 @@ namespace microspec
 		;
 	}
 
-
-// Accumulate action, which adds 1 to results when meeting accept
-
 	void accumulateAction(int state, DFAResults* dfaResultsPointer)
 	{
 		if ( (state & 0XF0000000) == 0XF0000000 )
@@ -42,11 +39,15 @@ namespace microspec
 		if ( (wrongState & 0XF0000000) == 0XF0000000 )
 			dfaResultsPointer->mResults--;
 	}
-
-	// Need to be completed later ... 
+ 
 	void accumulateActionSIMD(__m256i stateVector, __m256i* dfaResultsPointer)
 	{
-		;
+		__m256i maskV = _mm256_set1_epi32(0XF0000000);
+		__m256i maskV2 = _mm256_set1_epi32(0X00000001);
+		__m256i addV = _mm256_cmpeq_epi32(_mm256_and_si256(stateVector, maskV), maskV);
+		addV = _mm256_and_si256(addV, maskV2);
+
+		dfaResultsPointer[0] = _mm256_add_epi32(dfaResultsPointer[0], addV);
 	}
 
 }
