@@ -27,8 +27,8 @@ namespace microspec
 	{
 	public:
 		SpecDFA_Pthread():SpecDFA(){}
-		SpecDFA_Pthread(int threads_used):SpecDFA(), mthreads(threads_used), mchunks(threads_used){}
-		SpecDFA_Pthread(int look_back_length, int threads_used):SpecDFA(look_back_length), mthreads(threads_used), mchunks(threads_used){}	
+		SpecDFA_Pthread(int threads_used):SpecDFA(), mThreads(threads_used), mChunks(threads_used){}
+		SpecDFA_Pthread(int look_back_length, int threads_used):SpecDFA(look_back_length), mThreads(threads_used), mChunks(threads_used){}	
 		virtual ~SpecDFA_Pthread() {}
 
 		virtual void run(const Table* table, const Input* input);
@@ -38,16 +38,16 @@ namespace microspec
 		virtual void parallelRun(int tid, Predictor* p);
 
 	protected:
-		int mthreads;
-		int mchunks;
+		int mThreads;
+		int mChunks;
 	};
 
 	class SpecDFA_Unroll_Pthread:public SpecDFA_Pthread
 	{
 	public:
 		SpecDFA_Unroll_Pthread():SpecDFA_Pthread(){}
-		SpecDFA_Unroll_Pthread(int threads_used):SpecDFA_Pthread(threads_used){mchunks = threads_used * MICROSPEC_UNROLLFACTOR;}	
-		SpecDFA_Unroll_Pthread(int look_back_length, int threads_used):SpecDFA_Pthread(look_back_length, threads_used){mchunks = threads_used * MICROSPEC_UNROLLFACTOR;}	
+		SpecDFA_Unroll_Pthread(int threads_used):SpecDFA_Pthread(threads_used){mChunks = threads_used * MICROSPEC_UNROLLFACTOR;}	
+		SpecDFA_Unroll_Pthread(int look_back_length, int threads_used):SpecDFA_Pthread(look_back_length, threads_used){mChunks = threads_used * MICROSPEC_UNROLLFACTOR;}	
 		virtual ~SpecDFA_Unroll_Pthread() {}
 		
 	protected:
@@ -59,8 +59,8 @@ namespace microspec
 	{
 	public:
 		SpecDFA_Gather_Pthread():SpecDFA_Pthread(){}
-		SpecDFA_Gather_Pthread(int threads_used):SpecDFA_Pthread(threads_used){mchunks = threads_used * MICROSPEC_SIMDFACTOR;}	
-		SpecDFA_Gather_Pthread(int look_back_length, int threads_used):SpecDFA_Pthread(look_back_length, threads_used){mchunks = threads_used * MICROSPEC_SIMDFACTOR;}	
+		SpecDFA_Gather_Pthread(int threads_used):SpecDFA_Pthread(threads_used){mChunks = threads_used * MICROSPEC_SIMDFACTOR;}	
+		SpecDFA_Gather_Pthread(int look_back_length, int threads_used):SpecDFA_Pthread(look_back_length, threads_used){mChunks = threads_used * MICROSPEC_SIMDFACTOR;}	
 		virtual ~SpecDFA_Gather_Pthread() {}
 		
 	protected:
@@ -71,8 +71,8 @@ namespace microspec
 	{
 	public:
 		SpecDFA_GatherUnroll_Pthread():SpecDFA_Pthread(){}
-		SpecDFA_GatherUnroll_Pthread(int threads_used):SpecDFA_Pthread(threads_used){mchunks = threads_used * MICROSPEC_SIMDFACTOR * MICROSPEC_SIMDUNROLLFACTOR;}	
-		SpecDFA_GatherUnroll_Pthread(int look_back_length, int threads_used):SpecDFA_Pthread(look_back_length, threads_used){mchunks = threads_used * MICROSPEC_SIMDFACTOR * MICROSPEC_SIMDUNROLLFACTOR;}	
+		SpecDFA_GatherUnroll_Pthread(int threads_used):SpecDFA_Pthread(threads_used){mChunks = threads_used * MICROSPEC_SIMDFACTOR * MICROSPEC_SIMDUNROLLFACTOR;}	
+		SpecDFA_GatherUnroll_Pthread(int look_back_length, int threads_used):SpecDFA_Pthread(look_back_length, threads_used){mChunks = threads_used * MICROSPEC_SIMDFACTOR * MICROSPEC_SIMDUNROLLFACTOR;}	
 		virtual ~SpecDFA_GatherUnroll_Pthread() {}
 		
 	protected:
@@ -83,8 +83,8 @@ namespace microspec
 	{
 	public:
 		SpecDFA_UnrollGather_Pthread():SpecDFA_Pthread(){}
-		SpecDFA_UnrollGather_Pthread(int threads_used):SpecDFA_Pthread(threads_used){mchunks = threads_used * MICROSPEC_SIMDUNROLLFACTOR * MICROSPEC_SIMDFACTOR;}	
-		SpecDFA_UnrollGather_Pthread(int look_back_length, int threads_used):SpecDFA_Pthread(look_back_length, threads_used){mchunks = threads_used * MICROSPEC_SIMDUNROLLFACTOR * MICROSPEC_SIMDFACTOR;}	
+		SpecDFA_UnrollGather_Pthread(int threads_used):SpecDFA_Pthread(threads_used){mChunks = threads_used * MICROSPEC_SIMDUNROLLFACTOR * MICROSPEC_SIMDFACTOR;}	
+		SpecDFA_UnrollGather_Pthread(int look_back_length, int threads_used):SpecDFA_Pthread(look_back_length, threads_used){mChunks = threads_used * MICROSPEC_SIMDUNROLLFACTOR * MICROSPEC_SIMDFACTOR;}	
 		virtual ~SpecDFA_UnrollGather_Pthread() {}
 		
 	protected:

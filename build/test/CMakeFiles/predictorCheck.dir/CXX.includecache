@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+.././include/Predictor.h
+stdio.h
+-
+stdlib.h
+-
+Resources.h
+.././include/Resources.h
+
+.././include/Resources.h
+stdlib.h
+-
+stdio.h
+-
+
+.././include/Timer.h
+sys/time.h
+-
+
+/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/test/predictorCheck.cpp
+iostream
+-
+stdlib.h
+-
+stdio.h
+-
+string
+-
+Timer.h
+/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/test/Timer.h
+Resources.h
+/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/test/Resources.h
+Predictor.h
+/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/test/Predictor.h
+

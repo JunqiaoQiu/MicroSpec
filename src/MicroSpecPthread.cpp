@@ -31,17 +31,17 @@ namespace microspec
 		int* Inputs_ = input->getPointer();
 		int length_ = input->getLength();
 
-		Predictor* objPredictor = Predictor::constructPredictor(table, input, mthreads, mchunks, mLookBack);
+		Predictor* objPredictor = Predictor::constructPredictor(table, input, mThreads, mChunks, mLookBack);
 		objPredictor->parallelPrediction();
-		mEndingResultsPerChunk = new DFAResults [mchunks];
+		mEndingResultsPerChunk = new DFAResults [mChunks];
 
 		//PTHREAD--------------------------------
 		int pthreadErrorCode1, pthreadErrorCode2;
 		long t;
 		pthread_t* threads;			
-		threads=(pthread_t*)malloc(sizeof(pthread_t)* mthreads);
+		threads=(pthread_t*)malloc(sizeof(pthread_t)* mThreads);
 		cpu_set_t* cpu;		// thread binding variables
-		int MAXCPU = (mthreads > get_nprocs() ? get_nprocs():mthreads);
+		int MAXCPU = (mThreads > get_nprocs() ? get_nprocs():mThreads);
 		cpu=(cpu_set_t*)malloc(sizeof(cpu_set_t) * MAXCPU);
 		//PTHREAD-------------------------------	
 
@@ -52,10 +52,10 @@ namespace microspec
 			CPU_SET(t, &cpu[t]);
 		}	
 
-		for (t = 0; t < mchunks; t++)
+		for (t = 0; t < mChunks; t++)
 			mEndingResultsPerChunk[t].mResults = 0;
 
-		for(t=0; t < mthreads; t++)
+		for(t=0; t < mThreads; t++)
 		{
 			DFAPassPointer* var;
 			var = new DFAPassPointer();
@@ -71,20 +71,20 @@ namespace microspec
 			}
 			pthreadErrorCode2 = pthread_setaffinity_np(threads[t], sizeof(cpu_set_t), &cpu[t%MAXCPU]);
 		}
-		for(t=0; t< mthreads; t++)
+		for(t=0; t< mThreads; t++)
 	    	pthread_join(threads[t], NULL);
 
 	    int* currentfinal;
-	    currentfinal = new int [mchunks];
-	    for (t = 0; t < mchunks; t++)
+	    currentfinal = new int [mChunks];
+	    for (t = 0; t < mChunks; t++)
 	    {
 	    	currentfinal[t] = objPredictor->getEndingState(t);
 	    	mEndingResults->mResults += mEndingResultsPerChunk[t].mResults;
 	    }
 
-		this->re_execute(table, input, objPredictor->getPredictStatePointer(), currentfinal, mchunks);
+		this->re_execute(table, input, objPredictor->getPredictStatePointer(), currentfinal, mChunks);
 
-		printf("The final state is  %d\n", currentfinal[mchunks-1]);
+		printf("The final state is  %d\n", currentfinal[mChunks-1]);
 		this->printResults();
 		cout << endl;
 	}
@@ -109,7 +109,7 @@ namespace microspec
 		long length_ = input->getLength();
 
 		int state_ = p->getPredictState(tid);
-		long ChunkLength_ = length_ / mthreads;
+		long ChunkLength_ = length_ / mThreads;
 
 		for (long i = tid * ChunkLength_; i < (tid + 1) * ChunkLength_; i++)
 		{
@@ -148,7 +148,7 @@ namespace microspec
 		for(i=0; i<MICROSPEC_UNROLLFACTOR; i++)
 			scurrent[i] = p->getPredictState(tid * MICROSPEC_UNROLLFACTOR + i);
 		
-		long bound = length_ / mchunks;
+		long bound = length_ / mChunks;
 		long ChunkLength_ = bound * MICROSPEC_UNROLLFACTOR;
 
 		for(i=tid*ChunkLength_; i<bound+tid*ChunkLength_; i++)
@@ -227,7 +227,7 @@ namespace microspec
 		scurrent_v=_mm256_maskload_epi32 ((int*)scurrent, avxmask_v);	
 		avxmask_v  = _mm256_set1_epi32(0X0FFFFFFF);
 
-		long ChunkLength_ = length_ / mthreads;
+		long ChunkLength_ = length_ / mThreads;
 		long bound = ChunkLength_ / MICROSPEC_SIMDFACTOR;
 
 		long cal[8];
@@ -285,7 +285,7 @@ namespace microspec
 		}
 		avxmask_v  = _mm256_set1_epi32(0X0FFFFFFF);
 
-		long bound = length_ / mchunks;
+		long bound = length_ / mChunks;
 
 		long cal[MICROSPEC_SIMDUNROLLFACTOR][MICROSPEC_SIMDFACTOR];
 		for(i=0; i<MICROSPEC_SIMDUNROLLFACTOR; i++)
@@ -346,7 +346,7 @@ namespace microspec
 		}
 		avxmask_v  = _mm256_set1_epi32(0X0FFFFFFF);
 
-		long bound = length_ / mchunks;
+		long bound = length_ / mChunks;
 
 		long cal[MICROSPEC_SIMDUNROLLFACTOR][MICROSPEC_SIMDFACTOR];
 		for(i=0; i<MICROSPEC_SIMDUNROLLFACTOR; i++)

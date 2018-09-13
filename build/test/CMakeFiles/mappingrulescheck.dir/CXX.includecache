@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+.././include/Resources.h
+stdlib.h
+-
+stdio.h
+-
+
+/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/test/mappingrulescheck.cpp
+iostream
+-
+stdlib.h
+-
+stdio.h
+-
+string
+-
+Resources.h
+/home/jqiu004/Desktop/Project/RepositoryRefactoring/MicroSpecRepo/test/Resources.h
+

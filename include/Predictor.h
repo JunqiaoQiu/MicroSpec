@@ -29,11 +29,7 @@ namespace microspec
 	class Predictor
 	{
 	public:
-		Predictor();
-		Predictor(const Table* transTable, const Input* inputStream, 
-			int numThreads, int numChunks);		
-		Predictor(const Table* transTable, const Input* inputStream, 
-			int numThreads, int numChunks, long lookBackLength);
+		Predictor();		
 		~Predictor();
 
 		static Predictor* constructPredictor(const Table* transTable, const Input* inputStream, 
@@ -41,6 +37,13 @@ namespace microspec
 		static Predictor* constructPredictor(const Table* transTable, const Input* inputStream, 
 			const int numThreads, const int numChunks, const long lookBackLength);	
 
+	protected:
+		Predictor(const Table* transTable, const Input* inputStream, 
+			int numThreads, int numChunks);		
+		Predictor(const Table* transTable, const Input* inputStream, 
+			int numThreads, int numChunks, long lookBackLength);		
+	public:
+		
 		// @Brief function @sequentialPrediction provides single core prediction, while 
 		// @parallelPrediction provides parallel prediction based on mThreads. 
 		// Will construct array @mPredictStates and @mEndingStates.
