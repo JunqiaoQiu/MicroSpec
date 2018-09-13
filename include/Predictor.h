@@ -65,6 +65,10 @@ namespace microspec
 		// in the input stream, and then return the predicted state
 		int seqPredict(long predictStartIndex);
 
+		const int getMaxThreads() const;
+		const int getMaxChunks() const;
+		const long getLookBackLength() const;
+
 	private:	
 		// @ Brief The two private functions are used for ParallelPrediction
 		static void* callFunc_parPredict(void* args_predictorPointerAndThread);

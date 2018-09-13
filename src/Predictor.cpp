@@ -234,4 +234,18 @@ namespace microspec
 		return mInputs;
 	}
 
+	const int Predictor::getMaxThreads() const
+	{
+		return mThreads;
+	}
+	
+	const int Predictor::getMaxChunks() const
+	{
+		return mChunks;
+	}
+
+	const long Predictor::getLookBackLength() const
+	{
+		return mLookBack;
+	}
 }

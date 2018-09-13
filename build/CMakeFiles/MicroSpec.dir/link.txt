@@ -1,2 +1,0 @@
-/opt/rh/devtoolset-7/root/usr/bin/ar qc libMicroSpec.a  CMakeFiles/MicroSpec.dir/src/Action.cpp.o CMakeFiles/MicroSpec.dir/src/MicroSpec.cpp.o CMakeFiles/MicroSpec.dir/src/MicroSpecPthread.cpp.o CMakeFiles/MicroSpec.dir/src/Predictor.cpp.o CMakeFiles/MicroSpec.dir/src/Resources.cpp.o CMakeFiles/MicroSpec.dir/src/Timer.cpp.o
-/opt/rh/devtoolset-7/root/usr/bin/ranlib libMicroSpec.a
