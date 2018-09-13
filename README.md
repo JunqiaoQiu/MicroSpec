@@ -36,15 +36,15 @@ make
 
 There are several test cases under test/, which are used to test the following class / functions.
 
-- **MappingRule**: The class which defines how to transform the char-type character to an int (e.g., extended ASCII codes)
+- **MappingRule**: defines how to transform the char-type character to an int (e.g., extended ASCII codes)
 
-- **Predictor**: The class which provides a light weight look back prediction (support both sequential and parallel predictions)
+- **Predictor**: provides a light weight look back prediction (support both sequential and parallel predictions)
 
-- **Input**: The class which represents the given input streams
+- **Input**: represents the given input streams
 
-- **Table**: The class which represents basic information of the give DFA, i.e., the transition table and start state.
+- **Table**: represents basic information of the give DFA, i.e., the transition table and start state.
 
-- **DFA**: The class which provides DFA executions/computations, and most important function is *run*(*Table*\*, *Input*\*). 
+- **DFA**: provides DFA executions/computations, and the most important function in it is *run*(*Table*\*, *Input*\*). 
 
 ## Example Usage
 Here is an example use of different kinds of techniques in **MicroSpec**. 
