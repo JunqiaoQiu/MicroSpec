@@ -70,7 +70,7 @@ namespace microspec
 			#endif
 		}
 
-		printf("The final state is  %d\n", state_);
+		printf("The final state (Seq) is  %d\n", state_);
 		this->printResults();
 		cout << endl;
 	}
@@ -238,7 +238,7 @@ namespace microspec
 
 		this->re_execute(table, input, objPredictor->getPredictStatePointer(), scurrent, MICROSPEC_UNROLLFACTOR);
 
-		printf("The final state is  %d\n", scurrent[MICROSPEC_UNROLLFACTOR-1]);
+		printf("The final state (specUnroll 1) is  %d\n", scurrent[MICROSPEC_UNROLLFACTOR-1]);
 		this->printResults();
 		cout << endl;
 
@@ -338,7 +338,7 @@ namespace microspec
 
 		this->re_execute(table, input, objPredictor->getPredictStatePointer(), scurrent, MICROSPEC_SIMDFACTOR);
 
-		printf("The final state is  %d\n", scurrent[MICROSPEC_SIMDFACTOR-1]);
+		printf("The final state (specGather 1) is  %d\n", scurrent[MICROSPEC_SIMDFACTOR-1]);
 		this->printResults();
 		cout << endl;
 		//delete []scurrent;
@@ -449,7 +449,7 @@ namespace microspec
 
 		this->re_execute(table, input, objPredictor->getPredictStatePointer(), finalStateVec, MICROSPEC_SIMDFACTOR*MICROSPEC_SIMDUNROLLFACTOR);
 
-		printf("The final state is  %d\n", finalStateVec[MICROSPEC_SIMDFACTOR*MICROSPEC_SIMDUNROLLFACTOR-1]);
+		printf("The final state (specGather+ 1) is  %d\n", finalStateVec[MICROSPEC_SIMDFACTOR*MICROSPEC_SIMDUNROLLFACTOR-1]);
 		this->printResults();
 		cout << endl;	
 	}
@@ -561,7 +561,7 @@ namespace microspec
 	    // Re-execution after finishing parallel execution
 		this->re_execute(table, input, objPredictor->getPredictStatePointer(), finalStateVec, MICROSPEC_SIMDFACTOR*MICROSPEC_SIMDUNROLLFACTOR);
 
-		printf("The final state is  %d\n", finalStateVec[MICROSPEC_SIMDFACTOR*MICROSPEC_SIMDUNROLLFACTOR-1]);
+		printf("The final state (specUnroll+ 1) is  %d\n", finalStateVec[MICROSPEC_SIMDFACTOR*MICROSPEC_SIMDUNROLLFACTOR-1]);
 		this->printResults();
 		cout << endl;
 	}

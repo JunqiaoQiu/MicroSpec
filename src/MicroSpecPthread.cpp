@@ -84,7 +84,7 @@ namespace microspec
 
 		this->re_execute(table, input, objPredictor->getPredictStatePointer(), currentfinal, mChunks);
 
-		printf("The final state is  %d\n", currentfinal[mChunks-1]);
+		printf("The final state (Spec %d) is  %d\n", mChunks, currentfinal[mChunks-1]);
 		this->printResults();
 		cout << endl;
 	}
