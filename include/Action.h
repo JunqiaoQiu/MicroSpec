@@ -26,7 +26,9 @@ namespace microspec
 	//	The User defined Actions during DFA transition
 	typedef void(*action)(int, DFAResults*);
 	typedef void(*actionReExecute)(int, int, DFAResults*);
+#ifdef AVX2_SUPPORT	
 	typedef void(*actionSIMD)(__m256i, __m256i*);
+#endif
 
 	// void setAction(func f_);
 	// func getAction() const;	
