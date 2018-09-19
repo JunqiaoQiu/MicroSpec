@@ -11,7 +11,7 @@
 You can clone this repository by using git:
 
 ```sh
-git clone https://github.com/JunqiaoQiu/MicroSpecRepo.git
+git clone https://github.com/JunqiaoQiu/MicroSpec.git
 ```
 
 ### Install and Build
