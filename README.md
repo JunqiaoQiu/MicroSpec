@@ -1,4 +1,4 @@
-# MicroSpecRepo
+# MicroSpec
 
 **MicroSpec** is a C++ library which for the first time, exposes fine-grained speculative parallelism to FSM computations. 
 
