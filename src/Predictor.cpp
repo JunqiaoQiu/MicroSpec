@@ -9,11 +9,8 @@
 #include <vector>
 #include <sys/sysinfo.h>
 
-#include <smmintrin.h> // sse4.2
-#include <immintrin.h>   // avx
-
-#include "Resources.hpp"
-#include "Predictor.hpp"
+#include "Resources.h"
+#include "Predictor.h"
 
 using namespace std;
 
@@ -23,87 +20,107 @@ namespace microspec
 	{
 		mThreads = 0;
 		mChunks = 0;
-		mLook_Back = 0;
-		mTable_ = NULL;
-		mInputs_ = NULL;
-		pthread_predict = NULL;
-		pthread_final = NULL;
+		mLookBack = 0;
+		mTransTable = NULL;
+		mInputs = NULL;
+		mPredictStates = NULL;
+		mEndingStates = NULL;
 	}
+
+	Predictor::Predictor(const Table* tb, const Input* ints, int nT, int nC)
+	{
+		srand (time(NULL));
+		mThreads = nT;
+		mChunks = nC;
+		mLookBack = DefaultLookBackLength;
+
+		mTransTable = tb;
+		mInputs = ints;
+
+		mPredictStates = new int [mChunks];
+		mEndingStates = new int [mChunks];	
+	}	
 
 	Predictor::Predictor(const Table* tb, const Input* ints, int nT, int nC, long nLB)
 	{
 		srand (time(NULL));
-		
 		mThreads = nT;
 		mChunks = nC;
-		mLook_Back = nLB;
+		mLookBack = nLB;
 
-		mTable_ = tb;
-		mInputs_ = ints;
+		mTransTable = tb;
+		mInputs = ints;
 
-		pthread_predict = new int [mChunks];
-		pthread_final = new int [mChunks];	
+		mPredictStates = new int [mChunks];
+		mEndingStates = new int [mChunks];	
 	}
 
 	Predictor::~Predictor()
 	{
-		delete []pthread_predict;
-		delete []pthread_final;
+		delete []mPredictStates;
+		delete []mEndingStates;
 	}
 
-	Predictor* Predictor::ConstructPredictor(const Table* table, const Input* input, 
+	Predictor* Predictor::constructPredictor(const Table* table, const Input* input, 
+			const int nthread, const int nchunk)
+	{
+		Predictor* obj = new Predictor(table, input, nthread, nchunk);
+		return obj;
+	}
+
+	Predictor* Predictor::constructPredictor(const Table* table, const Input* input, 
 			const int nthread, const int nchunk, const long nlookback)
 	{
 		Predictor* obj = new Predictor(table, input, nthread, nchunk, nlookback);
 		return obj;
 	}
 
-	void Predictor::SequentialPrediction()
+	void Predictor::sequentialPrediction()
 	{
-		long ChunkLength = mInputs_->getLength() / mChunks;
+		long chunkLength = mInputs->getLength() / mChunks;
 
-		pthread_predict[0]= mTable_->getStartState();
+		mPredictStates[0]= mTransTable->getStartState();
 		for(int t=1; t < mChunks; t++)
 		{
-			long START_POINT = ChunkLength * t - mLook_Back;
-			pthread_predict[t]= SeqPredict_one(START_POINT);
+			long lookBackStartIndex = chunkLength * t - mLookBack;
+			mPredictStates[t]= seqPredict(lookBackStartIndex);
 		}
 	}
 
-	int Predictor::SeqPredict_one(long START_POINT)
+	int Predictor::seqPredict(long lookBackStartIndex)
 	{
-		int mNumState = mTable_->getNumState();
-		int mNumSymbol = mTable_->getNumSymbol();
-		int* mInput = mInputs_->getPointer();
-		int* mTable = mTable_->getTable();
+		int numState = mTransTable->getNumState();
+		int numSymbol = mTransTable->getNumSymbol();
+		int* transTable = mTransTable->getTable();
+		int* inputs = mInputs->getPointer();
 
 		long i;
 		int counter;
-		int ite=0;
-		int maxt=0;
 
 		int* predict_states;
 		int* time_counter;
-		predict_states = new int [mNumState];
-		time_counter = new int [mNumState];
+		predict_states = new int [numState];
+		time_counter = new int [numState];
 		
-		for (i=0; i < mNumState; i++)
+		for (i=0; i < numState; i++)
 		{
 			predict_states[i]=i;
 			time_counter[i]=0;
 		}
 
-		for(i=0; i < mLook_Back; i++)
+		for(i=0; i < mLookBack; i++)
 		{
-			int symbol = mInput[START_POINT+i];
-			for(counter=0; counter < mNumState; counter++)
-				predict_states[counter] = ( mTable[predict_states[counter] * mNumSymbol + symbol ] & 0X0FFFFFFF );
+			int symbol = inputs[lookBackStartIndex + i];
+			for(counter=0; counter < numState; counter++)
+				predict_states[counter] = ( transTable[predict_states[counter] * numSymbol + symbol ] & 0X0FFFFFFF );
 		}
 
-		for(counter=0; counter < mNumState; counter++)
+		int ite=0;
+		int maxt=0;
+		for(counter=0; counter < numState; counter++)
 				time_counter[predict_states[counter]]++;
 
-		for(counter=0; counter < mNumState; counter++)
+		for(counter=0; counter < numState; counter++)
 		{	
 			if(time_counter[counter] > maxt)
 			{
@@ -112,7 +129,7 @@ namespace microspec
 			}
 		}
 		if(maxt==1)
-			ite = rand() % mNumState;
+			ite = rand() % numState;
 
 		delete []predict_states;
 		delete []time_counter;
@@ -121,12 +138,8 @@ namespace microspec
 	}
 
 
-	void Predictor::ParallelPrediction()
+	void Predictor::parallelPrediction()
 	{
-		//PTHREAD--------------------------------
-		int errorCheck1, errorCheck2;
-		long t;
-
 		pthread_t* threads;			
 		threads=(pthread_t*)malloc(sizeof(pthread_t)* mChunks);
 		cpu_set_t* cpu;		// thread binding variables
@@ -134,6 +147,7 @@ namespace microspec
 		cpu=(cpu_set_t*)malloc(sizeof(cpu_set_t) * MAXCPU);
 		//PTHREAD-------------------------------
 
+		long t;
 		// thread binding
 		for(t=0; t < MAXCPU; t++)
 		{
@@ -141,82 +155,97 @@ namespace microspec
 			CPU_SET(t, &cpu[t]);
 		}	
 
+		int errorCode1, errorCode2;
 		for(t=0; t < mChunks; t++)
 		{
-			PassItem* var;
-			var = new PassItem();
+			PredictorPointerAndThread* var;
+			var = new PredictorPointerAndThread();
 			var->pointer = this;
-			var->tid = t;
-			errorCheck1 = pthread_create(&threads[t], NULL, Caller1, (void*)var);
-			if (errorCheck1)
+			var->threadID = t;
+			errorCode1 = pthread_create(&threads[t], NULL, callFunc_parPredict, (void*)var);
+			if (errorCode1)
 			{
-				printf("ERROR; return code from pthread_create() is %d\n", errorCheck1);
+				printf("ERROR; return code from pthread_create() is %d\n", errorCode1);
 				exit(-1);
 			}
-			errorCheck2 = pthread_setaffinity_np(threads[t], sizeof(cpu_set_t), &cpu[t%MAXCPU]);
+			errorCode2 = pthread_setaffinity_np(threads[t], sizeof(cpu_set_t), &cpu[t%MAXCPU]);
 		}
 		for(t=0; t< mChunks; t++)
 	    	pthread_join(threads[t], NULL);
 	}
 
-	void* Predictor::Caller1(void* args)
+	void* Predictor::callFunc_parPredict(void* args)
 	{
-		PassItem* Arg = (PassItem*)args;
-		Arg->pointer->ParPredict_one(Arg->tid);
+		PredictorPointerAndThread* Arg = (PredictorPointerAndThread*)args;
+		Arg->pointer->parPredict(Arg->threadID);
 		pthread_exit((void*)args);
 	}
 
-	void Predictor::ParPredict_one(int ID)
+	void Predictor::parPredict(int threadID)
 	{
-		long tid =  ID;
-		long ChunkLength = mInputs_->getLength() / mChunks;
+		long tid =  threadID;
+		long chunkLength = mInputs->getLength() / mChunks;
 
 		if(tid==0)	
-			pthread_predict[0]= mTable_->getStartState();
+			mPredictStates[0]= mTransTable->getStartState();
 		else
 		{
-			long START_POINT = ChunkLength * tid - mLook_Back;
-			pthread_predict[tid]=this->SeqPredict_one(START_POINT);
+			long lookBackStartIndex = chunkLength * tid - mLookBack;
+			mPredictStates[tid]=this->seqPredict(lookBackStartIndex);
 		}
 	}
 
 	int Predictor::getPredictState(int i) const
 	{
-		return pthread_predict[i];
+		return mPredictStates[i];
 	}
-	int Predictor::getFinalState(int i) const
+	int Predictor::getEndingState(int i) const
 	{
-		return pthread_final[i];
+		return mEndingStates[i];
 	}
 
 	void Predictor::setPredictState(int i, int state)
 	{
-		pthread_predict[i] = state;
+		mPredictStates[i] = state;
 	}
 
-	void Predictor::setFinalState(int i, int state)
+	void Predictor::setEndingState(int i, int state)
 	{
-		pthread_final[i] = state;
+		mEndingStates[i] = state;
 	}
 
 	int* Predictor::getPredictStatePointer() const
 	{
-		return pthread_predict;
+		return mPredictStates;
 	}
 
-	int* Predictor::getFinalStatePointer() const
+	int* Predictor::getEndingStatePointer() const
 	{
-		return pthread_final;
+		return mEndingStates;
 	}
 	
-	const Table* Predictor::getUsedTable() const
+	const Table* Predictor::getTableUsed() const
 	{
-		return mTable_;
+		return mTransTable;
 	}
 
-	const Input* Predictor::getUsedInput() const
+	const Input* Predictor::getInputUsed() const
 	{
-		return mInputs_;
+		return mInputs;
 	}
 
+	const int Predictor::getMaxThreads() const
+	{
+		return mThreads;
+	}
+	
+	const int Predictor::getMaxChunks() const
+	{
+		return mChunks;
+	}
+
+	const long Predictor::getLookBackLength() const
+	{
+		return mLookBack;
+	}
 }

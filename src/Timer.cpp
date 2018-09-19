@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "Timer.hpp"
+#include "Timer.h"
 
 /* TIME MEASUREMENT */
 void startTime(Timer* timer) {
