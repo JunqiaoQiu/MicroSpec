@@ -2,8 +2,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#ifdef AVX2_SUPPORT
 #include <smmintrin.h> // sse4.2
 #include <immintrin.h>   // avx
+#endif
 
 #include "Action.h"
 
@@ -21,10 +23,12 @@ namespace microspec
 		;
 	}
 
+ #ifdef AVX2_SUPPORT
 	void doNothingSIMD(__m256i stateVector, __m256i* dfaResultsPointer)
 	{
 		;
 	}
+#endif
 
 	void accumulateAction(int state, DFAResults* dfaResultsPointer)
 	{
@@ -39,7 +43,8 @@ namespace microspec
 		if ( (wrongState & 0XF0000000) == 0XF0000000 )
 			dfaResultsPointer->mResults--;
 	}
- 
+	
+ #ifdef AVX2_SUPPORT
 	void accumulateActionSIMD(__m256i stateVector, __m256i* dfaResultsPointer)
 	{
 		__m256i maskV = _mm256_set1_epi32(0XF0000000);
@@ -49,5 +54,5 @@ namespace microspec
 
 		dfaResultsPointer[0] = _mm256_add_epi32(dfaResultsPointer[0], addV);
 	}
-
+#endif
 }

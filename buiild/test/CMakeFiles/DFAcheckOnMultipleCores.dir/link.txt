@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=c++11 -pthread -mavx2 -msse4 -O3 -DNDEBUG  -rdynamic CMakeFiles/DFAcheckOnMultipleCores.dir/DFAcheckOnMultipleCores.cpp.o  -o DFAcheckOnMultipleCores ../libMicroSpec.a 
