@@ -17,3 +17,7 @@ target_link_libraries(DFAcheckOnSingleCore ${PROJECT_NAME})
 # Test 5
 add_executable (DFAcheckOnMultipleCores DFAcheckOnMultipleCores.cpp)
 target_link_libraries(DFAcheckOnMultipleCores ${PROJECT_NAME})
+
+# Test 6
+add_executable (DFAcheckOnMultipleCoresWityActions DFAcheckOnMultipleCoresWityActions.cpp)
+target_link_libraries(DFAcheckOnMultipleCoresWityActions ${PROJECT_NAME})
